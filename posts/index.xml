@@ -1,0 +1,195 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Yiren Zhou</title>
+        <link>https://yirzhou.github.io/posts/</link>
+        <description>Recent content in Posts on Yiren Zhou</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
+            <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
+            <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</guid>
+            <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
+ 1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.</p>
+</blockquote>
+<h2 id="1-motivation">1. Motivation</h2>
+<p>As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</p>
+<p>Ideally, we want to keep it separate such that it will leave the rest of our system intact.</p>
+<h2 id="2-my-story">2. My story</h2>
+<p>My current work is entirely C++-based: I write code in C++ and I build my project using <a href="https://www.cmake.org">CMake</a> and <a href="https://ninja-build.org/">Ninja</a>. I develop on a MacBook Pro but my project targets Linux. C++ on MacOS is different from Linux in terms of their compilers and standard libraries: Apple develops their own toolchains using LLVM and uses Clang as its compiler, while most Linux distributions use GCC. There are subtle differences between their standard libraries as well in terms of supporting the newer C++ standards.</p>
+<p>Most people should never worry about those nuances, but they happened to cause an obstacle for me: my project could only build on Linux because some C++17 features were missing in the Clang standard library (<code>libstdc++</code>).</p>
+<p>For a while, I was working on a remote development machine using SFTP and the command line. It was fairly unproductive: SFTP heavily depends on how fast my network is, and building and tracing bugs down in the command line require very sharp eyes which I don&rsquo;t have 😅. Also, I don&rsquo;t have all the features in VSCode properly set up when developing remotely. In short, it was a real struggle for me.</p>
+<h2 id="3-how-about-containerization">3. How about containerization?</h2>
+<p>You might have been laughing at my naïveté for a while now: why not working in a <a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/">Docker container</a>? We can run any operating system and install any dependencies in an isolated environment.</p>
+<p>In fact, I did try developing inside a container locally, which got rid of SFTP entirely. However, I was still using the clunky CLI and missing the &ldquo;Intellisense&rdquo; and all the other goodies of <a href="https://code.visualstudio.com/">VSCode</a>.</p>
+<p>It all changed when I was introduced to <a href="https://code.visualstudio.com/docs/remote/containers">Remote-Containers</a>.</p>
+<p>Remote-Containers is a <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VSCode extension</a> that lets me develop inside a Docker container, using VSCode, as a full-featured development environment. That means that I can enjoy all the features that I need while developing inside a container:</p>
+<ul>
+<li>Full Intellisense and auto-completion with C++ STL</li>
+<li>CMake extensions</li>
+<li>Clang-format for code formatting on save</li>
+</ul>
+<p>You could <a href="https://code.visualstudio.com/docs/remote/containers">read more about it</a> if you are interested, and I highly encourage you to get on board. It essentially allows us to open a container in VSCode as a regular file system, and install our favourite extensions and configure settings in a isolated environment.</p>
+<h2 id="4-setup">4. Setup</h2>
+<p>In the following sections, I will walk through my routine setup for C++ development using VSCode Remote-Containers; however, this skill can be transferred to any other languages or technology stack. I assume that the reader is familiar with container</p>
+<h3 id="41-pre-requisites">4.1 Pre-requisites</h3>
+<ul>
+<li>Docker Engine</li>
+<li>Visual Studio Code</li>
+</ul>
+<h3 id="42-devcontainerjson">4.2 <code>.devcontainer.json</code></h3>
+<p>First, we need to define how VSCode can build and open up a container in a special file: <code>.devcontainer.json</code>. This file can be standalone in your root project directory, or in a separate <code>.devcontainer</code> directory.</p>
+<p>We can set values of plenty of <a href="https://code.visualstudio.com/docs/remote/devcontainerjson-reference">properties</a> that define the locations of <code>docker-compose.yml</code>, <code>Dockerfile</code>, on-init and post-init commands, extensions we wish to install, and many more. For me, I have the following setup:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;dockerComposeFile&#34;</span>: [<span style="color:#e6db74">&#34;../docker-compose.yml&#34;</span>, <span style="color:#e6db74">&#34;docker-compose.override.yml&#34;</span>],
+  <span style="color:#f92672">&#34;initializeCommand&#34;</span>: <span style="color:#e6db74">&#34;mkdir -p debian &amp;&amp; cat */debian/control &gt; debian/control&#34;</span>,
+  <span style="color:#f92672">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;dev-env&#34;</span>,
+  <span style="color:#f92672">&#34;workspaceFolder&#34;</span>: <span style="color:#e6db74">&#34;/workspace&#34;</span>,
+  <span style="color:#f92672">&#34;extensions&#34;</span>: [
+    <span style="color:#e6db74">&#34;ms-vscode.cpptools&#34;</span>,
+    <span style="color:#e6db74">&#34;ms-vscode.cmake-tools&#34;</span>,
+    <span style="color:#e6db74">&#34;twxs.cmake&#34;</span>,
+    <span style="color:#e6db74">&#34;ryanluker.vscode-coverage-gutters&#34;</span>,
+    <span style="color:#e6db74">&#34;pucelle.run-on-save&#34;</span>,
+    <span style="color:#e6db74">&#34;xaver.clang-format&#34;</span>
+  ],
+  <span style="color:#f92672">&#34;settings&#34;</span>: {
+    <span style="color:#f92672">&#34;http.proxyStrictSSL&#34;</span>: <span style="color:#66d9ef">false</span>,
+    <span style="color:#f92672">&#34;C_Cpp.default.includePath&#34;</span>: [<span style="color:#e6db74">&#34;/usr/include&#34;</span>, <span style="color:#e6db74">&#34;/workspace/**&#34;</span>],
+    <span style="color:#f92672">&#34;C_Cpp.default.cStandard&#34;</span>: <span style="color:#e6db74">&#34;c11&#34;</span>,
+    <span style="color:#f92672">&#34;C_Cpp.default.cppStandard&#34;</span>: <span style="color:#e6db74">&#34;c++17&#34;</span>,
+    <span style="color:#f92672">&#34;C_Cpp.default.intelliSenseMode&#34;</span>: <span style="color:#e6db74">&#34;gcc-x64&#34;</span>,
+    <span style="color:#f92672">&#34;C_Cpp.updateChannel&#34;</span>: <span style="color:#e6db74">&#34;Default&#34;</span>,
+    <span style="color:#f92672">&#34;clang-format.style&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
+    <span style="color:#f92672">&#34;clang-format.fallbackStyle&#34;</span>: <span style="color:#e6db74">&#34;LLVM&#34;</span>
+  }
+}
+</code></pre></div><p>I put my <code>.devcontainer.json</code> in the <code>.devcontainer</code> directory, and I have two <code>docker-compose</code> files. Some notable areas are:</p>
+<ul>
+<li><code>&quot;workspaceFolder&quot;: &quot;/workspace&quot;</code> specifies the workspace directory inside the container. I will be running Ubuntu, and it will locate me in <code>/workspace</code>. I will also mount my project to this directory later.</li>
+<li><code>extensions</code> specifies a list of VSCode extensions (C++-specific) to install. Note that those extensions will be separate from our editor extensions on our machine and are exclusive to this container.</li>
+<li><code>settings</code> specifies container-specific VSCode settings.</li>
+</ul>
+<h3 id="43-docker-composeyml">4.3 <code>docker-compose.yml</code></h3>
+<p><a href="https://docs.docker.com/compose/">Docker Compose</a> enables defining and running <strong>multi-container</strong> Docker applications. I personally think that its main feature is to spin up containers in an order if there are dependencies between them. For the purpose of this setup, I will only spin up one container.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.7&#34;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">dev-env</span>:
+    <span style="color:#f92672">build</span>:
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
+      <span style="color:#f92672">dockerfile</span>: <span style="color:#ae81ff">dev.Dockerfile</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">.:/workspace:z</span>
+    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/workspace</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">CTEST_OUTPUT_ON_FAILURE=1</span>
+      - <span style="color:#ae81ff">GTEST_COLOR=1</span>
+      - <span style="color:#ae81ff">CMAKE_GENERATOR=Ninja</span>
+</code></pre></div><p>This file has minimal configurations: the most important part is <code>volumes</code> that mounts my project directory to <code>/workspace</code> in the container. I also set some C++-specific environment variables for CMake.</p>
+<h3 id="44-dockerfile">4.4 <code>Dockerfile</code></h3>
+<p>The last missing piece is the <code>Dockerfile</code> (in my case, <code>dev.Dockerfile</code>) which defines the build steps of my container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Development environment workspace&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Etc
+<span style="color:#66d9ef">RUN</span> ln -snf /usr/share/zoneinfo/$TZ /etc/localtime <span style="color:#f92672">&amp;&amp;</span> echo $TZ &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;root:docker&#34;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y --force-yes <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    clang-format <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    devscripts <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    equivs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    g++ <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    gdb <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libssl-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    ninja-build <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    rsync <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy just the control file.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./debian/control /tmp/debian/control<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install project build dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mk-build-deps -i -t <span style="color:#e6db74">&#34;apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y&#34;</span> /tmp/debian/control <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install quantum</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /opt/</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://github.com/bloomberg/quantum/archive/v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    tar -zxvf v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    cd quantum-2.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    cmake -Bbuild DQUANTUM_ENABLE_TESTS<span style="color:#f92672">=</span>ON . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    cd build <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    make install<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>There&rsquo;s not much to say about this file - you can run different runtimes or operating systems of your choice.</p>
+<h2 id="5-how-it-feels-like">5. How it feels like</h2>
+<p>In short, it&rsquo;s <strong>awesome</strong>.</p>
+<p>I can open my project in a container:</p>
+<p><img src="/gif/open_in_container.gif" alt="Open project in container"></p>
+<p>My C++ extensions are working as expected - I get Intellisense, CMake, and Clang-format:</p>
+<p><img src="/gif/cpp_intellisense.gif" alt="C++ Intellisense in container"></p>
+<p>I can build using CMake (non CLI):</p>
+<p><img src="/gif/cmake.gif" alt="CMake extension in container"></p>
+<p>What helps me the most, is navigating through errors - I never need to go into the CLI any more:</p>
+<p><img src="/gif/error_navigation.gif" alt="Navigate code base in VSCode"></p>
+<p>I don&rsquo;t use a lot of tools for my C++ development setup, but I have already realized how amazing it is for my productivity. If your tech stack requires more tools (I&rsquo;m aware that Java and JavaScript have much richer ecosystems), you are going to appreciate it more.</p>
+<h2 id="6-final-thoughts">6. Final thoughts</h2>
+<p>When I started my internship, I failed to realize its significance in my productivity until much later. This is such an elegant approach to solve dependency issues while retaining all the goodies of VSCode, and it demonstrates perfectly the principle of <em>using the right tools to solve the right problems</em>.</p>
+<p>There are some imperfections about this setup, but most of them are not related to VSCode but to containerization:</p>
+<ol>
+<li>If you are using a corporate VPN at work, you should consult with your IT department to circumvent it with proxy configurations in order to download VSCode server and extensions. It&rsquo;s not an issue, but definitely something to keep in mind.</li>
+<li>If the project is huge, you may need to allocate more memory to the container. In my experience, GCC failed during compilation because of the insufficient RAM.</li>
+</ol>
+<p>I wish I would know it earlier, but I&rsquo;m still glad that I do now!</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>A New Beginning</title>
+            <link>https://yirzhou.github.io/posts/a-new-beginning/</link>
+            <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/a-new-beginning/</guid>
+            <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are 🙂.
+Some history I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.
+My first attempt was a WordPress site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used.</description>
+            <content type="html"><![CDATA[<p>This is my first ever article on this site, which means that I&rsquo;m just as new to it as you are 🙂.</p>
+<h2 id="some-history">Some history</h2>
+<p>I&rsquo;ve had this idea of writing random stuff down for quite a while, and I&rsquo;ve had two failed attempts in the past.</p>
+<p>My first attempt was a <a href="https://wordpress.org/">WordPress</a> site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used. Additionally, I wasn&rsquo;t familiar with PHP, which made customization a bit difficult. After two years, I decided to get rid of it.</p>
+<p>That leads to my second attempt, which was a <a href="https://zhouyiren.rocks">site</a> built in <a href="https://reactjs.org/">ReactJS</a> and hosted on <a href="https://firebase.google.com/">Firebase</a>. It took me just over two weeks to self-teach React and build it during self-quarantine. Firebase provides free hosting which was perfect for getting rid of my old site. I ended up liking React as a frontend framework, and it gave me a taste of frontend development. However, I&rsquo;m never into frontend/UI development, and I felt that it strayed me away from content creation. I did enjoy the learning experience though.</p>
+<p>I think I&rsquo;ve finally found the <a href="http://gohugo.io/">right tool</a> that allows me to focus on content creation while retaining the high customizability.</p>
+<h2 id="why-this-site-exists">Why this site exists</h2>
+<p>I believe in the power of taking notes regardless the significance of the matters. Although I consider myself a decent note-taker, I can still get sloppy at times where I will forget the lessons I&rsquo;ve learned. Writting stuff down helps me recall the happy and sad moments or lessons more effectively.</p>
+<p>Since this tool allows me to focus on the content aspect, I am determined to start a new page, keep it alive and update it regularly. It mainly serves as a personal space for myself, but if you happen to be close to me in real life, I hope it can convey to you what&rsquo;s going on with my life (I don&rsquo;t browse social media often). If you find the stuff here useful, it will make me even happier 😃.</p>
+<h2 id="what-to-expect">What to expect</h2>
+<p>I will write about topics that I&rsquo;m familiar with. Most of the stuff comes from my experience, whether personally, academically or professionally. Therefore, they are heavily opinion-based and could be against yours. In general, they can be categorized into <strong>technical</strong> and <strong>non-technial</strong> content.</p>
+<h3 id="technical">Technical</h3>
+<p>You can expect stuff about tools, frameworks of, and tips on software development and productivity. I will try to not make those articles look like technical documentation 😅.</p>
+<h3 id="non-technical">Non-technical</h3>
+<p>You can expect some personal thoughts, perhaps on the issues of the day, life update, and so on.</p>
+<p>Regardless the level of technicality, I will attach relevant tags to all articles.</p>
+<p>There we go - I just wrote the first article. I have a lot in mind that I want to share with my future self and you, and thanks for visiting my home.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

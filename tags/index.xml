@@ -5,6 +5,61 @@
     <link>https://yirzhou.github.io/tags/</link>
     <description>Recent content in Tags on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://yirzhou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cmake</title>
+      <link>https://yirzhou.github.io/tags/cmake/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/cmake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>container</title>
+      <link>https://yirzhou.github.io/tags/container/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>https://yirzhou.github.io/tags/cpp/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technical</title>
+      <link>https://yirzhou.github.io/tags/technical/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/technical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://yirzhou.github.io/tags/vscode/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>personal</title>
+      <link>https://yirzhou.github.io/tags/personal/</link>
+      <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
+      
+      <guid>https://yirzhou.github.io/tags/personal/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
