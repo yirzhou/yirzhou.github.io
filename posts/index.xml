@@ -5,8 +5,34 @@
         <description>Recent content in Posts on Yiren Zhou</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Last Christmas</title>
+            <link>https://yirzhou.github.io/posts/last-christmas/</link>
+            <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/last-christmas/</guid>
+            <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
+Perfect snow This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
+            <content type="html"><![CDATA[<p>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.</p>
+<h2 id="perfect-snow">Perfect snow</h2>
+<p>This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days. It makes me somehow feel warmer and cozier at home: reading a book with a cup of tea or coffee while sitting beside the window is enjoyable.</p>
+<p><img src="/img/snow-from-window.jpg" alt="Snow from my window"></p>
+<h2 id="the-emptiness">The emptiness</h2>
+<p>I&rsquo;d be a filthy liar if I don&rsquo;t feel &ldquo;alone&rdquo;. It&rsquo;s not that I&rsquo;m not used to being alone and independent; it&rsquo;s the fact that this town feels strangely empty.</p>
+<p>Because of the pandemic, many friends of mine have chosen to go back to China and will complete the winter term at home. Their departure somehow makes me feel happy but sad at the same time. They will live in a safer environment and have good times with their families while studying at home; however, knowing that I will fight without them is strange.</p>
+<p>I&rsquo;m surprised of my feeling right now since I&rsquo;ve never done a good job keeping in touch with them. In the past four years, I&rsquo;ve been tunnel-visioning on academic excellence, and unexpected, the school has consumed me. I&rsquo;ve been through incredibly depressing times early on, but knowing that they were here and I wasn&rsquo;t alone kept me going strong. Now that they are gone, and I feel &ldquo;empty&rdquo;.</p>
+<p>It&rsquo;s not a terrible feeling - it&rsquo;s just the natural progression of things. I just found it interesting and worth mentioning.</p>
+<blockquote>
+<p>&ldquo;The more space and emptiness you can create in yourself, then you can let the rest of the world come in and fill you up.&rdquo; &ndash;Jeff Bridges</p>
+</blockquote>
+<h2 id="the-same-routine">The same routine</h2>
+<p>It&rsquo;s been a week since I completed my last internship, but I don&rsquo;t feel that my life has changed at all - in fact, I&rsquo;m still working on a number of hobby projects and our FYDP, and getting my daily workout in. I&rsquo;ve been trying to making my life perfectly balanced like all things should be 🙂, and it&rsquo;s been working very well for me.</p>
+<p><em>I like writing thoughts like this down. I can&rsquo;t even wait for my future self to read those. Merry Christmas.</em></p>
+]]></content>
+        </item>
         
         <item>
             <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>

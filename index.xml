@@ -6,7 +6,17 @@
     <description>Recent content on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Last Christmas</title>
+      <link>https://yirzhou.github.io/posts/last-christmas/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/last-christmas/</guid>
+      <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
+Perfect snow This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
+    </item>
+    
     <item>
       <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
       <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
