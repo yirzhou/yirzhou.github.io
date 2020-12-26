@@ -71,7 +71,7 @@ Perfect snow This Christmas actually feels like a Christmas in terms of the weat
 <li>Visual Studio Code</li>
 </ul>
 <h3 id="42-devcontainerjson">4.2 <code>.devcontainer.json</code></h3>
-<p>First, we need to define how VSCode can build and open up a container in a special file: <code>.devcontainer.json</code>. This file can be standalone in your root project directory, or in a separate <code>.devcontainer</code> directory.</p>
+<p>First, we need to define how VSCode can build and open up a container in a special file: <code>.devcontainer.json</code>. This file can be standalone in your root project directory, or in a separate <code>.devcontainer</code> directory (<code>.devcontainer/devcontainer.json</code>, without the first dot if in the directory).</p>
 <p>We can set values of plenty of <a href="https://code.visualstudio.com/docs/remote/devcontainerjson-reference">properties</a> that define the locations of <code>docker-compose.yml</code>, <code>Dockerfile</code>, on-init and post-init commands, extensions we wish to install, and many more. For me, I have the following setup:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;dockerComposeFile&#34;</span>: [<span style="color:#e6db74">&#34;../docker-compose.yml&#34;</span>, <span style="color:#e6db74">&#34;docker-compose.override.yml&#34;</span>],
@@ -118,7 +118,9 @@ Perfect snow This Christmas actually feels like a Christmas in terms of the weat
       - <span style="color:#ae81ff">CTEST_OUTPUT_ON_FAILURE=1</span>
       - <span style="color:#ae81ff">GTEST_COLOR=1</span>
       - <span style="color:#ae81ff">CMAKE_GENERATOR=Ninja</span>
+    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">sleep infinity</span>
 </code></pre></div><p>This file has minimal configurations: the most important part is <code>volumes</code> that mounts my project directory to <code>/workspace</code> in the container. I also set some C++-specific environment variables for CMake.</p>
+<p><code>sleep infinity</code> allows the container to be running instead of exiting immediately which will cause an error.</p>
 <h3 id="44-dockerfile">4.4 <code>Dockerfile</code></h3>
 <p>The last missing piece is the <code>Dockerfile</code> (in my case, <code>dev.Dockerfile</code>) which defines the build steps of my container:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
