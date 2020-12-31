@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yirzhou.github.io/posts/thoughts-on-2020/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/personal/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yirzhou.github.io/posts/last-christmas/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yirzhou.github.io/tags/personal/</loc>
-    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/posts/</loc>
-    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yirzhou.github.io/tags/random/</loc>
-    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/tags/</loc>
-    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/</loc>
     <lastmod>2020-12-25T00:00:00+00:00</lastmod>
   </url>
   
