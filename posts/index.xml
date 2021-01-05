@@ -5,8 +5,81 @@
         <description>Recent content in Posts on Yiren Zhou</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Googletest with CMake</title>
+            <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
+            <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/googletest-with-cmake/</guid>
+            <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
+            <content type="html"><![CDATA[<h2 id="background">Background</h2>
+<p>Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, <a href="https://github.com/google/googletest">googletest</a> (also known as &ldquo;gtest&rdquo;) has been one of the more well-received testing framework in various organizations, so that&rsquo;s what I will focus on.</p>
+<p>What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie. a <code>main()</code> function), I will walk through how NOT to do that - how to use <code>googletest</code> with <a href="https://cmake.org/">CMake</a> without defining any entry point.</p>
+<h2 id="test-case">Test case</h2>
+<p>Let&rsquo;s suppose that I want to test some function. The standard way to define a test case using <code>gtest</code> is the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Component under test
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;myproject/maths.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// gtest include
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;gtest/gtest.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> <span style="color:#f92672">::</span>testing;
+
+TEST(my_function_test, basic) {
+    <span style="color:#75715e">// Assume that I want to test if myproject::abs()
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// returns the correct absolute value of an integer
+</span><span style="color:#75715e"></span>    ASSERT_EQ(myproject<span style="color:#f92672">::</span>abs(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>), <span style="color:#ae81ff">100</span>);
+}
+</code></pre></div><p>As you see, I have defined a test case called <code>my_function_test.basic</code> and it tests if <code>abs</code> returns the correct absolute value - nothing exciting.</p>
+<p>However, this is just a function - to run our test case, naturally we want to have some entry point just like any program. There&rsquo;s one way to do it: define a <code>main</code> function somewhere like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) {
+    <span style="color:#f92672">::</span>testing<span style="color:#f92672">::</span>InitGoogleTest(<span style="color:#f92672">&amp;</span>argc, argv);
+    <span style="color:#66d9ef">return</span> RUN_ALL_TESTS();
+}
+</code></pre></div><p>While this works, there&rsquo;s a neat way to get rid of this main function completely while still being able to run our tests.</p>
+<h2 id="gtest_main">gtest_main</h2>
+<p>A main function seems out of place being placed in a directory specifically for test cases. Fortunately, Google agrees with this idea and they&rsquo;ve provided the <code>gtest_main</code> library that gives a basic implementation of <code>main()</code>. It means that we don&rsquo;t need an explicit entry point in our program.</p>
+<h2 id="cmake">CMake</h2>
+<p>It&rsquo;s simple to use <code>gtest_main</code> with <code>CMake</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SRCS</span> <span style="color:#e6db74">CONFIGURE_DEPENDS</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">target,</span> <span style="color:#e6db74">my_project.t</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>find_package(<span style="color:#e6db74">GTest</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">GoogleTest</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+    <span style="color:#e6db74">my_project</span>
+    <span style="color:#e6db74">gmock</span>
+    <span style="color:#e6db74">GTest::GTest</span>
+    <span style="color:#e6db74">GTest::Main</span>
+)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>gtest_discover_tests(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Or it coule be simpler:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SRCS</span> <span style="color:#e6db74">CONFIGURE_DEPENDS</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">target,</span> <span style="color:#e6db74">my_project.t</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
+    <span style="color:#e6db74">my_project</span>
+    <span style="color:#e6db74">gmock</span>
+    <span style="color:#e6db74">gtest</span>
+    <span style="color:#e6db74">gtest_main</span>
+)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>gtest_discover_tests(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>After building our project, simply run <code>ctest</code> in the build directory and all test cases will run 😃.</p>
+]]></content>
+        </item>
         
         <item>
             <title>My Thoughts on 2020</title>

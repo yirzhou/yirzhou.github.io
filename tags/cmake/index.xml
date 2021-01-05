@@ -6,7 +6,17 @@
     <description>Recent content in cmake on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Googletest with CMake</title>
+      <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/googletest-with-cmake/</guid>
+      <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
+    </item>
+    
     <item>
       <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
       <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>

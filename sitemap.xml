@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yirzhou.github.io/tags/cmake/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/cpp/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/googletest-with-cmake/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/gtest/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yirzhou.github.io/posts/thoughts-on-2020/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yirzhou.github.io/tags/personal/</loc>
-    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/posts/</loc>
-    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/tags/</loc>
-    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,17 +58,7 @@
   </url>
   
   <url>
-    <loc>https://yirzhou.github.io/tags/cmake/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yirzhou.github.io/tags/container/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/tags/cpp/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url>
   
