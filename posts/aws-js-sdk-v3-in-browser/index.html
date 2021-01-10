@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Yiren Zhou ">
+<meta name="description" content="In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):" />
+<meta name="keywords" content=", aws, javascript, technical, typescript, webpack" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/" />
+
+
+    <title>
+        
+            Using AWS JavaScript SDK v3 in Browsers :: Yiren Zhou 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://yirzhou.github.io/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
+
+
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="https://yirzhou.github.io/favicons/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="https://yirzhou.github.io/favicons/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="https://yirzhou.github.io/favicons/favicon-16x16.png"
+/>
+<link rel="manifest" href="https://yirzhou.github.io/favicons/site.webmanifest" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+
+
+<meta itemprop="name" content="Using AWS JavaScript SDK v3 in Browsers">
+<meta itemprop="description" content="In this article, I will walkthrough the process of incorporating the &ldquo;new&rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):">
+<meta itemprop="datePublished" content="2021-01-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1488">
+
+
+
+<meta itemprop="keywords" content="aws,javascript,technical,typescript,webpack," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using AWS JavaScript SDK v3 in Browsers"/>
+<meta name="twitter:description" content="In this article, I will walkthrough the process of incorporating the &ldquo;new&rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):"/>
+
+
+
+    <meta property="og:title" content="Using AWS JavaScript SDK v3 in Browsers" />
+<meta property="og:description" content="In this article, I will walkthrough the process of incorporating the &ldquo;new&rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/" />
+<meta property="article:published_time" content="2021-01-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-10T00:00:00+00:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-01-10 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://yirzhou.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/yirzhou</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://yirzhou.github.io/about">About</a></li><li><a href="https://yirzhou.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        7 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/">Using AWS JavaScript SDK v3 in Browsers</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>In this article, I will walkthrough the process of incorporating the &ldquo;new&rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.</p>
+<p>I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.</p>
+<h2 id="introduction-to-aws-sdk-for-javascript-v3">Introduction to AWS SDK for JavaScript v3</h2>
+<p>AWS have recently released <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/">Version 3</a> of the SDK for JavaScript, targeting the following issues of its previous version (V2):</p>
+<ul>
+<li>Modularized packages for individual services (ie. separate packages for S3, EC2, etc., kind of like microservices)</li>
+<li>New middleware stack</li>
+</ul>
+<h2 id="lets-help-our-tools-help-us">Let&rsquo;s help our tools help us</h2>
+<h3 id="typescript-over-javascript">TypeScript over JavaScript</h3>
+<p>The most interesting feature to me, is that this new version is written in <a href="https://www.typescriptlang.org/">TypeScript</a>. We all know that it&rsquo;s easy to write type-unsafe and buggy JavaScript due to its dynamic typing system. One component of our final-year design project is in vanilla JavaScript, and people easily get perplexed when looking at the code because they need a lot of time to figure out what certain variables are. For example, suppose that we have a job scheduler:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scheduler</span> {
+  <span style="color:#a6e22e">jobQueue</span>;
+
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">jobs</span>) {
+    <span style="color:#a6e22e">jobs</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">job</span>) =&gt; <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>));
+  }
+
+  <span style="color:#a6e22e">addJob</span>(<span style="color:#a6e22e">job</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>);
+  }
+
+  <span style="color:#a6e22e">runJobUntilNone</span>() {
+    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">length</span>) {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">pop</span>();
+      <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">run</span>();
+    }
+  }
+}
+</code></pre></div><p>Although the code above is simple, what exactly is a &ldquo;job&rdquo;? It&rsquo;s pretty intuitive to deduce that <code>jobQueue</code> is an array of jobs, but what is a <code>job</code>? Is it a string? Probably not since <code>string</code> doesn&rsquo;t have a <code>run()</code> function. What type is it?</p>
+<p>Apart from loose typing, nobody will stop you if you call <code>addJob</code> by passing a number, string, or any other type. What&rsquo;s worse, is that you will only catch the error at run time, which could lead to millions of dollars of loss for your company&hellip;</p>
+<p>TypeScript allows us to add type annotations and any type violation will be caught at compile time by the TypeScript compiler:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Job</span> {
+    <span style="color:#75715e">// some member variables
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">args</span>...){<span style="color:#75715e">//...}
+</span><span style="color:#75715e"></span>
+    <span style="color:#a6e22e">run() {</span><span style="color:#75715e">// some logic}
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scheduler</span> {
+  <span style="color:#a6e22e">jobQueue</span>: <span style="color:#66d9ef">Job</span>[];
+
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">jobs</span>: <span style="color:#66d9ef">Job</span>[]) {
+    <span style="color:#a6e22e">jobs</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">job</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>));
+  }
+
+  <span style="color:#a6e22e">addJob</span>(<span style="color:#a6e22e">job</span>: <span style="color:#66d9ef">Job</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>);
+  }
+
+  <span style="color:#a6e22e">runJobUntilNone() {</span>
+    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">length</span>) {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">pop</span>();
+      <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">run</span>();
+    }
+  }
+}
+</code></pre></div><p>The main difference is that we have &ldquo;enforced&rdquo; the type of the elements in <code>jobQueue</code> to be of type <code>Job</code>, which seems insignificant. However, if we pass any other type into the constructor or <code>addJob</code>, TypeScript won&rsquo;t compile due to type errors. Hence, those errors are caught at compile time which will absolutely reduce the chance of run time errors associated with types.</p>
+<p>There are many other benefits of TypeScript, especially when it comes to development tooling. I use VSCode which comes with TypeScript support <a href="https://code.visualstudio.com/Docs/languages/typescript">out of the box</a>. If we use TypeScript properly and provide decent JSDoc on top of our code, the power of VSCode will be unleashed even more, greatly enhancing our productivity.</p>
+<h3 id="a-note-about-typescript">A note about TypeScript</h3>
+<p>Browsers only understand JavaScript and cannot directly run TypeScript, so TypeScript needs to be compiled to JavaScript before using it in browsers.</p>
+<p>This can be easily done by the <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling">TypeScript compiler</a> and many other JavaScript module bundlers, such as <a href="https://webpack.js.org/">webpack</a>.</p>
+<h2 id="using-aws-sdk-v3-to-fetch-from-s3">Using AWS SDK V3 to fetch from S3</h2>
+<h3 id="install-typescript">Install TypeScript</h3>
+<p>We need to install TypeScript as our project development dependency:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save-dev typescript @types/node
+</code></pre></div><p><code>@types/node</code> will provide us with type annotations in VSCode for various libraries.</p>
+<h3 id="configure-typescript-compiler">Configure TypeScript compiler</h3>
+<p>First, we need to configure our TypeScript compiler for our project in a file named <code>tsconfig.js</code>. More information about this file can be found <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">here</a>. Mine looks like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;compilerOptions&#34;</span>: {
+    <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;ES6&#34;</span>,
+    <span style="color:#f92672">&#34;module&#34;</span>: <span style="color:#e6db74">&#34;ES6&#34;</span>,
+    <span style="color:#f92672">&#34;sourceMap&#34;</span>: <span style="color:#66d9ef">true</span>,
+    <span style="color:#f92672">&#34;declaration&#34;</span>: <span style="color:#66d9ef">true</span>,
+    <span style="color:#f92672">&#34;declarationDir&#34;</span>: <span style="color:#e6db74">&#34;./dist&#34;</span>,
+    <span style="color:#f92672">&#34;moduleResolution&#34;</span>: <span style="color:#e6db74">&#34;node&#34;</span>,
+    <span style="color:#f92672">&#34;typeRoots&#34;</span>: [<span style="color:#e6db74">&#34;node_modules/@types&#34;</span>],
+    <span style="color:#f92672">&#34;lib&#34;</span>: [<span style="color:#e6db74">&#34;dom&#34;</span>]
+  },
+  <span style="color:#f92672">&#34;exclude&#34;</span>: [<span style="color:#e6db74">&#34;node_modules&#34;</span>],
+  <span style="color:#f92672">&#34;include&#34;</span>: [<span style="color:#e6db74">&#34;src/s3.ts&#34;</span>]
+}
+</code></pre></div><p>As you see, we will put our code in <code>src/s3.ts</code>. We also want to generate the associated <a href="https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html">declaration file</a> under the <code>dist</code> directory. Since we will use <code>@aws-sdk</code> node modules, we should tell the compiler to remember to look into <code>node_modules</code> to find them by setting <code>moduleResolution</code>. Also, the most important options are probably <code>target</code> and <code>module</code>: <code>target</code> specifies what version of JavaScript TypeScript will compile to, and <code>module</code> specifies how we use JavaScript modules in our code. <code>es6</code> means that we can use the newer <code>import</code> syntax.</p>
+<h3 id="code">Code</h3>
+<p>The best way to learn something new is to practice. Let&rsquo;s write a JavaScript library to be used in browsers that fetchs a file to a S3 bucket. I will go with the <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html">AWS Cognito Identity Pool</a> which gives users temporary access to your AWS services, which, in our case, are fetching files to a S3 bucket.</p>
+<p>First, let&rsquo;s install the modules we need for fetching from S3:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save @aws-sdk/client-s3 @aws-sdk/client-cognito-identity @aws-sdk/credential-provider-cognito-identity
+</code></pre></div><p>We then import them in our code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">S3</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-s3&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CognitoIdentityClient</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-cognito-identity&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">fromCognitoIdentityPool</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/credential-provider-cognito-identity&#34;</span>;
+</code></pre></div><p>Then, we define a function to fetch a file specified by a &ldquo;key&rdquo; from S3. We assume that we know the identity pool ID, the region, and the bucket name. We only require the object key from the user:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchFromBucket</span>(<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ca-central-1&#34;</span>;
+
+  <span style="color:#75715e">// Initialize an S3 service with credentials for our identity pool.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">S3</span>({
+    <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">region</span>,
+    <span style="color:#a6e22e">credentials</span>: <span style="color:#66d9ef">fromCognitoIdentityPool</span>({
+      <span style="color:#a6e22e">client</span>: <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CognitoIdentityClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">region</span> }),
+      <span style="color:#a6e22e">identityPoolId</span>: <span style="color:#66d9ef">identityPoolId</span>,
+    }),
+  });
+
+  <span style="color:#75715e">// Fetch and print out the object size
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">getObject</span>(
+    {
+      <span style="color:#a6e22e">Bucket</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-example-bucket&#34;</span>,
+      <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">key</span>,
+    },
+    (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> {
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Error when fetching from bucket: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">stack</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Data fetched from bucket. Size: [</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">ContentLength</span><span style="color:#e6db74">}</span><span style="color:#e6db74">]`</span>);
+      }
+    }
+  );
+}
+</code></pre></div><p>That&rsquo;s our straightforward logic. Our next step is to make it runnable in a browser.</p>
+<h3 id="bundle-with-webpack">Bundle with webpack</h3>
+<p>I mentioned that TypeScript needs to be compiled to JavaScript to run in browsers. Apart from that, we also need to bundle the AWS modules in use with our library. We can achieve this using <a href="https://webpack.js.org/">webpack</a>, which is a bundler that can bundle any web application asset. The short version of what it does is that it will put all necessary code into one file, which we can use in a browser by including it in an HTML file with a <code>script</code> tag.</p>
+<p>Webpack doesn&rsquo;t understand TypeScript by default, but it has a rich ecosystem and comes with a TypeScript plugin. We also need to bundle JSON files into our code as the AWS SDK uses them, and there&rsquo;s a JSON plugin for that as well. We need to install them as our development dependencies:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save-dev webpack webpack-cli ts-loader json-loader
+</code></pre></div><p>We then define a configuration file for webpack, named <code>webpack.config.js</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;web&#34;</span>,
+  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">s3</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/s3.ts&#34;</span>,
+  },
+  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+      {
+        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.ts?$/</span>,
+        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ts-loader&#34;</span>,
+        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+      },
+      {
+        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.json$/</span>,
+        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;json-loader&#34;</span>,
+        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+      },
+    ],
+  },
+  <span style="color:#a6e22e">resolve</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">extensions</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;.ts&#34;</span>, <span style="color:#e6db74">&#34;.js&#34;</span>],
+  },
+  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
+    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].js&#34;</span>,
+    <span style="color:#a6e22e">library</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]&#34;</span>,
+  },
+};
+</code></pre></div><p>The configuration file is easy to understand, and the more important ones are:</p>
+<ul>
+<li><code>target</code> is how our code will be used. We target at the browsers, hence &ldquo;web&rdquo; is the value. It&rsquo;s also the default value.</li>
+<li><code>entry</code> specifies the entry point of our library code, which is our code to fetch from S3. Webpack will start with this file and construct a dependency graph. It will get all other modules it uses, and also the modules used by those modules, and so on. It then &ldquo;bundles&rdquo; them into a single file that contains all the code we need to fetch from S3.</li>
+<li><code>mode</code> affects the formatting of our bundled file. <code>development</code> will keep our code in a format that is easy to develop. In contrast, <code>production</code> will minify our code completely by removing all comments, whitespaces, newlines, etc.</li>
+<li><code>module</code> specifies the plugins. We are compiling TypeScript to JavaScript and also including JSON files, hence we have two rules for them respectively.</li>
+<li><code>output</code> apparently specifies the bundled file. Because it&rsquo;s a library, we need to specify the value for <code>output.library</code>. <code>[name]</code> maps to the keys in <code>entry</code>, so our bundled file will be <code>./dist/s3.js</code> and the function <code>fetchFromBucket</code> is under <code>s3</code>. To use it, we simply call <code>s3.fetchFromBucket()</code>.</li>
+</ul>
+<p>Finally, we can add a simple <code>build</code> script in <code>package.json</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+    <span style="color:#f92672">&#34;build&#34;</span>: <span style="color:#e6db74">&#34;webpack&#34;</span>
+  }<span style="color:#960050;background-color:#1e0010">,</span>
+</code></pre></div><p>To build/bundle our code, simply run</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm run build
+<span style="color:#75715e"># we can also run &#34;webpack&#34; directly.</span>
+</code></pre></div><p>This generates <code>./dist/s3.js</code> which we can directly import into browsers!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s3.js&#34;</span>&gt;
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index.js&#34;</span>&gt;
+</code></pre></div><p>and in <code>index.js</code>, we can call our function to fetch an object from S3:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">fetchFromBucket</span>(<span style="color:#e6db74">&#34;example_object_key&#34;</span>);
+</code></pre></div><h2 id="one-more-thing">One more thing</h2>
+<p>This seems a rather long process. It takes time initially but the rest of the team will easily benefit from this workflow. Also, I learned about what module bundlers could do and how to create JavaScript libraries for various platforms.</p>
+<p>Although I&rsquo;m not into front-end web development, I&rsquo;ve been amazed by its rich tooling and ecosystem 😃.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://yirzhou.github.io/tags/aws/">aws</a></span>
+        <span class="tag"><a href="https://yirzhou.github.io/tags/javascript/">javascript</a></span>
+        <span class="tag"><a href="https://yirzhou.github.io/tags/technical/">technical</a></span>
+        <span class="tag"><a href="https://yirzhou.github.io/tags/typescript/">typescript</a></span>
+        <span class="tag"><a href="https://yirzhou.github.io/tags/webpack/">webpack</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1488 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-01-09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+      </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://yirzhou.github.io/posts/googletest-with-cmake/">
+                <span class="button__text">Googletest with CMake</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://yirzhou.github.io">Yiren Zhou</a></span>
+            
+            
+            
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://yirzhou.github.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

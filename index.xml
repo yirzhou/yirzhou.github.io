@@ -6,7 +6,18 @@
     <description>Recent content on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using AWS JavaScript SDK v3 in Browsers</title>
+      <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</guid>
+      <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
+    </item>
+    
     <item>
       <title>Googletest with CMake</title>
       <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
