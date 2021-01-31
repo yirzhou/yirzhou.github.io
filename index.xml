@@ -6,7 +6,18 @@
     <description>Recent content on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Stuff Done Feels Good Again</title>
+      <link>https://yirzhou.github.io/posts/getting-stuff-done/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/getting-stuff-done/</guid>
+      <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
+However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a TODO app.
+I know it sounds incredibly boring to pretty much everyone.</description>
+    </item>
+    
     <item>
       <title>Using AWS JavaScript SDK v3 in Browsers</title>
       <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>

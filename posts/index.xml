@@ -5,8 +5,28 @@
         <description>Recent content in Posts on Yiren Zhou</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Getting Stuff Done Feels Good Again</title>
+            <link>https://yirzhou.github.io/posts/getting-stuff-done/</link>
+            <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/getting-stuff-done/</guid>
+            <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
+However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a TODO app.
+I know it sounds incredibly boring to pretty much everyone.</description>
+            <content type="html"><![CDATA[<p>It&rsquo;s been three weeks since my last post. Taking <strong>seven courses</strong> in a term isn&rsquo;t the easiest thing to do&hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.</p>
+<p>However, recently, I&rsquo;ve started doing something that I used to do and that&rsquo;s made me feel so good about myself. That is: using a <strong>TODO</strong> app.</p>
+<p>I know it sounds incredibly boring to pretty much everyone. But, I see it as a tool of gamification for myself. Whenever I check off a task, it just <em>feels so good</em>. The app I used to use a lot was &ldquo;Wunderlist&rdquo;. I decided to use an app to remind myself because assignments plus interviews were just too much for my brain to handle. That app helped get through tons of tasks. This term, that intense feeling seems to come back again and I decided to pick up a TODO app to manage my task.</p>
+<p>&ldquo;Wunderlist&rdquo; doesn&rsquo;t exist any more. It has been re-branded to <a href="https://todo.microsoft.com/tasks/">Microsoft To Do</a>. It still gives me the same kind of vibe, look-and-feel, etc., but using it on a Mac just makes its integration with my Apple Calendar and iPhone that much better. I receive notifications of tasks automatically after creating them in the app.</p>
+<p>My favorite part about this app is its &ldquo;My Day&rdquo; section, in which I create tasks that I wish to complete for the day.</p>
+<p><img src="/img/my-day.png" alt="My Day"></p>
+<p>I used to be at a point where I didn&rsquo;t know what I should do on a particular day simply due to the sheer volume of tasks; now, I would spend some time every night on planning what I want to do the next day.</p>
+<p>As I check off them one by one, it just feels good!</p>
+]]></content>
+        </item>
         
         <item>
             <title>Using AWS JavaScript SDK v3 in Browsers</title>
