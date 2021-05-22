@@ -5,8 +5,58 @@
         <description>Recent content in Posts on Yiren Zhou</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Quarantine Post: Make Homebrew Work in China</title>
+            <link>https://yirzhou.github.io/posts/homebrew-change-source/</link>
+            <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/homebrew-change-source/</guid>
+            <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
+I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before.</description>
+            <content type="html"><![CDATA[<p>While you are reading this post, I have probably been in quarantine for several days. Yes! I&rsquo;m home, but in a hotel for now.</p>
+<p>I have a lot of ideas that I want to work on. I&rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with <a href="https://en.m.wikipedia.org/wiki/Great_Firewall">some internet censorships</a>. I will have to naturally get through them if I want to work in the same way as before.</p>
+<h2 id="the-problem">The problem</h2>
+<p>The first issue I encountered, right off the bat, was not being able to use Homebrew normally.</p>
+<p>By default, Homebrew relies on GitHub for their repo distributions. In China, accessing GitHub is extremely slow. I immediately realized this when I attempted to run <code>brew update</code> and it timed out with &ldquo;443&rdquo; errors.</p>
+<h2 id="the-solution">The solution</h2>
+<p>Luckily, Homebrew has a huge Chinese community that has established repo sources in China. All I needed to do was to set the sources to one of the Chinese ones for <code>homebrew</code>, <code>homebrew-core</code>, and <code>homebrew-cask</code>. I&rsquo;m using the ones set up by the University of Science and Technology of China:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+</code></pre></div><p>I also need to change the environment variable <code>HOMEBREW_BOTTLE_DOMAIN</code> by adding this line to my <code>.zshrc</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export HOMEBREW_BOTTLE_DOMAIN<span style="color:#f92672">=</span>https://mirrors.ustc.edu.cn/homebrew-bottles/
+</code></pre></div><p>To sum up, I can put the above code into a shell script <code>change_source.sh</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $SHELL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/bin/bash&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#75715e"># 如果你的是bash</span>
+  echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.bash_profile
+  source ~/.bash_profile
+<span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> $SHELL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/bin/zsh&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#75715e"># 如果用的shell 是zsh 的话</span>
+  echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.zshrc
+  source ~/.zshrc
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p>To restore the sources, I have created a neat shell script <code>restore_sources.sh</code> that sets all sources back to GitHub:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/brew.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-cask.git
+</code></pre></div><h2 id="closing-thoughts">Closing thoughts</h2>
+<p>That&rsquo;s it for Homebrew - I will likely encounter more issues in the coming days as I spend more time working, so stay alerted for more 😃!.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Time to Change</title>

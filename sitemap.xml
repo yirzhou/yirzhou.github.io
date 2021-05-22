@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yirzhou.github.io/tags/homebrew/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/macos/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/homebrew-change-source/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/technical/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/</loc>
+    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yirzhou.github.io/tags/personal/</loc>
     <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yirzhou.github.io/posts/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/tags/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yirzhou.github.io/posts/time-to-change/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/</loc>
     <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,11 +79,6 @@
   
   <url>
     <loc>https://yirzhou.github.io/tags/javascript/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/tags/technical/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
   </url>
   
