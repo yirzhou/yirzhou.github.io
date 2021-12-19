@@ -5,8 +5,52 @@
         <description>Recent content in Posts on Yiren Zhou</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Lessons Learned from a Project-based Course on Software Engineering</title>
+            <link>https://yirzhou.github.io/posts/lessons-learned-fse/</link>
+            <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+            
+            <guid>https://yirzhou.github.io/posts/lessons-learned-fse/</guid>
+            <description>After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
+Background in FSE The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach.</description>
+            <content type="html"><![CDATA[<p>After today&rsquo;s FSE exam, it officially wraps up my experience in the course <a href="https://courses.ece.cmu.edu/18652">Foundations of Software Engineering</a>. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.</p>
+<h2 id="background-in-fse">Background in FSE</h2>
+<p>The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach. According to the <a href="https://courses.ece.cmu.edu/18652">course information website</a>, students will learn to &ldquo;iteratively define requirements, and architect, design, implement, integrate, test, and deploy a solution&rdquo;.</p>
+<p>To learn those things, we worked as a team to build an emergency situation networking application, which is basically an application that uses standard web technologies. The most important things here are <em>1) working as a team, and 2) iterately building the application in a pseudo-real-world setting where requirements are defined and we should deliver accordingly</em>.</p>
+<p>What makes the course unconventional to me is the following:</p>
+<ol>
+<li>More focus on soft skills</li>
+<li>Requirements are a somewhat ambiguous (will come back to it later), and</li>
+<li>Strong focus on team work and communication.</li>
+</ol>
+<p>In fact, the effort that went into the development of the course was well documented in this <a href="https://works.bepress.com/cecile_peraire/38/">paper</a> by the professors.</p>
+<p>In terms of the &ldquo;foundations&rdquo; of software engineering that we learned, they span across engineering methods (e.g., iterative, LEAN, agile, SCRUM, kanban, etc.), design patterns, architectural styles, technical debt, and requirement engineering, and so on.</p>
+<h2 id="non-technical-lessons">Non-technical Lessons</h2>
+<blockquote>
+<p>These are the lessons I learned from working with people from different backgrounds and working styles.</p>
+</blockquote>
+<h3 id="1-work-distribution">1. Work distribution</h3>
+<p>Work distribution across team members can be a difficult. Most of the time, we should optimize and maximize everyone&rsquo;s strength, and allocate the appropriate tasks. However, it has two downsides: 1) It can lead to a person being hyper-focused on just a single aspect of the project all the time and not learning about others' work, and 2) inbalance of work distribution depending on the nature of the task (some tasks might be heavy on the frontend, for example).</p>
+<p>To solve the above issues, learning and adaptation is important. Thus, one must actively <strong>take initiatives</strong> if he/she wants to get something useful out of the experience. However, to avoid overloading, concerns should be communicated clearly.</p>
+<h3 id="2-follow-the-instructions">2. Follow the Instructions</h3>
+<p>Surprisingly, following instructions is supposed to be straightforward: when creating design documents with UML diagrams, for example, all we need to do is to follow the proper format. However, people tend to not follow the instructions carefully (me included sometimes) and it has led to unnecessary wastes of time. This is particularlly important when we deal with project requirements. If the use case is defined in a way by the user, we should build our product based on that requirement; we should NOT build it how we like it.</p>
+<h3 id="3-make-friends">3. Make Friends</h3>
+<p>This is possibly the best thing about this course - I genuinely enjoyed the way how they teamed us up. It &ldquo;forces&rdquo; different people who did not knew each other to work together. It makes the graduate community feel tighter and neater. I enjoyed spending time with my folks, and I feel fortunate knowing them.</p>
+<h2 id="technical-lessons">Technical Lessons</h2>
+<blockquote>
+<p>These lessons concern the technical aspects of the projects, such as tooling and design.</p>
+</blockquote>
+<h3 id="1-static-analysis">1. Static Analysis</h3>
+<p>In a big project where the majority of the code is written in JavaScript, you want to &ldquo;help your tools help you&rdquo; by using static analysis tools. We adopted TypeScript from the beginning. The main reason is that the code itself is self-documenting, and its integration with VSCode is superb. By stating types, most exceptions are caught at compile-time. Null exceptions are rare at run-time. It did take a while to learn for some of us, but since it&rsquo;s a superset of JavaScript, a person can learn it incrementally.</p>
+<h3 id="2-importance-of-design">2. Importance of Design</h3>
+<p>None of us are as capable as a software architect, so the design of our project was not ideal. However, we did come to the realization early on: consistent implementation depends on a good design. In our case, we used the <a href="https://refactoring.guru/design-patterns/factory-method">Factory Method pattern</a> for our core business logic. This allows anyone who comes onboard to implement the logic in a way that is guaranteed to work and be compatible. On the other hand, when we learn something new in class, we&rsquo;d better carry it out in the real world by practicing it.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Overall, FSE was a valuable experience to me as someone who has done multiple internships. It was not a perfect experience, but making new friends alone has made it worth my time!</p>
+]]></content>
+        </item>
         
         <item>
             <title>Quarantine Post: Make Homebrew Work in China</title>
@@ -33,8 +77,7 @@ git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</s
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export HOMEBREW_BOTTLE_DOMAIN<span style="color:#f92672">=</span>https://mirrors.ustc.edu.cn/homebrew-bottles/
 </code></pre></div><p>To sum up, I can put the above code into a shell script <code>change_source.sh</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+</span><span style="color:#75715e"></span>git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
 git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 

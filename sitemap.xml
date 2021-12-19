@@ -3,17 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yirzhou.github.io/tags/cmu/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/grad-school/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/lessons-learned-fse/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/posts/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/software-engineering/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/tags/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yirzhou.github.io/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yirzhou.github.io/tags/homebrew/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yirzhou.github.io/tags/macos/</loc>
-    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/posts/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,17 +58,7 @@
   </url>
   
   <url>
-    <loc>https://yirzhou.github.io/tags/</loc>
-    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yirzhou.github.io/tags/technical/</loc>
-    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yirzhou.github.io/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url>
   

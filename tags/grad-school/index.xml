@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>grad-school on Yiren Zhou</title>
+    <link>https://yirzhou.github.io/tags/grad-school/</link>
+    <description>Recent content in grad-school on Yiren Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/grad-school/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lessons Learned from a Project-based Course on Software Engineering</title>
+      <link>https://yirzhou.github.io/posts/lessons-learned-fse/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/lessons-learned-fse/</guid>
+      <description>After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
+Background in FSE The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach.</description>
+    </item>
+    
+  </channel>
+</rss>
