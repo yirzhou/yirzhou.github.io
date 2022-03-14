@@ -25,7 +25,7 @@ I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any o
       <guid>https://example.com/articles/aws-js-sdk-v3-in-browser/</guid>
       <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
 I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
-Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
+   Introduction to AWS SDK for JavaScript v3  AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@ Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 o
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/articles/googletest-with-cmake/</guid>
-      <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+      <description>Background  Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
 What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
     </item>
     
@@ -45,7 +45,7 @@ What makes this article slightly different is that unlike the traditional way of
       
       <guid>https://example.com/articles/vscode-remote-containers-cpp/</guid>
       <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
+    1. Motivation  As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
     </item>
     
   </channel>
