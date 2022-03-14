@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>personal on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/personal/</link>
+    <link>https://example.com/tags/personal/</link>
     <description>Recent content in personal on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/personal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Time to Change</title>
-      <link>https://yirzhou.github.io/posts/time-to-change/</link>
+      <link>https://example.com/articles/time-to-change/</link>
       <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/time-to-change/</guid>
+      <guid>https://example.com/articles/time-to-change/</guid>
       <description>This is just a quick statement that starting from this moment (i.e. 2021-04-06 11:30:00 PM), I will stop complaining, whining, and expressing any negative energy.
 I have been facing tremendous challenges. Some problems are those others might refer to as &amp;ldquo;first-world&amp;rdquo; problems, but they are definitely not fun to deal with. They have sucked up a significant amount of my time and energy - I&amp;rsquo;m basically burned out at this point.</description>
     </item>
     
     <item>
       <title>March Update</title>
-      <link>https://yirzhou.github.io/posts/march-update/</link>
+      <link>https://example.com/articles/march-update/</link>
       <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/march-update/</guid>
+      <guid>https://example.com/articles/march-update/</guid>
       <description>The final term at school has been tough to say the least because:
  I am taking seven courses. I am missing home too much. I have been rejected by three grad schools that I applied to. Physically, I am not in a good shape.  The first two reasons can be coped fairly easily by: studying harder and sleeping less, and distracting myself by reading and watching interesting stuff.</description>
     </item>
     
     <item>
       <title>My Thoughts on 2020</title>
-      <link>https://yirzhou.github.io/posts/thoughts-on-2020/</link>
+      <link>https://example.com/articles/thoughts-on-2020/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/thoughts-on-2020/</guid>
+      <guid>https://example.com/articles/thoughts-on-2020/</guid>
       <description>It&amp;rsquo;s been hell of a year&amp;hellip; damn!
 I have envisioned a very different year for 2020 back in 2019 - 2020 was supposed to be normal and balanced (again, like all things should be), and yet we had this: a year that might&amp;rsquo;ve already led us into a completely different future. I have come across this thought multiple times: when everything goes back to normal, the perfect term that describes that feeling would be: post-apocalyptic.</description>
     </item>
     
     <item>
       <title>A Different Christmas Vibe</title>
-      <link>https://yirzhou.github.io/posts/last-christmas/</link>
+      <link>https://example.com/articles/last-christmas/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/last-christmas/</guid>
+      <guid>https://example.com/articles/last-christmas/</guid>
       <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
 Perfect snow This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
     </item>
     
     <item>
       <title>A New Beginning</title>
-      <link>https://yirzhou.github.io/posts/a-new-beginning/</link>
+      <link>https://example.com/articles/a-new-beginning/</link>
       <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/a-new-beginning/</guid>
-      <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are 🙂.
+      <guid>https://example.com/articles/a-new-beginning/</guid>
+      <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are :slightly_smiling_face:.
 Some history I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.
 My first attempt was a WordPress site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used.</description>
     </item>

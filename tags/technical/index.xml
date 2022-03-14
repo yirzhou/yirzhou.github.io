@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>technical on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/technical/</link>
+    <link>https://example.com/tags/technical/</link>
     <description>Recent content in technical on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/technical/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/technical/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quarantine Post: Make Homebrew Work in China</title>
-      <link>https://yirzhou.github.io/posts/homebrew-change-source/</link>
+      <link>https://example.com/articles/homebrew-change-source/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/homebrew-change-source/</guid>
+      <guid>https://example.com/articles/homebrew-change-source/</guid>
       <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
 I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before.</description>
     </item>
     
     <item>
       <title>Using AWS JavaScript SDK v3 in Browsers</title>
-      <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>
+      <link>https://example.com/articles/aws-js-sdk-v3-in-browser/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</guid>
+      <guid>https://example.com/articles/aws-js-sdk-v3-in-browser/</guid>
       <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
 I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
 Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
@@ -30,20 +30,20 @@ Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 o
     
     <item>
       <title>Googletest with CMake</title>
-      <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
+      <link>https://example.com/articles/googletest-with-cmake/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/googletest-with-cmake/</guid>
+      <guid>https://example.com/articles/googletest-with-cmake/</guid>
       <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
 What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
     </item>
     
     <item>
       <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
-      <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
+      <link>https://example.com/articles/vscode-remote-containers-cpp/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</guid>
+      <guid>https://example.com/articles/vscode-remote-containers-cpp/</guid>
       <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
  1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
     </item>

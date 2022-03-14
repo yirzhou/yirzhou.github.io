@@ -1,170 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Yiren Zhou ">
-<meta name="description" content="After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
-Background in FSE The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach." />
-<meta name="keywords" content=", cmu, software-engineering, grad-school" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="https://yirzhou.github.io/posts/lessons-learned-fse/" />
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+    <title>Lessons Learned from a Project-based Course on Software Engineering | Yiren Zhou</title>
+
+    
+    
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="Lessons Learned from a Project-based Course on Software Engineering | Yiren Zhou"/>
+    <meta itemprop="name" content="Lessons Learned from a Project-based Course on Software Engineering | Yiren Zhou" />
+    <meta name="twitter:title" content="Lessons Learned from a Project-based Course on Software Engineering | Yiren Zhou" />
+    <meta name="application-name" content="Lessons Learned from a Project-based Course on Software Engineering | Yiren Zhou" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="" />
+    <meta name="twitter:description" content=""/>
+    <meta itemprop="description" content=""/>
+    <meta property="og:description" content="" />
+
+    
 
 
-    <title>
-        
-            Lessons Learned from a Project-based Course on Software Engineering :: Yiren Zhou 
-        
-    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://yirzhou.github.io/favicon.ico" />
+    
+    <link rel="stylesheet" href="https://yirzhou.github.io/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="https://yirzhou.github.io/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
-
-
-
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="https://yirzhou.github.io/favicons/apple-touch-icon.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="https://yirzhou.github.io/favicons/favicon-32x32.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="https://yirzhou.github.io/favicons/favicon-16x16.png"
-/>
-<link rel="manifest" href="https://yirzhou.github.io/favicons/site.webmanifest" />
-<meta name="msapplication-TileColor" content="#da532c" />
-<meta name="theme-color" content="#ffffff" />
-
-
-<meta itemprop="name" content="Lessons Learned from a Project-based Course on Software Engineering">
-<meta itemprop="description" content="After today&rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
-Background in FSE The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach.">
-<meta itemprop="datePublished" content="2021-12-03T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2021-12-03T00:00:00+00:00" />
-<meta itemprop="wordCount" content="779">
-
-
-
-<meta itemprop="keywords" content="cmu,software-engineering,grad-school," />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Lessons Learned from a Project-based Course on Software Engineering"/>
-<meta name="twitter:description" content="After today&rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
-Background in FSE The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach."/>
-
-
-
-    <meta property="og:title" content="Lessons Learned from a Project-based Course on Software Engineering" />
-<meta property="og:description" content="After today&rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
-Background in FSE The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://yirzhou.github.io/posts/lessons-learned-fse/" />
-<meta property="article:published_time" content="2021-12-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-12-03T00:00:00+00:00" />
-
-
-
-
-
-
-    <meta property="article:published_time" content="2021-12-03 00:00:00 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-    </head>
-
-    <body class="dark-theme">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="https://yirzhou.github.io/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">$ cd /home/yirzhou</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://yirzhou.github.io/about">About</a></li><li><a href="https://yirzhou.github.io/posts/">Posts</a></li>
-    </ul>
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="https://yirzhou.github.io/">
+                    
+                    
+                    Yiren Zhou
+                    </a>
+            </div>
+            <div class="flex">
+                
+                
+                    <button id="dark-mode-button">
+                    <svg class="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776z"/><path d="M30.705 15.915a1.163 1.163 0 1 0 1.643 1.641a1.163 1.163 0 0 0-1.643-1.641zm-16.022 14.38a1.74 1.74 0 0 0 0 2.465a1.742 1.742 0 1 0 0-2.465zm13.968-2.147a2.904 2.904 0 0 1-4.108 0a2.902 2.902 0 0 1 0-4.107a2.902 2.902 0 0 1 4.108 0a2.902 2.902 0 0 1 0 4.107z" fill="#FFCC4D"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    <svg class="dark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M16 2s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2V2zm18 14s2 0 2 2s-2 2-2 2h-2s-2 0-2-2s2-2 2-2h2zM4 16s2 0 2 2s-2 2-2 2H2s-2 0-2-2s2-2 2-2h2zm5.121-8.707s1.414 1.414 0 2.828s-2.828 0-2.828 0L4.878 8.708s-1.414-1.414 0-2.829c1.415-1.414 2.829 0 2.829 0l1.414 1.414zm21 21s1.414 1.414 0 2.828s-2.828 0-2.828 0l-1.414-1.414s-1.414-1.414 0-2.828s2.828 0 2.828 0l1.414 1.414zm-.413-18.172s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zm-21 21s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zM16 32s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2v-2z"/><circle fill="#FFD983" cx="18" cy="18" r="10"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </button>
+                
+            </div>
+            </div>
+    </div>
 </nav>
 
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
+        <main>
             
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
-</svg>
-</span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-  <main class="post">
-
-    <div class="post-info">
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        4 minutes
-
-        
-      </p>
-    </div>
-
+<div class="container">
     <article>
-      <h1 class="post-title">
-        <a href="https://yirzhou.github.io/posts/lessons-learned-fse/">Lessons Learned from a Project-based Course on Software Engineering</a>
-      </h1>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>Lessons Learned from a Project-based Course on Software Engineering</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                              
+                            
+                            By  | <time>December 03, 2021</time>
+                            | 4 minutes
+                        </div>
+                        <div class="tags">
+                            
+                            <a href="https://yirzhou.github.io/tags/cmu/">cmu</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/software-engineering/">software-engineering</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/grad-school/">grad-school</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
 
-      
-
-      <div class="post-content">
-        <p>After today&rsquo;s FSE exam, it officially wraps up my experience in the course <a href="https://courses.ece.cmu.edu/18652">Foundations of Software Engineering</a>. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.</p>
-<h2 id="background-in-fse">Background in FSE</h2>
+    <div class="article-post">
+    <p>After today&rsquo;s FSE exam, it officially wraps up my experience in the course <a href="https://courses.ece.cmu.edu/18652">Foundations of Software Engineering</a>. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.</p>
+<h2 id="background-in-fse">
+    <a href="#background-in-fse" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Background in FSE
+</h2>
 <p>The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach. According to the <a href="https://courses.ece.cmu.edu/18652">course information website</a>, students will learn to &ldquo;iteratively define requirements, and architect, design, implement, integrate, test, and deploy a solution&rdquo;.</p>
 <p>To learn those things, we worked as a team to build an emergency situation networking application, which is basically an application that uses standard web technologies. The most important things here are <em>1) working as a team, and 2) iterately building the application in a pseudo-real-world setting where requirements are defined and we should deliver accordingly</em>.</p>
 <p>What makes the course unconventional to me is the following:</p>
@@ -175,138 +133,138 @@ Background in FSE The course, titled as &ldquo;Foundations of Software Engineeri
 </ol>
 <p>In fact, the effort that went into the development of the course was well documented in this <a href="https://works.bepress.com/cecile_peraire/38/">paper</a> by the professors.</p>
 <p>In terms of the &ldquo;foundations&rdquo; of software engineering that we learned, they span across engineering methods (e.g., iterative, LEAN, agile, SCRUM, kanban, etc.), design patterns, architectural styles, technical debt, and requirement engineering, and so on.</p>
-<h2 id="non-technical-lessons">Non-technical Lessons</h2>
+<h2 id="non-technical-lessons">
+    <a href="#non-technical-lessons" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Non-technical Lessons
+</h2>
 <blockquote>
 <p>These are the lessons I learned from working with people from different backgrounds and working styles.</p>
 </blockquote>
-<h3 id="1-work-distribution">1. Work distribution</h3>
-<p>Work distribution across team members can be a difficult. Most of the time, we should optimize and maximize everyone&rsquo;s strength, and allocate the appropriate tasks. However, it has two downsides: 1) It can lead to a person being hyper-focused on just a single aspect of the project all the time and not learning about others' work, and 2) inbalance of work distribution depending on the nature of the task (some tasks might be heavy on the frontend, for example).</p>
+<h3 id="1-work-distribution">
+    <a href="#1-work-distribution" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    1. Work distribution
+</h3>
+<p>Work distribution across team members can be a difficult. Most of the time, we should optimize and maximize everyone&rsquo;s strength, and allocate the appropriate tasks. However, it has two downsides: 1) It can lead to a person being hyper-focused on just a single aspect of the project all the time and not learning about others&rsquo; work, and 2) inbalance of work distribution depending on the nature of the task (some tasks might be heavy on the frontend, for example).</p>
 <p>To solve the above issues, learning and adaptation is important. Thus, one must actively <strong>take initiatives</strong> if he/she wants to get something useful out of the experience. However, to avoid overloading, concerns should be communicated clearly.</p>
-<h3 id="2-follow-the-instructions">2. Follow the Instructions</h3>
+<h3 id="2-follow-the-instructions">
+    <a href="#2-follow-the-instructions" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    2. Follow the Instructions
+</h3>
 <p>Surprisingly, following instructions is supposed to be straightforward: when creating design documents with UML diagrams, for example, all we need to do is to follow the proper format. However, people tend to not follow the instructions carefully (me included sometimes) and it has led to unnecessary wastes of time. This is particularlly important when we deal with project requirements. If the use case is defined in a way by the user, we should build our product based on that requirement; we should NOT build it how we like it.</p>
-<h3 id="3-make-friends">3. Make Friends</h3>
+<h3 id="3-make-friends">
+    <a href="#3-make-friends" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    3. Make Friends
+</h3>
 <p>This is possibly the best thing about this course - I genuinely enjoyed the way how they teamed us up. It &ldquo;forces&rdquo; different people who did not knew each other to work together. It makes the graduate community feel tighter and neater. I enjoyed spending time with my folks, and I feel fortunate knowing them.</p>
-<h2 id="technical-lessons">Technical Lessons</h2>
+<h2 id="technical-lessons">
+    <a href="#technical-lessons" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Technical Lessons
+</h2>
 <blockquote>
 <p>These lessons concern the technical aspects of the projects, such as tooling and design.</p>
 </blockquote>
-<h3 id="1-static-analysis">1. Static Analysis</h3>
+<h3 id="1-static-analysis">
+    <a href="#1-static-analysis" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    1. Static Analysis
+</h3>
 <p>In a big project where the majority of the code is written in JavaScript, you want to &ldquo;help your tools help you&rdquo; by using static analysis tools. We adopted TypeScript from the beginning. The main reason is that the code itself is self-documenting, and its integration with VSCode is superb. By stating types, most exceptions are caught at compile-time. Null exceptions are rare at run-time. It did take a while to learn for some of us, but since it&rsquo;s a superset of JavaScript, a person can learn it incrementally.</p>
-<h3 id="2-importance-of-design">2. Importance of Design</h3>
+<h3 id="2-importance-of-design">
+    <a href="#2-importance-of-design" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    2. Importance of Design
+</h3>
 <p>None of us are as capable as a software architect, so the design of our project was not ideal. However, we did come to the realization early on: consistent implementation depends on a good design. In our case, we used the <a href="https://refactoring.guru/design-patterns/factory-method">Factory Method pattern</a> for our core business logic. This allows anyone who comes onboard to implement the logic in a way that is guaranteed to work and be compatible. On the other hand, when we learn something new in class, we&rsquo;d better carry it out in the real world by practicing it.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">
+    <a href="#conclusion" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Conclusion
+</h2>
 <p>Overall, FSE was a valuable experience to me as someone who has done multiple internships. It was not a perfect experience, but making new friends alone has made it worth my time!</p>
 
-      </div>
-    </article>
-
-    <hr />
-
-    <div class="post-info">
-      
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
-
-        <span class="tag"><a href="https://yirzhou.github.io/tags/cmu/">cmu</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/software-engineering/">software-engineering</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/grad-school/">grad-school</a></span>
-        
-    </p>
-
-      
-
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-          <polyline points="10 9 9 9 8 9"></polyline>
-        </svg>
-        779 Words
-      </p>
-
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        
-          2021-12-02
-        
-
-         
-          
-        
-      </p>
     </div>
-      <hr />
-      <div class="sharing-buttons">
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
         
-      </div>
-
+        <a rel="prev" href="https://yirzhou.github.io/posts/homebrew-change-source/" title="Previous post (older)">
+            <span>Previous</span>
+            Quarantine Post: Make Homebrew Work in China
+            </a>
+        
+        
+        
+    </nav>
     
-      <div class="pagination">
-        <div class="pagination__title">
-          <span class="pagination__title-h"></span>
-          <hr />
-        </div>
-
-        <div class="pagination__buttons">
-          
-
-          
-            <span class="button next">
-              <a href="https://yirzhou.github.io/posts/homebrew-change-source/">
-                <span class="button__text">Quarantine Post: Make Homebrew Work in China</span>
-                <span class="button__icon">→</span>
-              </a>
-            </span>
-          
-        </div>
-      </div>
+</div>
+ 
+<div class="container">
     
+</div>
+
+</main>
 
 
-    
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+        </nav>
 
-  </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-                <span><a href="https://yirzhou.github.io">Yiren Zhou</a></span>
-            
-            
-            
-        </div>
-    </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            
-          </div>
-    </div>
+        
+    </section>
+    <script defer src="https://yirzhou.github.io/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
 </footer>
-
-            
-        </div>
-
-        
-
-
-
-
-<script type="text/javascript" src="https://yirzhou.github.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
-
-
 
     </body>
 </html>

@@ -1,684 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Posts on Yiren Zhou</title>
-        <link>https://yirzhou.github.io/posts/</link>
-        <description>Recent content in Posts on Yiren Zhou</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate>
-        <atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Lessons Learned from a Project-based Course on Software Engineering</title>
-            <link>https://yirzhou.github.io/posts/lessons-learned-fse/</link>
-            <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/lessons-learned-fse/</guid>
-            <description>After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
-Background in FSE The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach.</description>
-            <content type="html"><![CDATA[<p>After today&rsquo;s FSE exam, it officially wraps up my experience in the course <a href="https://courses.ece.cmu.edu/18652">Foundations of Software Engineering</a>. As the most important course, or the &ldquo;bread-and-butter&rdquo; of the Software Engineering program, I thought I&rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.</p>
-<h2 id="background-in-fse">Background in FSE</h2>
-<p>The course, titled as &ldquo;Foundations of Software Engineering&rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach. According to the <a href="https://courses.ece.cmu.edu/18652">course information website</a>, students will learn to &ldquo;iteratively define requirements, and architect, design, implement, integrate, test, and deploy a solution&rdquo;.</p>
-<p>To learn those things, we worked as a team to build an emergency situation networking application, which is basically an application that uses standard web technologies. The most important things here are <em>1) working as a team, and 2) iterately building the application in a pseudo-real-world setting where requirements are defined and we should deliver accordingly</em>.</p>
-<p>What makes the course unconventional to me is the following:</p>
-<ol>
-<li>More focus on soft skills</li>
-<li>Requirements are a somewhat ambiguous (will come back to it later), and</li>
-<li>Strong focus on team work and communication.</li>
-</ol>
-<p>In fact, the effort that went into the development of the course was well documented in this <a href="https://works.bepress.com/cecile_peraire/38/">paper</a> by the professors.</p>
-<p>In terms of the &ldquo;foundations&rdquo; of software engineering that we learned, they span across engineering methods (e.g., iterative, LEAN, agile, SCRUM, kanban, etc.), design patterns, architectural styles, technical debt, and requirement engineering, and so on.</p>
-<h2 id="non-technical-lessons">Non-technical Lessons</h2>
-<blockquote>
-<p>These are the lessons I learned from working with people from different backgrounds and working styles.</p>
-</blockquote>
-<h3 id="1-work-distribution">1. Work distribution</h3>
-<p>Work distribution across team members can be a difficult. Most of the time, we should optimize and maximize everyone&rsquo;s strength, and allocate the appropriate tasks. However, it has two downsides: 1) It can lead to a person being hyper-focused on just a single aspect of the project all the time and not learning about others' work, and 2) inbalance of work distribution depending on the nature of the task (some tasks might be heavy on the frontend, for example).</p>
-<p>To solve the above issues, learning and adaptation is important. Thus, one must actively <strong>take initiatives</strong> if he/she wants to get something useful out of the experience. However, to avoid overloading, concerns should be communicated clearly.</p>
-<h3 id="2-follow-the-instructions">2. Follow the Instructions</h3>
-<p>Surprisingly, following instructions is supposed to be straightforward: when creating design documents with UML diagrams, for example, all we need to do is to follow the proper format. However, people tend to not follow the instructions carefully (me included sometimes) and it has led to unnecessary wastes of time. This is particularlly important when we deal with project requirements. If the use case is defined in a way by the user, we should build our product based on that requirement; we should NOT build it how we like it.</p>
-<h3 id="3-make-friends">3. Make Friends</h3>
-<p>This is possibly the best thing about this course - I genuinely enjoyed the way how they teamed us up. It &ldquo;forces&rdquo; different people who did not knew each other to work together. It makes the graduate community feel tighter and neater. I enjoyed spending time with my folks, and I feel fortunate knowing them.</p>
-<h2 id="technical-lessons">Technical Lessons</h2>
-<blockquote>
-<p>These lessons concern the technical aspects of the projects, such as tooling and design.</p>
-</blockquote>
-<h3 id="1-static-analysis">1. Static Analysis</h3>
-<p>In a big project where the majority of the code is written in JavaScript, you want to &ldquo;help your tools help you&rdquo; by using static analysis tools. We adopted TypeScript from the beginning. The main reason is that the code itself is self-documenting, and its integration with VSCode is superb. By stating types, most exceptions are caught at compile-time. Null exceptions are rare at run-time. It did take a while to learn for some of us, but since it&rsquo;s a superset of JavaScript, a person can learn it incrementally.</p>
-<h3 id="2-importance-of-design">2. Importance of Design</h3>
-<p>None of us are as capable as a software architect, so the design of our project was not ideal. However, we did come to the realization early on: consistent implementation depends on a good design. In our case, we used the <a href="https://refactoring.guru/design-patterns/factory-method">Factory Method pattern</a> for our core business logic. This allows anyone who comes onboard to implement the logic in a way that is guaranteed to work and be compatible. On the other hand, when we learn something new in class, we&rsquo;d better carry it out in the real world by practicing it.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Overall, FSE was a valuable experience to me as someone who has done multiple internships. It was not a perfect experience, but making new friends alone has made it worth my time!</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Quarantine Post: Make Homebrew Work in China</title>
-            <link>https://yirzhou.github.io/posts/homebrew-change-source/</link>
-            <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/homebrew-change-source/</guid>
-            <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
+  <channel>
+    <title>Posts on Yiren Zhou</title>
+    <link>https://yirzhou.github.io/posts/</link>
+    <description>Recent content in Posts on Yiren Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lessons Learned from a Project-based Course on Software Engineering</title>
+      <link>https://yirzhou.github.io/posts/lessons-learned-fse/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/lessons-learned-fse/</guid>
+      <description>After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
+   Background in FSE  The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject.</description>
+    </item>
+    
+    <item>
+      <title>Quarantine Post: Make Homebrew Work in China</title>
+      <link>https://yirzhou.github.io/posts/homebrew-change-source/</link>
+      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/homebrew-change-source/</guid>
+      <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
 I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before.</description>
-            <content type="html"><![CDATA[<p>While you are reading this post, I have probably been in quarantine for several days. Yes! I&rsquo;m home, but in a hotel for now.</p>
-<p>I have a lot of ideas that I want to work on. I&rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with <a href="https://en.m.wikipedia.org/wiki/Great_Firewall">some internet censorships</a>. I will have to naturally get through them if I want to work in the same way as before.</p>
-<h2 id="the-problem">The problem</h2>
-<p>The first issue I encountered, right off the bat, was not being able to use Homebrew normally.</p>
-<p>By default, Homebrew relies on GitHub for their repo distributions. In China, accessing GitHub is extremely slow. I immediately realized this when I attempted to run <code>brew update</code> and it timed out with &ldquo;443&rdquo; errors.</p>
-<h2 id="the-solution">The solution</h2>
-<p>Luckily, Homebrew has a huge Chinese community that has established repo sources in China. All I needed to do was to set the sources to one of the Chinese ones for <code>homebrew</code>, <code>homebrew-core</code>, and <code>homebrew-cask</code>. I&rsquo;m using the ones set up by the University of Science and Technology of China:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-
-</code></pre></div><p>I also need to change the environment variable <code>HOMEBREW_BOTTLE_DOMAIN</code> by adding this line to my <code>.zshrc</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export HOMEBREW_BOTTLE_DOMAIN<span style="color:#f92672">=</span>https://mirrors.ustc.edu.cn/homebrew-bottles/
-</code></pre></div><p>To sum up, I can put the above code into a shell script <code>change_source.sh</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $SHELL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/bin/bash&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#75715e"># 如果你的是bash</span>
-  echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.bash_profile
-  source ~/.bash_profile
-<span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> $SHELL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/bin/zsh&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#75715e"># 如果用的shell 是zsh 的话</span>
-  echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.zshrc
-  source ~/.zshrc
-<span style="color:#66d9ef">fi</span>
-</code></pre></div><p>To restore the sources, I have created a neat shell script <code>restore_sources.sh</code> that sets all sources back to GitHub:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/brew.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/core<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-core.git
-
-git -C <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo homebrew/cask<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-cask.git
-</code></pre></div><h2 id="closing-thoughts">Closing thoughts</h2>
-<p>That&rsquo;s it for Homebrew - I will likely encounter more issues in the coming days as I spend more time working, so stay alerted for more 😃!.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Time to Change</title>
-            <link>https://yirzhou.github.io/posts/time-to-change/</link>
-            <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/time-to-change/</guid>
-            <description>This is just a quick statement that starting from this moment (i.e. 2021-04-06 11:30:00 PM), I will stop complaining, whining, and expressing any negative energy.
+    </item>
+    
+    <item>
+      <title>Time to Change</title>
+      <link>https://yirzhou.github.io/posts/time-to-change/</link>
+      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/time-to-change/</guid>
+      <description>This is just a quick statement that starting from this moment (i.e. 2021-04-06 11:30:00 PM), I will stop complaining, whining, and expressing any negative energy.
 I have been facing tremendous challenges. Some problems are those others might refer to as &amp;ldquo;first-world&amp;rdquo; problems, but they are definitely not fun to deal with. They have sucked up a significant amount of my time and energy - I&amp;rsquo;m basically burned out at this point.</description>
-            <content type="html"><![CDATA[<p><strong>This is just a quick statement that starting from this moment (i.e. <code>2021-04-06 11:30:00 PM</code>), I will stop complaining, whining, and expressing any negative energy.</strong></p>
-<p>I have been facing tremendous challenges. Some problems are those others might refer to as &ldquo;first-world&rdquo; problems, but they are definitely not fun to deal with. They have sucked up a significant amount of my time and energy - I&rsquo;m basically burned out at this point. However, I am cognizant of myself bringing my negative energy to others when it was not their fault at all. Perhaps I&rsquo;ve been under too much stress for a while and I did not do a good job coping with it. Regardless, negative energy, in general, should be avoided.</p>
-<p>Hence, I decided to post this quickie so that it&rsquo;s public. I apologize for my misbehaviours if they happened to hurt you.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>March Update</title>
-            <link>https://yirzhou.github.io/posts/march-update/</link>
-            <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/march-update/</guid>
-            <description>The final term at school has been tough to say the least because:
+    </item>
+    
+    <item>
+      <title>March Update</title>
+      <link>https://yirzhou.github.io/posts/march-update/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/march-update/</guid>
+      <description>The final term at school has been tough to say the least because:
  I am taking seven courses. I am missing home too much. I have been rejected by three grad schools that I applied to. Physically, I am not in a good shape.  The first two reasons can be coped fairly easily by: studying harder and sleeping less, and distracting myself by reading and watching interesting stuff.</description>
-            <content type="html"><![CDATA[<p>The final term at school has been tough to say the least because:</p>
-<ol>
-<li>I am taking <em>seven courses</em>.</li>
-<li>I am missing home too much.</li>
-<li>I have been rejected by three grad schools that I applied to.</li>
-<li>Physically, I am not in a good shape.</li>
-</ol>
-<p>The first two reasons can be coped fairly easily by: studying harder and sleeping less, and distracting myself by reading and watching interesting stuff.</p>
-<p>The third reason, however, makes me feel like there could be something inherently wrong with myself. I am fully aware that schools are taking many more applications since the pandemic started; another reason could be that as an engineering student, competing with other computer science students is just too difficult. Or, perhaps I said something in my personal statements that those schools did not like. Regardless, this is a problem that I will probably never get an answer to. I see it as the same as applying for jobs where I would just get straightout rejected or ghosted, which I have already gotten used to.</p>
-<p>The last one, well, could just be due to the stress I have been having which made my body more susceptible. I have had two fevers due to potential food poisoning or allergy. I have been recovering and am feeling much better, but the damage has already been done and slowed me down significantly. I have a lot to catch up.</p>
-<p>As you can tell, this post is not that positive 😅. It&rsquo;s because I&rsquo;m simply stating the facts, and it could get even worse in a few weeks as we need to crank out our capstone project, stay up late for assignments and projects, and prepare for exams. I still have a couple of schools that haven&rsquo;t released their decisions. Even if I get more offers, I still have a &ldquo;first-world&rdquo; problem to solve - decide where I want to go.</p>
-<p>The funny thing is that this is the first time in my life where I feel &ldquo;lost&rdquo;: the decision that I need to make will completely change my life, and yet I am not sure where I want to be which makes the decision process even harder.</p>
-<p>Am I being too cautious? I don&rsquo;t consider myself a perfectionist because if I were, I would live miserably and burn out, and have no friend or interests because nothing is perfect. Or, is it because now I need to make these decisions on my own and swallow my own pills completely? Am I chickening out?</p>
-<p>Over the next few weeks, I believe that I will sort everything out.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Getting Stuff Done Feels Good Again</title>
-            <link>https://yirzhou.github.io/posts/getting-stuff-done/</link>
-            <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/getting-stuff-done/</guid>
-            <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
+    </item>
+    
+    <item>
+      <title>Getting Stuff Done Feels Good Again</title>
+      <link>https://yirzhou.github.io/posts/getting-stuff-done/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/getting-stuff-done/</guid>
+      <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
 However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a TODO app.
 I know it sounds incredibly boring to pretty much everyone.</description>
-            <content type="html"><![CDATA[<p>It&rsquo;s been three weeks since my last post. Taking <strong>seven courses</strong> in a term isn&rsquo;t the easiest thing to do&hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.</p>
-<p>However, recently, I&rsquo;ve started doing something that I used to do and that&rsquo;s made me feel so good about myself. That is: using a <strong>TODO</strong> app.</p>
-<p>I know it sounds incredibly boring to pretty much everyone. But, I see it as a tool of gamification for myself. Whenever I check off a task, it just <em>feels so good</em>. The app I used to use a lot was &ldquo;Wunderlist&rdquo;. I decided to use an app to remind myself because assignments plus interviews were just too much for my brain to handle. That app helped get through tons of tasks. This term, that intense feeling seems to come back again and I decided to pick up a TODO app to manage my task.</p>
-<p>&ldquo;Wunderlist&rdquo; doesn&rsquo;t exist any more. It has been re-branded to <a href="https://todo.microsoft.com/tasks/">Microsoft To Do</a>. It still gives me the same kind of vibe, look-and-feel, etc., but using it on a Mac just makes its integration with my Apple Calendar and iPhone that much better. I receive notifications of tasks automatically after creating them in the app.</p>
-<p>My favorite part about this app is its &ldquo;My Day&rdquo; section, in which I create tasks that I wish to complete for the day.</p>
-<p><img src="/img/my-day.png" alt="My Day"></p>
-<p>I used to be at a point where I didn&rsquo;t know what I should do on a particular day simply due to the sheer volume of tasks; now, I would spend some time every night on planning what I want to do the next day.</p>
-<p>As I check off them one by one, it just feels good!</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Using AWS JavaScript SDK v3 in Browsers</title>
-            <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>
-            <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</guid>
-            <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+    </item>
+    
+    <item>
+      <title>Using AWS JavaScript SDK v3 in Browsers</title>
+      <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</guid>
+      <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
 I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
-Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
-            <content type="html"><![CDATA[<p>In this article, I will walkthrough the process of incorporating the &ldquo;new&rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.</p>
-<p>I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.</p>
-<h2 id="introduction-to-aws-sdk-for-javascript-v3">Introduction to AWS SDK for JavaScript v3</h2>
-<p>AWS have recently released <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/">Version 3</a> of the SDK for JavaScript, targeting the following issues of its previous version (V2):</p>
-<ul>
-<li>Modularized packages for individual services (ie. separate packages for S3, EC2, etc., kind of like microservices)</li>
-<li>New middleware stack</li>
-</ul>
-<h2 id="lets-help-our-tools-help-us">Let&rsquo;s help our tools help us</h2>
-<h3 id="typescript-over-javascript">TypeScript over JavaScript</h3>
-<p>The most interesting feature to me, is that this new version is written in <a href="https://www.typescriptlang.org/">TypeScript</a>. We all know that it&rsquo;s easy to write type-unsafe and buggy JavaScript due to its dynamic typing system. One component of our final-year design project is in vanilla JavaScript, and people easily get perplexed when looking at the code because they need a lot of time to figure out what certain variables are. For example, suppose that we have a job scheduler:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scheduler</span> {
-  <span style="color:#a6e22e">jobQueue</span>;
-
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">jobs</span>) {
-    <span style="color:#a6e22e">jobs</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">job</span>) =&gt; <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>));
-  }
-
-  <span style="color:#a6e22e">addJob</span>(<span style="color:#a6e22e">job</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>);
-  }
-
-  <span style="color:#a6e22e">runJobUntilNone</span>() {
-    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">length</span>) {
-      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">pop</span>();
-      <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">run</span>();
-    }
-  }
-}
-</code></pre></div><p>Although the code above is simple, what exactly is a &ldquo;job&rdquo;? It&rsquo;s pretty intuitive to deduce that <code>jobQueue</code> is an array of jobs, but what is a <code>job</code>? Is it a string? Probably not since <code>string</code> doesn&rsquo;t have a <code>run()</code> function. What type is it?</p>
-<p>Apart from loose typing, nobody will stop you if you call <code>addJob</code> by passing a number, string, or any other type. What&rsquo;s worse, is that you will only catch the error at run time, which could lead to millions of dollars of loss for your company&hellip;</p>
-<p>TypeScript allows us to add type annotations and any type violation will be caught at compile time by the TypeScript compiler:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Job</span> {
-    <span style="color:#75715e">// some member variables
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">args</span>...){<span style="color:#75715e">//...}
-</span><span style="color:#75715e"></span>
-    <span style="color:#a6e22e">run() {</span><span style="color:#75715e">// some logic}
-</span><span style="color:#75715e"></span>}
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Scheduler</span> {
-  <span style="color:#a6e22e">jobQueue</span>: <span style="color:#66d9ef">Job</span>[];
-
-  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">jobs</span>: <span style="color:#66d9ef">Job</span>[]) {
-    <span style="color:#a6e22e">jobs</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">job</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>));
-  }
-
-  <span style="color:#a6e22e">addJob</span>(<span style="color:#a6e22e">job</span>: <span style="color:#66d9ef">Job</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">job</span>);
-  }
-
-  <span style="color:#a6e22e">runJobUntilNone() {</span>
-    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">length</span>) {
-      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">job</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jobQueue</span>.<span style="color:#a6e22e">pop</span>();
-      <span style="color:#a6e22e">job</span>.<span style="color:#a6e22e">run</span>();
-    }
-  }
-}
-</code></pre></div><p>The main difference is that we have &ldquo;enforced&rdquo; the type of the elements in <code>jobQueue</code> to be of type <code>Job</code>, which seems insignificant. However, if we pass any other type into the constructor or <code>addJob</code>, TypeScript won&rsquo;t compile due to type errors. Hence, those errors are caught at compile time which will absolutely reduce the chance of run time errors associated with types.</p>
-<p>There are many other benefits of TypeScript, especially when it comes to development tooling. I use VSCode which comes with TypeScript support <a href="https://code.visualstudio.com/Docs/languages/typescript">out of the box</a>. If we use TypeScript properly and provide decent JSDoc on top of our code, the power of VSCode will be unleashed even more, greatly enhancing our productivity.</p>
-<h3 id="a-note-about-typescript">A note about TypeScript</h3>
-<p>Browsers only understand JavaScript and cannot directly run TypeScript, so TypeScript needs to be compiled to JavaScript before using it in browsers.</p>
-<p>This can be easily done by the <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling">TypeScript compiler</a> and many other JavaScript module bundlers, such as <a href="https://webpack.js.org/">webpack</a>.</p>
-<h2 id="using-aws-sdk-v3-to-fetch-from-s3">Using AWS SDK V3 to fetch from S3</h2>
-<h3 id="install-typescript">Install TypeScript</h3>
-<p>We need to install TypeScript as our project development dependency:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save-dev typescript @types/node
-</code></pre></div><p><code>@types/node</code> will provide us with type annotations in VSCode for various libraries.</p>
-<h3 id="configure-typescript-compiler">Configure TypeScript compiler</h3>
-<p>First, we need to configure our TypeScript compiler for our project in a file named <code>tsconfig.js</code>. More information about this file can be found <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">here</a>. Mine looks like the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;compilerOptions&#34;</span>: {
-    <span style="color:#f92672">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;ES6&#34;</span>,
-    <span style="color:#f92672">&#34;module&#34;</span>: <span style="color:#e6db74">&#34;ES6&#34;</span>,
-    <span style="color:#f92672">&#34;sourceMap&#34;</span>: <span style="color:#66d9ef">true</span>,
-    <span style="color:#f92672">&#34;declaration&#34;</span>: <span style="color:#66d9ef">true</span>,
-    <span style="color:#f92672">&#34;declarationDir&#34;</span>: <span style="color:#e6db74">&#34;./dist&#34;</span>,
-    <span style="color:#f92672">&#34;moduleResolution&#34;</span>: <span style="color:#e6db74">&#34;node&#34;</span>,
-    <span style="color:#f92672">&#34;typeRoots&#34;</span>: [<span style="color:#e6db74">&#34;node_modules/@types&#34;</span>],
-    <span style="color:#f92672">&#34;lib&#34;</span>: [<span style="color:#e6db74">&#34;dom&#34;</span>]
-  },
-  <span style="color:#f92672">&#34;exclude&#34;</span>: [<span style="color:#e6db74">&#34;node_modules&#34;</span>],
-  <span style="color:#f92672">&#34;include&#34;</span>: [<span style="color:#e6db74">&#34;src/s3.ts&#34;</span>]
-}
-</code></pre></div><p>As you see, we will put our code in <code>src/s3.ts</code>. We also want to generate the associated <a href="https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html">declaration file</a> under the <code>dist</code> directory. Since we will use <code>@aws-sdk</code> node modules, we should tell the compiler to remember to look into <code>node_modules</code> to find them by setting <code>moduleResolution</code>. Also, the most important options are probably <code>target</code> and <code>module</code>: <code>target</code> specifies what version of JavaScript TypeScript will compile to, and <code>module</code> specifies how we use JavaScript modules in our code. <code>es6</code> means that we can use the newer <code>import</code> syntax.</p>
-<h3 id="code">Code</h3>
-<p>The best way to learn something new is to practice. Let&rsquo;s write a JavaScript library to be used in browsers that fetchs a file to a S3 bucket. I will go with the <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html">AWS Cognito Identity Pool</a> which gives users temporary access to your AWS services, which, in our case, are fetching files to a S3 bucket.</p>
-<p>First, let&rsquo;s install the modules we need for fetching from S3:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save @aws-sdk/client-s3 @aws-sdk/client-cognito-identity @aws-sdk/credential-provider-cognito-identity
-</code></pre></div><p>We then import them in our code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">S3</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-s3&#34;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CognitoIdentityClient</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/client-cognito-identity&#34;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">fromCognitoIdentityPool</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@aws-sdk/credential-provider-cognito-identity&#34;</span>;
-</code></pre></div><p>Then, we define a function to fetch a file specified by a &ldquo;key&rdquo; from S3. We assume that we know the identity pool ID, the region, and the bucket name. We only require the object key from the user:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchFromBucket</span>(<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>) {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ca-central-1&#34;</span>;
-
-  <span style="color:#75715e">// Initialize an S3 service with credentials for our identity pool.
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">S3</span>({
-    <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">region</span>,
-    <span style="color:#a6e22e">credentials</span>: <span style="color:#66d9ef">fromCognitoIdentityPool</span>({
-      <span style="color:#a6e22e">client</span>: <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CognitoIdentityClient</span>({ <span style="color:#a6e22e">region</span>: <span style="color:#66d9ef">region</span> }),
-      <span style="color:#a6e22e">identityPoolId</span>: <span style="color:#66d9ef">identityPoolId</span>,
-    }),
-  });
-
-  <span style="color:#75715e">// Fetch and print out the object size
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">getObject</span>(
-    {
-      <span style="color:#a6e22e">Bucket</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;my-example-bucket&#34;</span>,
-      <span style="color:#a6e22e">Key</span>: <span style="color:#66d9ef">key</span>,
-    },
-    (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) <span style="color:#f92672">=&gt;</span> {
-      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) {
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Error when fetching from bucket: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">stack</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-      } <span style="color:#66d9ef">else</span> {
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Data fetched from bucket. Size: [</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">ContentLength</span><span style="color:#e6db74">}</span><span style="color:#e6db74">]`</span>);
-      }
-    }
-  );
-}
-</code></pre></div><p>That&rsquo;s our straightforward logic. Our next step is to make it runnable in a browser.</p>
-<h3 id="bundle-with-webpack">Bundle with webpack</h3>
-<p>I mentioned that TypeScript needs to be compiled to JavaScript to run in browsers. Apart from that, we also need to bundle the AWS modules in use with our library. We can achieve this using <a href="https://webpack.js.org/">webpack</a>, which is a bundler that can bundle any web application asset. The short version of what it does is that it will put all necessary code into one file, which we can use in a browser by including it in an HTML file with a <code>script</code> tag.</p>
-<p>Webpack doesn&rsquo;t understand TypeScript by default, but it has a rich ecosystem and comes with a TypeScript plugin. We also need to bundle JSON files into our code as the AWS SDK uses them, and there&rsquo;s a JSON plugin for that as well. We need to install them as our development dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install --save-dev webpack webpack-cli ts-loader json-loader
-</code></pre></div><p>We then define a configuration file for webpack, named <code>webpack.config.js</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
-
-<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;web&#34;</span>,
-  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">s3</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/s3.ts&#34;</span>,
-  },
-  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
-  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
-      {
-        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.ts?$/</span>,
-        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ts-loader&#34;</span>,
-        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
-      },
-      {
-        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.json$/</span>,
-        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;json-loader&#34;</span>,
-        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
-      },
-    ],
-  },
-  <span style="color:#a6e22e">resolve</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">extensions</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;.ts&#34;</span>, <span style="color:#e6db74">&#34;.js&#34;</span>],
-  },
-  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
-    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
-    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].js&#34;</span>,
-    <span style="color:#a6e22e">library</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]&#34;</span>,
-  },
-};
-</code></pre></div><p>The configuration file is easy to understand, and the more important ones are:</p>
-<ul>
-<li><code>target</code> is how our code will be used. We target at the browsers, hence &ldquo;web&rdquo; is the value. It&rsquo;s also the default value.</li>
-<li><code>entry</code> specifies the entry point of our library code, which is our code to fetch from S3. Webpack will start with this file and construct a dependency graph. It will get all other modules it uses, and also the modules used by those modules, and so on. It then &ldquo;bundles&rdquo; them into a single file that contains all the code we need to fetch from S3.</li>
-<li><code>mode</code> affects the formatting of our bundled file. <code>development</code> will keep our code in a format that is easy to develop. In contrast, <code>production</code> will minify our code completely by removing all comments, whitespaces, newlines, etc.</li>
-<li><code>module</code> specifies the plugins. We are compiling TypeScript to JavaScript and also including JSON files, hence we have two rules for them respectively.</li>
-<li><code>output</code> apparently specifies the bundled file. Because it&rsquo;s a library, we need to specify the value for <code>output.library</code>. <code>[name]</code> maps to the keys in <code>entry</code>, so our bundled file will be <code>./dist/s3.js</code> and the function <code>fetchFromBucket</code> is under <code>s3</code>. To use it, we simply call <code>s3.fetchFromBucket()</code>.</li>
-</ul>
-<p>Finally, we can add a simple <code>build</code> script in <code>package.json</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
-    <span style="color:#f92672">&#34;build&#34;</span>: <span style="color:#e6db74">&#34;webpack&#34;</span>
-  }<span style="color:#960050;background-color:#1e0010">,</span>
-</code></pre></div><p>To build/bundle our code, simply run</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm run build
-<span style="color:#75715e"># we can also run &#34;webpack&#34; directly.</span>
-</code></pre></div><p>This generates <code>./dist/s3.js</code> which we can directly import into browsers!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s3.js&#34;</span>&gt;
-&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index.js&#34;</span>&gt;
-</code></pre></div><p>and in <code>index.js</code>, we can call our function to fetch an object from S3:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">fetchFromBucket</span>(<span style="color:#e6db74">&#34;example_object_key&#34;</span>);
-</code></pre></div><h2 id="one-more-thing">One more thing</h2>
-<p>This seems a rather long process. It takes time initially but the rest of the team will easily benefit from this workflow. Also, I learned about what module bundlers could do and how to create JavaScript libraries for various platforms.</p>
-<p>Although I&rsquo;m not into front-end web development, I&rsquo;ve been amazed by its rich tooling and ecosystem 😃.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Googletest with CMake</title>
-            <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
-            <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/googletest-with-cmake/</guid>
-            <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+   Introduction to AWS SDK for JavaScript v3  AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
+    </item>
+    
+    <item>
+      <title>Googletest with CMake</title>
+      <link>https://yirzhou.github.io/posts/googletest-with-cmake/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/googletest-with-cmake/</guid>
+      <description>Background  Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
 What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
-            <content type="html"><![CDATA[<h2 id="background">Background</h2>
-<p>Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, <a href="https://github.com/google/googletest">googletest</a> (also known as &ldquo;gtest&rdquo;) has been one of the more well-received testing framework in various organizations, so that&rsquo;s what I will focus on.</p>
-<p>What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie. a <code>main()</code> function), I will walk through how NOT to do that - how to use <code>googletest</code> with <a href="https://cmake.org/">CMake</a> without defining any entry point.</p>
-<h2 id="test-case">Test case</h2>
-<p>Let&rsquo;s suppose that I want to test some function. The standard way to define a test case using <code>gtest</code> is the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Component under test
-</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;myproject/maths.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// gtest include
-</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;gtest/gtest.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> <span style="color:#f92672">::</span>testing;
-
-TEST(my_function_test, basic) {
-    <span style="color:#75715e">// Assume that I want to test if myproject::abs()
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// returns the correct absolute value of an integer
-</span><span style="color:#75715e"></span>    ASSERT_EQ(myproject<span style="color:#f92672">::</span>abs(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>), <span style="color:#ae81ff">100</span>);
-}
-</code></pre></div><p>As you see, I have defined a test case called <code>my_function_test.basic</code> and it tests if <code>abs</code> returns the correct absolute value - nothing exciting.</p>
-<p>However, this is just a function - to run our test case, naturally we want to have some entry point just like any program. There&rsquo;s one way to do it: define a <code>main</code> function somewhere like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv) {
-    <span style="color:#f92672">::</span>testing<span style="color:#f92672">::</span>InitGoogleTest(<span style="color:#f92672">&amp;</span>argc, argv);
-    <span style="color:#66d9ef">return</span> RUN_ALL_TESTS();
-}
-</code></pre></div><p>While this works, there&rsquo;s a neat way to get rid of this main function completely while still being able to run our tests.</p>
-<h2 id="gtest_main">gtest_main</h2>
-<p>A main function seems out of place being placed in a directory specifically for test cases. Fortunately, Google agrees with this idea and they&rsquo;ve provided the <code>gtest_main</code> library that gives a basic implementation of <code>main()</code>. It means that we don&rsquo;t need an explicit entry point in our program.</p>
-<h2 id="cmake">CMake</h2>
-<p>It&rsquo;s simple to use <code>gtest_main</code> with <code>CMake</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SRCS</span> <span style="color:#e6db74">CONFIGURE_DEPENDS</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">target,</span> <span style="color:#e6db74">my_project.t</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>find_package(<span style="color:#e6db74">GTest</span> <span style="color:#e6db74">REQUIRED</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>include(<span style="color:#e6db74">GoogleTest</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
-    <span style="color:#e6db74">my_project</span>
-    <span style="color:#e6db74">gmock</span>
-    <span style="color:#e6db74">GTest::GTest</span>
-    <span style="color:#e6db74">GTest::Main</span>
-)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>gtest_discover_tests(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Or it coule be simpler:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmake" data-lang="cmake">file(<span style="color:#e6db74">GLOB_RECURSE</span> <span style="color:#e6db74">SRCS</span> <span style="color:#e6db74">CONFIGURE_DEPENDS</span> <span style="color:#f92672">${</span>CMAKE_CURRENT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/*.cpp</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">target,</span> <span style="color:#e6db74">my_project.t</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span> <span style="color:#e6db74">PRIVATE</span>
-    <span style="color:#e6db74">my_project</span>
-    <span style="color:#e6db74">gmock</span>
-    <span style="color:#e6db74">gtest</span>
-    <span style="color:#e6db74">gtest_main</span>
-)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>gtest_discover_tests(<span style="color:#f92672">${</span>target<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>After building our project, simply run <code>ctest</code> in the build directory and all test cases will run 😃.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>My Thoughts on 2020</title>
-            <link>https://yirzhou.github.io/posts/thoughts-on-2020/</link>
-            <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/thoughts-on-2020/</guid>
-            <description>It&amp;rsquo;s been hell of a year&amp;hellip; damn!
+    </item>
+    
+    <item>
+      <title>My Thoughts on 2020</title>
+      <link>https://yirzhou.github.io/posts/thoughts-on-2020/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/thoughts-on-2020/</guid>
+      <description>It&amp;rsquo;s been hell of a year&amp;hellip; damn!
 I have envisioned a very different year for 2020 back in 2019 - 2020 was supposed to be normal and balanced (again, like all things should be), and yet we had this: a year that might&amp;rsquo;ve already led us into a completely different future. I have come across this thought multiple times: when everything goes back to normal, the perfect term that describes that feeling would be: post-apocalyptic.</description>
-            <content type="html"><![CDATA[<p>It&rsquo;s been hell of a year&hellip; damn!</p>
-<p>I have envisioned a very different year for 2020 back in 2019 - 2020 was supposed to be normal and balanced (again, like all things should be), and yet we had this: a year that might&rsquo;ve already led us into a completely different future. I have come across this thought multiple times: when everything goes back to normal, the perfect term that describes that feeling would be: <strong>post-apocalyptic</strong>.</p>
-<p>I&rsquo;d like to share my thoughts on this year, some thoughts that I want to remember and can always learn from in the future.</p>
-<h2 id="miss">Miss</h2>
-<p>A major theme of 2020 for me has been &ldquo;miss&rdquo;, and others seem to agree with me. We all miss the old days where we were together, physically. Although I have terrible social skills and have found a solution to almost every problem, being unable to sbe with others physically has killed me, and I miss that.</p>
-<p>More sadly, &ldquo;miss&rdquo; is caused by too MANY <strong>farewells</strong> in 2020. Too many people have lost their family members and friends because of what has happened or just pure bad luck. I vividly remember the feeling of devastation when reading the news of Kobe passing away.</p>
-<p><em>There&rsquo;s plenty to miss.</em></p>
-<h2 id="wfh-alone">WFH alone</h2>
-<p>I am one of the many people who have been working from home this year, and it&rsquo;s actually incredible to think about it.</p>
-<p>When things got out of control in March, nobody was well prepared: people were panic-shopping EVERYWHERE; the ongoing school term was ended abruptly; and Spring 2020 sucked.</p>
-<p>I was struggling in the beginning of Spring 2020: as an individual who loves &ldquo;order&rdquo;, I was doing a terrible job at managing and scheduling my own tasks, which surprised me. I always felt that my decent self-discipline would come into play seemlessly at a dire time like that, and yet I felt overwhelmed by the high entropy of stuff that kept coming endlessly.</p>
-<p>When no one is watching me, or telling me when to do what, I need to think about how to keep myself going. I believe that the best way to achieve that is to make everything <strong>feel like normal</strong>: except for keeping myself at home, I can do exactly the same things that make myself comfortable, and luckily, it worked. In a nutshell, I tried the following:</p>
-<ol>
-<li>Organize my courses into a calendar just to feel like I had a real schedule;</li>
-<li>Write all deadlines on a whiteboard placed in a noticeable area;</li>
-<li>Get a pair of adjustable dumb-bells to not let my body deteriorate;</li>
-<li>Study with friends via online conferences, most of the times;</li>
-<li>Wake up early to feel good about myself 😊.</li>
-</ol>
-<p>One important idea that I realized was that: <em>this is just like the theory of evolution.</em> Those who adapt survive. It sounds nerdy to most people but that&rsquo;s how I feel.</p>
-<h2 id="surprises">Surprises</h2>
-<p>What happened and is still happening must be a surprise to everyone, undoubtedly. However, we should be pleasantly surprised by what we accomplished under these circumstances. In a way, this new style of living and working has inspired us to generate new ideas, try new things (baking, cooking, running), and cultivate new habits.</p>
-<p>I would say that in terms of my personal achievements, 2020 could be the most prolific year, and I might&rsquo;ve never come to this place if it didn&rsquo;t happen.</p>
-<p>When everything started going down, I considered it perfect for thinking about what to do in the future because I would probably go on a trip after the finals which I couldn&rsquo;t do any more. The time saving was massive for learning something new. I spent two weeks learning a <a href="https://reactjs.org/">new web framework</a> and used it to build a <a href="https://zhouyiren.rocks/">simple web portfolio</a> to put on my resumé.</p>
-<p>More importantly, I didn&rsquo;t want to give up in the job market, which was significantly impacted by the situation. I needed to be &ldquo;outstanding&rdquo; if I wanted to be selected since there was no other way, so I made a systematic plan for studying interviews. I started participating in the <a href="https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/">LeetCode Monthly Challenge</a> where I get the chance of winning some perk if I complete all 30 questions. I got addicted into it and kept doing it even after I got an internship, which perfectly wrapped up my undergraduate co-op experience. The offer was a surprised, but also somewhat expected: I put much more effort in the preparation than any previous term, and I was lucky to interview with a lot more high-profile companies. I also felt great about every interview, even though some didn&rsquo;t land me offers. Regardless, the one I ended up with was my dream.</p>
-<p>I previously mentioned that Spring 2020 <strong>sucked</strong>, and it really did. Nobody was well prepared for it, so the entire term was extremely disorganized. However, I appreciate what they were trying to do and deliver to us, and it has gone a lot better based on what I&rsquo;ve heard recently. The most impressive experience was me staying up all night working on a course project that was due the next day. The course was Distributed Computing - a subject that is inherently obstruse, and the project was just too hard. As the time passed 12AM, I decided to take a break by browsing YouTube&hellip; and voilà: <a href="https://open.spotify.com/album/2fenSS68JI1h4Fo296JfGr">folklore</a>, the (first-in-2020) surprise album from Taylor Swift went live. So you probably know what happened next.</p>
-<p>That&rsquo;s why I think it&rsquo;s among the best things in 2020. Putting the unconventional styles exhibited in this album aside, it was a huge surprise to me that came at the right time. The songs helped me get through the toughest times of the year.</p>
-<p>I said this before: this new style of living has been a source of inspiration for many that lead to those pleasant surprises. If I solely focused on them, 2020 was my favorite year.</p>
-<h2 id="post-apocalyptic">Post-apocalyptic</h2>
-<p>I have no idea when our life would go back to normal, and what the world would look like. I sometimes naively wonder if it would look like those &ldquo;post-apocalyptic&rdquo; movies or video games.</p>
-<p>I don&rsquo;t put out new year&rsquo;s resolution because I really can&rsquo;t think of anything specific at present 😅. Regardless, my general objective for 2021 is to live better and achieve more. More importantly, I want to learn from 2020 so that I am better prepared for anything like it.</p>
-<p>Peace out, 2020. I&rsquo;ve had a great time with you.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>A Different Christmas Vibe</title>
-            <link>https://yirzhou.github.io/posts/last-christmas/</link>
-            <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/last-christmas/</guid>
-            <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
-Perfect snow This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
-            <content type="html"><![CDATA[<p>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.</p>
-<h2 id="perfect-snow">Perfect snow</h2>
-<p>This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days. It makes me somehow feel warmer and cozier at home: reading a book with a cup of tea or coffee while sitting beside the window is enjoyable.</p>
-<p><img src="/img/snow-from-window.jpg" alt="Snow from my window"></p>
-<h2 id="the-emptiness">The emptiness</h2>
-<p>I&rsquo;d be a filthy liar if I don&rsquo;t feel &ldquo;alone&rdquo;. It&rsquo;s not that I&rsquo;m not used to being alone and independent; it&rsquo;s the fact that this town feels strangely empty.</p>
-<p>Because of the pandemic, many friends of mine have chosen to go back to China and will complete the winter term at home. Their departure somehow makes me feel happy but sad at the same time. They will live in a safer environment and have good times with their families while studying at home; however, knowing that I will fight without them is strange.</p>
-<p>I&rsquo;m surprised of my feeling right now since I&rsquo;ve never done a good job keeping in touch with them. In the past four years, I&rsquo;ve been tunnel-visioning on academic excellence, and unexpected, the school has consumed me. I&rsquo;ve been through incredibly depressing times early on, but knowing that they were here and I wasn&rsquo;t alone kept me going strong. Now that they are gone, and I feel &ldquo;empty&rdquo;.</p>
-<p>It&rsquo;s not a terrible feeling - it&rsquo;s just the natural progression of things. I just found it interesting and worth mentioning.</p>
-<blockquote>
-<p>&ldquo;The more space and emptiness you can create in yourself, then you can let the rest of the world come in and fill you up.&rdquo; &ndash;Jeff Bridges</p>
-</blockquote>
-<h2 id="the-same-routine">The same routine</h2>
-<p>It&rsquo;s been a week since I completed my last internship, but I don&rsquo;t feel that my life has changed at all - in fact, I&rsquo;m still working on a number of hobby projects and our FYDP, and getting my daily workout in. I&rsquo;ve been trying to making my life perfectly balanced like all things should be 🙂, and it&rsquo;s been working very well for me.</p>
-<p><em>I like writing thoughts like this down. I can&rsquo;t even wait for my future self to read those. Merry Christmas.</em></p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
-            <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
-            <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</guid>
-            <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
-            <content type="html"><![CDATA[<blockquote>
-<p>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.</p>
-</blockquote>
-<h2 id="1-motivation">1. Motivation</h2>
-<p>As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</p>
-<p>Ideally, we want to keep it separate such that it will leave the rest of our system intact.</p>
-<h2 id="2-my-story">2. My story</h2>
-<p>My current work is entirely C++-based: I write code in C++ and I build my project using <a href="https://www.cmake.org">CMake</a> and <a href="https://ninja-build.org/">Ninja</a>. I develop on a MacBook Pro but my project targets Linux. C++ on MacOS is different from Linux in terms of their compilers and standard libraries: Apple develops their own toolchains using LLVM and uses Clang as its compiler, while most Linux distributions use GCC. There are subtle differences between their standard libraries as well in terms of supporting the newer C++ standards.</p>
-<p>Most people should never worry about those nuances, but they happened to cause an obstacle for me: my project could only build on Linux because some C++17 features were missing in the Clang standard library (<code>libstdc++</code>).</p>
-<p>For a while, I was working on a remote development machine using SFTP and the command line. It was fairly unproductive: SFTP heavily depends on how fast my network is, and building and tracing bugs down in the command line require very sharp eyes which I don&rsquo;t have 😅. Also, I don&rsquo;t have all the features in VSCode properly set up when developing remotely. In short, it was a real struggle for me.</p>
-<h2 id="3-how-about-containerization">3. How about containerization?</h2>
-<p>You might have been laughing at my naïveté for a while now: why not working in a <a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/">Docker container</a>? We can run any operating system and install any dependencies in an isolated environment.</p>
-<p>In fact, I did try developing inside a container locally, which got rid of SFTP entirely. However, I was still using the clunky CLI and missing the &ldquo;Intellisense&rdquo; and all the other goodies of <a href="https://code.visualstudio.com/">VSCode</a>.</p>
-<p>It all changed when I was introduced to <a href="https://code.visualstudio.com/docs/remote/containers">Remote-Containers</a>.</p>
-<p>Remote-Containers is a <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VSCode extension</a> that lets me develop inside a Docker container, using VSCode, as a full-featured development environment. That means that I can enjoy all the features that I need while developing inside a container:</p>
-<ul>
-<li>Full Intellisense and auto-completion with C++ STL</li>
-<li>CMake extensions</li>
-<li>Clang-format for code formatting on save</li>
-</ul>
-<p>You could <a href="https://code.visualstudio.com/docs/remote/containers">read more about it</a> if you are interested, and I highly encourage you to get on board. It essentially allows us to open a container in VSCode as a regular file system, and install our favourite extensions and configure settings in a isolated environment.</p>
-<h2 id="4-setup">4. Setup</h2>
-<p>In the following sections, I will walk through my routine setup for C++ development using VSCode Remote-Containers; however, this skill can be transferred to any other languages or technology stack. I assume that the reader is familiar with container</p>
-<h3 id="41-pre-requisites">4.1 Pre-requisites</h3>
-<ul>
-<li>Docker Engine</li>
-<li>Visual Studio Code</li>
-</ul>
-<h3 id="42-devcontainerjson">4.2 <code>.devcontainer.json</code></h3>
-<p>First, we need to define how VSCode can build and open up a container in a special file: <code>.devcontainer.json</code>. This file can be standalone in your root project directory, or in a separate <code>.devcontainer</code> directory (<code>.devcontainer/devcontainer.json</code>, without the first dot if in the directory).</p>
-<p>We can set values of plenty of <a href="https://code.visualstudio.com/docs/remote/devcontainerjson-reference">properties</a> that define the locations of <code>docker-compose.yml</code>, <code>Dockerfile</code>, on-init and post-init commands, extensions we wish to install, and many more. For me, I have the following setup:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;dockerComposeFile&#34;</span>: [<span style="color:#e6db74">&#34;../docker-compose.yml&#34;</span>, <span style="color:#e6db74">&#34;docker-compose.override.yml&#34;</span>],
-  <span style="color:#f92672">&#34;initializeCommand&#34;</span>: <span style="color:#e6db74">&#34;mkdir -p debian &amp;&amp; cat */debian/control &gt; debian/control&#34;</span>,
-  <span style="color:#f92672">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;dev-env&#34;</span>,
-  <span style="color:#f92672">&#34;workspaceFolder&#34;</span>: <span style="color:#e6db74">&#34;/workspace&#34;</span>,
-  <span style="color:#f92672">&#34;extensions&#34;</span>: [
-    <span style="color:#e6db74">&#34;ms-vscode.cpptools&#34;</span>,
-    <span style="color:#e6db74">&#34;ms-vscode.cmake-tools&#34;</span>,
-    <span style="color:#e6db74">&#34;twxs.cmake&#34;</span>,
-    <span style="color:#e6db74">&#34;ryanluker.vscode-coverage-gutters&#34;</span>,
-    <span style="color:#e6db74">&#34;pucelle.run-on-save&#34;</span>,
-    <span style="color:#e6db74">&#34;xaver.clang-format&#34;</span>
-  ],
-  <span style="color:#f92672">&#34;settings&#34;</span>: {
-    <span style="color:#f92672">&#34;http.proxyStrictSSL&#34;</span>: <span style="color:#66d9ef">false</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.includePath&#34;</span>: [<span style="color:#e6db74">&#34;/usr/include&#34;</span>, <span style="color:#e6db74">&#34;/workspace/**&#34;</span>],
-    <span style="color:#f92672">&#34;C_Cpp.default.cStandard&#34;</span>: <span style="color:#e6db74">&#34;c11&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.cppStandard&#34;</span>: <span style="color:#e6db74">&#34;c++17&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.intelliSenseMode&#34;</span>: <span style="color:#e6db74">&#34;gcc-x64&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.updateChannel&#34;</span>: <span style="color:#e6db74">&#34;Default&#34;</span>,
-    <span style="color:#f92672">&#34;clang-format.style&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
-    <span style="color:#f92672">&#34;clang-format.fallbackStyle&#34;</span>: <span style="color:#e6db74">&#34;LLVM&#34;</span>
-  }
-}
-</code></pre></div><p>I put my <code>.devcontainer.json</code> in the <code>.devcontainer</code> directory, and I have two <code>docker-compose</code> files. Some notable areas are:</p>
-<ul>
-<li><code>&quot;workspaceFolder&quot;: &quot;/workspace&quot;</code> specifies the workspace directory inside the container. I will be running Ubuntu, and it will locate me in <code>/workspace</code>. I will also mount my project to this directory later.</li>
-<li><code>extensions</code> specifies a list of VSCode extensions (C++-specific) to install. Note that those extensions will be separate from our editor extensions on our machine and are exclusive to this container.</li>
-<li><code>settings</code> specifies container-specific VSCode settings.</li>
-</ul>
-<h3 id="43-docker-composeyml">4.3 <code>docker-compose.yml</code></h3>
-<p><a href="https://docs.docker.com/compose/">Docker Compose</a> enables defining and running <strong>multi-container</strong> Docker applications. I personally think that its main feature is to spin up containers in an order if there are dependencies between them. For the purpose of this setup, I will only spin up one container.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.7&#34;</span>
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">dev-env</span>:
-    <span style="color:#f92672">build</span>:
-      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
-      <span style="color:#f92672">dockerfile</span>: <span style="color:#ae81ff">dev.Dockerfile</span>
-    <span style="color:#f92672">volumes</span>:
-      - <span style="color:#ae81ff">.:/workspace:z</span>
-    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/workspace</span>
-    <span style="color:#f92672">environment</span>:
-      - <span style="color:#ae81ff">CTEST_OUTPUT_ON_FAILURE=1</span>
-      - <span style="color:#ae81ff">GTEST_COLOR=1</span>
-      - <span style="color:#ae81ff">CMAKE_GENERATOR=Ninja</span>
-    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">sleep infinity</span>
-</code></pre></div><p>This file has minimal configurations: the most important part is <code>volumes</code> that mounts my project directory to <code>/workspace</code> in the container. I also set some C++-specific environment variables for CMake.</p>
-<p><code>sleep infinity</code> allows the container to be running instead of exiting immediately which will cause an error.</p>
-<h3 id="44-dockerfile">4.4 <code>Dockerfile</code></h3>
-<p>The last missing piece is the <code>Dockerfile</code> (in my case, <code>dev.Dockerfile</code>) which defines the build steps of my container:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Development environment workspace&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Etc
-<span style="color:#66d9ef">RUN</span> ln -snf /usr/share/zoneinfo/$TZ /etc/localtime <span style="color:#f92672">&amp;&amp;</span> echo $TZ &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;root:docker&#34;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y --force-yes <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    clang-format <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    devscripts <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    equivs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    g++ <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    gdb <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    libssl-dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    ninja-build <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    rsync <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy just the control file.</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./debian/control /tmp/debian/control<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install project build dependencies</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mk-build-deps -i -t <span style="color:#e6db74">&#34;apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y&#34;</span> /tmp/debian/control <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install quantum</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /opt/</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://github.com/bloomberg/quantum/archive/v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    tar -zxvf v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cd quantum-2.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cmake -Bbuild DQUANTUM_ENABLE_TESTS<span style="color:#f92672">=</span>ON . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cd build <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    make install<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>There&rsquo;s not much to say about this file - you can run different runtimes or operating systems of your choice.</p>
-<h2 id="5-how-it-feels-like">5. How it feels like</h2>
-<p>In short, it&rsquo;s <strong>awesome</strong>.</p>
-<p>I can open my project in a container:</p>
-<p><img src="/gif/open_in_container.gif" alt="Open project in container"></p>
-<p>My C++ extensions are working as expected - I get Intellisense, CMake, and Clang-format:</p>
-<p><img src="/gif/cpp_intellisense.gif" alt="C++ Intellisense in container"></p>
-<p>I can build using CMake (non CLI):</p>
-<p><img src="/gif/cmake.gif" alt="CMake extension in container"></p>
-<p>What helps me the most, is navigating through errors - I never need to go into the CLI any more:</p>
-<p><img src="/gif/error_navigation.gif" alt="Navigate code base in VSCode"></p>
-<p>I don&rsquo;t use a lot of tools for my C++ development setup, but I have already realized how amazing it is for my productivity. If your tech stack requires more tools (I&rsquo;m aware that Java and JavaScript have much richer ecosystems), you are going to appreciate it more.</p>
-<h2 id="6-final-thoughts">6. Final thoughts</h2>
-<p>When I started my internship, I failed to realize its significance in my productivity until much later. This is such an elegant approach to solve dependency issues while retaining all the goodies of VSCode, and it demonstrates perfectly the principle of <em>using the right tools to solve the right problems</em>.</p>
-<p>There are some imperfections about this setup, but most of them are not related to VSCode but to containerization:</p>
-<ol>
-<li>If you are using a corporate VPN at work, you should consult with your IT department to circumvent it with proxy configurations in order to download VSCode server and extensions. It&rsquo;s not an issue, but definitely something to keep in mind.</li>
-<li>If the project is huge, you may need to allocate more memory to the container. In my experience, GCC failed during compilation because of the insufficient RAM.</li>
-</ol>
-<p>I wish I would know it earlier, but I&rsquo;m still glad that I do now!</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>A New Beginning</title>
-            <link>https://yirzhou.github.io/posts/a-new-beginning/</link>
-            <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
-            
-            <guid>https://yirzhou.github.io/posts/a-new-beginning/</guid>
-            <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are 🙂.
-Some history I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.
-My first attempt was a WordPress site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used.</description>
-            <content type="html"><![CDATA[<p>This is my first ever article on this site, which means that I&rsquo;m just as new to it as you are 🙂.</p>
-<h2 id="some-history">Some history</h2>
-<p>I&rsquo;ve had this idea of writing random stuff down for quite a while, and I&rsquo;ve had two failed attempts in the past.</p>
-<p>My first attempt was a <a href="https://wordpress.org/">WordPress</a> site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used. Additionally, I wasn&rsquo;t familiar with PHP, which made customization a bit difficult. After two years, I decided to get rid of it.</p>
-<p>That leads to my second attempt, which was a <a href="https://zhouyiren.rocks">site</a> built in <a href="https://reactjs.org/">ReactJS</a> and hosted on <a href="https://firebase.google.com/">Firebase</a>. It took me just over two weeks to self-teach React and build it during self-quarantine. Firebase provides free hosting which was perfect for getting rid of my old site. I ended up liking React as a frontend framework, and it gave me a taste of frontend development. However, I&rsquo;m never into frontend/UI development, and I felt that it strayed me away from content creation. I did enjoy the learning experience though.</p>
-<p>I think I&rsquo;ve finally found the <a href="http://gohugo.io/">right tool</a> that allows me to focus on content creation while retaining the high customizability.</p>
-<h2 id="why-this-site-exists">Why this site exists</h2>
-<p>I believe in the power of taking notes regardless the significance of the matters. Although I consider myself a decent note-taker, I can still get sloppy at times where I will forget the lessons I&rsquo;ve learned. Writting stuff down helps me recall the happy and sad moments or lessons more effectively.</p>
-<p>Since this tool allows me to focus on the content aspect, I am determined to start a new page, keep it alive and update it regularly. It mainly serves as a personal space for myself, but if you happen to be close to me in real life, I hope it can convey to you what&rsquo;s going on with my life (I don&rsquo;t browse social media often). If you find the stuff here useful, it will make me even happier 😃.</p>
-<h2 id="what-to-expect">What to expect</h2>
-<p>I will write about topics that I&rsquo;m familiar with. Most of the stuff comes from my experience, whether personally, academically or professionally. Therefore, they are heavily opinion-based and could be against yours. In general, they can be categorized into <strong>technical</strong> and <strong>non-technial</strong> content.</p>
-<h3 id="technical">Technical</h3>
-<p>You can expect stuff about tools, frameworks of, and tips on software development and productivity. I will try to not make those articles look like technical documentation 😅.</p>
-<h3 id="non-technical">Non-technical</h3>
-<p>You can expect some personal thoughts, perhaps on the issues of the day, life update, and so on.</p>
-<p>Regardless the level of technicality, I will attach relevant tags to all articles.</p>
-<p>There we go - I just wrote the first article. I have a lot in mind that I want to share with my future self and you, and thanks for visiting my home.</p>
-]]></content>
-        </item>
-        
-    </channel>
+    </item>
+    
+    <item>
+      <title>A Different Christmas Vibe</title>
+      <link>https://yirzhou.github.io/posts/last-christmas/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/last-christmas/</guid>
+      <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
+   Perfect snow  This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
+    </item>
+    
+    <item>
+      <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
+      <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</guid>
+      <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
+    1. Motivation  As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
+    </item>
+    
+    <item>
+      <title>A New Beginning</title>
+      <link>https://yirzhou.github.io/posts/a-new-beginning/</link>
+      <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
+      
+      <guid>https://yirzhou.github.io/posts/a-new-beginning/</guid>
+      <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are 🙂.
+   Some history  I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.
+My first attempt was a WordPress site with a paid hosting service. It was my very first entry into content management.</description>
+    </item>
+    
+  </channel>
 </rss>

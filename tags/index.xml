@@ -2,197 +2,197 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/</link>
+    <link>https://example.com/tags/</link>
     <description>Recent content in Tags on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cmu</title>
-      <link>https://yirzhou.github.io/tags/cmu/</link>
+      <link>https://example.com/tags/cmu/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/cmu/</guid>
+      <guid>https://example.com/tags/cmu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>grad-school</title>
-      <link>https://yirzhou.github.io/tags/grad-school/</link>
+      <link>https://example.com/tags/grad-school/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/grad-school/</guid>
+      <guid>https://example.com/tags/grad-school/</guid>
       <description></description>
     </item>
     
     <item>
       <title>software-engineering</title>
-      <link>https://yirzhou.github.io/tags/software-engineering/</link>
+      <link>https://example.com/tags/software-engineering/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/software-engineering/</guid>
+      <guid>https://example.com/tags/software-engineering/</guid>
       <description></description>
     </item>
     
     <item>
       <title>homebrew</title>
-      <link>https://yirzhou.github.io/tags/homebrew/</link>
+      <link>https://example.com/tags/homebrew/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/homebrew/</guid>
+      <guid>https://example.com/tags/homebrew/</guid>
       <description></description>
     </item>
     
     <item>
       <title>macos</title>
-      <link>https://yirzhou.github.io/tags/macos/</link>
+      <link>https://example.com/tags/macos/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/macos/</guid>
+      <guid>https://example.com/tags/macos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>quarantine</title>
-      <link>https://yirzhou.github.io/tags/quarantine/</link>
+      <link>https://example.com/tags/quarantine/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/quarantine/</guid>
+      <guid>https://example.com/tags/quarantine/</guid>
       <description></description>
     </item>
     
     <item>
       <title>technical</title>
-      <link>https://yirzhou.github.io/tags/technical/</link>
+      <link>https://example.com/tags/technical/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/technical/</guid>
+      <guid>https://example.com/tags/technical/</guid>
       <description></description>
     </item>
     
     <item>
       <title>personal</title>
-      <link>https://yirzhou.github.io/tags/personal/</link>
+      <link>https://example.com/tags/personal/</link>
       <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/personal/</guid>
+      <guid>https://example.com/tags/personal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>late_release</title>
-      <link>https://yirzhou.github.io/tags/late_release/</link>
+      <link>https://example.com/tags/late_release/</link>
       <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/late_release/</guid>
+      <guid>https://example.com/tags/late_release/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tip</title>
-      <link>https://yirzhou.github.io/tags/tip/</link>
+      <link>https://example.com/tags/tip/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/tip/</guid>
+      <guid>https://example.com/tags/tip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tool</title>
-      <link>https://yirzhou.github.io/tags/tool/</link>
+      <link>https://example.com/tags/tool/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/tool/</guid>
+      <guid>https://example.com/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aws</title>
-      <link>https://yirzhou.github.io/tags/aws/</link>
+      <link>https://example.com/tags/aws/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/aws/</guid>
+      <guid>https://example.com/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>javascript</title>
-      <link>https://yirzhou.github.io/tags/javascript/</link>
+      <link>https://example.com/tags/javascript/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/javascript/</guid>
+      <guid>https://example.com/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>typescript</title>
-      <link>https://yirzhou.github.io/tags/typescript/</link>
+      <link>https://example.com/tags/typescript/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/typescript/</guid>
+      <guid>https://example.com/tags/typescript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>webpack</title>
-      <link>https://yirzhou.github.io/tags/webpack/</link>
+      <link>https://example.com/tags/webpack/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/webpack/</guid>
+      <guid>https://example.com/tags/webpack/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cmake</title>
-      <link>https://yirzhou.github.io/tags/cmake/</link>
+      <link>https://example.com/tags/cmake/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/cmake/</guid>
+      <guid>https://example.com/tags/cmake/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cpp</title>
-      <link>https://yirzhou.github.io/tags/cpp/</link>
+      <link>https://example.com/tags/cpp/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/cpp/</guid>
+      <guid>https://example.com/tags/cpp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gtest</title>
-      <link>https://yirzhou.github.io/tags/gtest/</link>
+      <link>https://example.com/tags/gtest/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/gtest/</guid>
+      <guid>https://example.com/tags/gtest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>random</title>
-      <link>https://yirzhou.github.io/tags/random/</link>
+      <link>https://example.com/tags/random/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/random/</guid>
+      <guid>https://example.com/tags/random/</guid>
       <description></description>
     </item>
     
     <item>
       <title>container</title>
-      <link>https://yirzhou.github.io/tags/container/</link>
+      <link>https://example.com/tags/container/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/container/</guid>
+      <guid>https://example.com/tags/container/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vscode</title>
-      <link>https://yirzhou.github.io/tags/vscode/</link>
+      <link>https://example.com/tags/vscode/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/tags/vscode/</guid>
+      <guid>https://example.com/tags/vscode/</guid>
       <description></description>
     </item>
     

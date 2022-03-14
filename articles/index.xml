@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Articles on Yiren Zhou</title>
+    <link>https://example.com/articles/</link>
+    <description>Recent content in Articles on Yiren Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lessons Learned from a Project-based Course on Software Engineering</title>
+      <link>https://example.com/articles/lessons-learned-fse/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/lessons-learned-fse/</guid>
+      <description>After today&amp;rsquo;s FSE exam, it officially wraps up my experience in the course Foundations of Software Engineering. As the most important course, or the &amp;ldquo;bread-and-butter&amp;rdquo; of the Software Engineering program, I thought I&amp;rsquo;d summarize what I learned from taking the course, both in terms of the technical and the non-technical aspects.
+Background in FSE The course, titled as &amp;ldquo;Foundations of Software Engineering&amp;rdquo;,supposedly teaches the students the fundamentals of the subject. In my opinion, it mostly fulfills this objective because it takes a very hands-on approach.</description>
+    </item>
+    
+    <item>
+      <title>Quarantine Post: Make Homebrew Work in China</title>
+      <link>https://example.com/articles/homebrew-change-source/</link>
+      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/homebrew-change-source/</guid>
+      <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
+I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before.</description>
+    </item>
+    
+    <item>
+      <title>Time to Change</title>
+      <link>https://example.com/articles/time-to-change/</link>
+      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/time-to-change/</guid>
+      <description>This is just a quick statement that starting from this moment (i.e. 2021-04-06 11:30:00 PM), I will stop complaining, whining, and expressing any negative energy.
+I have been facing tremendous challenges. Some problems are those others might refer to as &amp;ldquo;first-world&amp;rdquo; problems, but they are definitely not fun to deal with. They have sucked up a significant amount of my time and energy - I&amp;rsquo;m basically burned out at this point.</description>
+    </item>
+    
+    <item>
+      <title>March Update</title>
+      <link>https://example.com/articles/march-update/</link>
+      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/march-update/</guid>
+      <description>The final term at school has been tough to say the least because:
+ I am taking seven courses. I am missing home too much. I have been rejected by three grad schools that I applied to. Physically, I am not in a good shape.  The first two reasons can be coped fairly easily by: studying harder and sleeping less, and distracting myself by reading and watching interesting stuff.</description>
+    </item>
+    
+    <item>
+      <title>Getting Stuff Done Feels Good Again</title>
+      <link>https://example.com/articles/getting-stuff-done/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/getting-stuff-done/</guid>
+      <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
+However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a TODO app.
+I know it sounds incredibly boring to pretty much everyone.</description>
+    </item>
+    
+    <item>
+      <title>Using AWS JavaScript SDK v3 in Browsers</title>
+      <link>https://example.com/articles/aws-js-sdk-v3-in-browser/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/aws-js-sdk-v3-in-browser/</guid>
+      <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
+I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
+Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>
+    </item>
+    
+    <item>
+      <title>Googletest with CMake</title>
+      <link>https://example.com/articles/googletest-with-cmake/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/googletest-with-cmake/</guid>
+      <description>Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie.</description>
+    </item>
+    
+    <item>
+      <title>My Thoughts on 2020</title>
+      <link>https://example.com/articles/thoughts-on-2020/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/thoughts-on-2020/</guid>
+      <description>It&amp;rsquo;s been hell of a year&amp;hellip; damn!
+I have envisioned a very different year for 2020 back in 2019 - 2020 was supposed to be normal and balanced (again, like all things should be), and yet we had this: a year that might&amp;rsquo;ve already led us into a completely different future. I have come across this thought multiple times: when everything goes back to normal, the perfect term that describes that feeling would be: post-apocalyptic.</description>
+    </item>
+    
+    <item>
+      <title>A Different Christmas Vibe</title>
+      <link>https://example.com/articles/last-christmas/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/last-christmas/</guid>
+      <description>Yet another Christmas, but it is the last Christmas I will be having in Canada. This year&amp;rsquo;s Christmas obviously feels drastically different from the others because of the current world we live in, and I want to capture the feelings I have right now, in case I want to refer back in the future.
+Perfect snow This Christmas actually feels like a Christmas in terms of the weather - it started snowing on Christmas Eve and will probably keep snowing for a couple of days.</description>
+    </item>
+    
+    <item>
+      <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
+      <link>https://example.com/articles/vscode-remote-containers-cpp/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/vscode-remote-containers-cpp/</guid>
+      <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
+ 1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
+    </item>
+    
+    <item>
+      <title>A New Beginning</title>
+      <link>https://example.com/articles/a-new-beginning/</link>
+      <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
+      
+      <guid>https://example.com/articles/a-new-beginning/</guid>
+      <description>This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are :slightly_smiling_face:.
+Some history I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.
+My first attempt was a WordPress site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used.</description>
+    </item>
+    
+  </channel>
+</rss>

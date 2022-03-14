@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
+I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before." />
+<meta name="keywords" content=", homebrew, macos, technical, quarantine" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://example.com/articles/homebrew-change-source/" />
+
+
+    <title>
+        
+            Quarantine Post: Make Homebrew Work in China :: Yiren Zhou 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
+
+
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicons/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicons/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicons/favicon-16x16.png"
+/>
+<link rel="manifest" href="/favicons/site.webmanifest" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+
+
+<meta itemprop="name" content="Quarantine Post: Make Homebrew Work in China">
+<meta itemprop="description" content="While you are reading this post, I have probably been in quarantine for several days. Yes! I&rsquo;m home, but in a hotel for now.
+I have a lot of ideas that I want to work on. I&rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before."><meta itemprop="datePublished" content="2021-05-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-05-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="411">
+<meta itemprop="keywords" content="homebrew,macos,technical,quarantine," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quarantine Post: Make Homebrew Work in China"/>
+<meta name="twitter:description" content="While you are reading this post, I have probably been in quarantine for several days. Yes! I&rsquo;m home, but in a hotel for now.
+I have a lot of ideas that I want to work on. I&rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before."/>
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-05-16 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://example.com/articles/homebrew-change-source/">Quarantine Post: Make Homebrew Work in China</a></h2>
+
+            
+
+            
+
+            <div class="post-content">
+                <p>While you are reading this post, I have probably been in quarantine for several days. Yes! I&rsquo;m home, but in a hotel for now.</p>
+<p>I have a lot of ideas that I want to work on. I&rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with <a href="https://en.m.wikipedia.org/wiki/Great_Firewall">some internet censorships</a>. I will have to naturally get through them if I want to work in the same way as before.</p>
+<h2 id="the-problem">The problem</h2>
+<p>The first issue I encountered, right off the bat, was not being able to use Homebrew normally.</p>
+<p>By default, Homebrew relies on GitHub for their repo distributions. In China, accessing GitHub is extremely slow. I immediately realized this when I attempted to run <code>brew update</code> and it timed out with &ldquo;443&rdquo; errors.</p>
+<h2 id="the-solution">The solution</h2>
+<p>Luckily, Homebrew has a huge Chinese community that has established repo sources in China. All I needed to do was to set the sources to one of the Chinese ones for <code>homebrew</code>, <code>homebrew-core</code>, and <code>homebrew-cask</code>. I&rsquo;m using the ones set up by the University of Science and Technology of China:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I also need to change the environment variable <code>HOMEBREW_BOTTLE_DOMAIN</code> by adding this line to my <code>.zshrc</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HOMEBREW_BOTTLE_DOMAIN</span><span class="o">=</span>https://mirrors.ustc.edu.cn/homebrew-bottles/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To sum up, I can put the above code into a shell script <code>change_source.sh</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&#34;/bin/bash&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="c1"># 如果你的是bash</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.bash_profile
+</span></span><span class="line"><span class="cl">  <span class="nb">source</span> ~/.bash_profile
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> <span class="nv">$SHELL</span> <span class="o">=</span> <span class="s2">&#34;/bin/zsh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="c1"># 如果用的shell 是zsh 的话</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/&#39;</span> &gt;&gt;~/.zshrc
+</span></span><span class="line"><span class="cl">  <span class="nb">source</span> ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To restore the sources, I have created a neat shell script <code>restore_sources.sh</code> that sets all sources back to GitHub:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://github.com/Homebrew/brew.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-core.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git -C <span class="s2">&#34;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&#34;</span> remote set-url origin https://github.com/Homebrew/homebrew-cask.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="closing-thoughts">Closing thoughts</h2>
+<p>That&rsquo;s it for Homebrew - I will likely encounter more issues in the coming days as I spend more time working, so stay alerted for more :smiley:!.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://example.com/tags/homebrew/">homebrew</a></span>
+        <span class="tag"><a href="https://example.com/tags/macos/">macos</a></span>
+        <span class="tag"><a href="https://example.com/tags/technical/">technical</a></span>
+        <span class="tag"><a href="https://example.com/tags/quarantine/">quarantine</a></span>
+        
+    </p>
+
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            
+            
+            
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.e2a9675ced043d06ad6d3f13fafb0203d96c89eb2484878d5eb89d6da19559cbed55fb05ca9eae7be1e975cab83e3b2a1193afc357019620a509327c5a6a9c0f.js" integrity="sha512-4qlnXO0EPQatbT8T&#43;vsCA9lsieskhIeNXridbaGVWcvtVfsFyp6ue&#43;Hpdcq4PjsqEZOvw1cBliClCTJ8WmqcDw=="></script>
+
+
+
+    </body>
+</html>

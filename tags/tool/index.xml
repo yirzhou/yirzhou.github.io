@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tool on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/tool/</link>
+    <link>https://example.com/tags/tool/</link>
     <description>Recent content in tool on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Stuff Done Feels Good Again</title>
-      <link>https://yirzhou.github.io/posts/getting-stuff-done/</link>
+      <link>https://example.com/articles/getting-stuff-done/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/getting-stuff-done/</guid>
+      <guid>https://example.com/articles/getting-stuff-done/</guid>
       <description>It&amp;rsquo;s been three weeks since my last post. Taking seven courses in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.
 However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a TODO app.
 I know it sounds incredibly boring to pretty much everyone.</description>

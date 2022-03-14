@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C&#43;&#43; unit testing. Unlike other languages, unit testing in C&#43;&#43; has never been as straightforward. However, googletest (also known as &amp;ldquo;gtest&amp;rdquo;) has been one of the more well-received testing framework in various organizations, so that&amp;rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie." />
+<meta name="keywords" content=", gtest, cpp, cmake, technical" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://example.com/articles/googletest-with-cmake/" />
+
+
+    <title>
+        
+            Googletest with CMake :: Yiren Zhou 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
+
+
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicons/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicons/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicons/favicon-16x16.png"
+/>
+<link rel="manifest" href="/favicons/site.webmanifest" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+
+
+<meta itemprop="name" content="Googletest with CMake">
+<meta itemprop="description" content="Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C&#43;&#43; unit testing. Unlike other languages, unit testing in C&#43;&#43; has never been as straightforward. However, googletest (also known as &ldquo;gtest&rdquo;) has been one of the more well-received testing framework in various organizations, so that&rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie."><meta itemprop="datePublished" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="418">
+<meta itemprop="keywords" content="gtest,cpp,cmake,technical," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Googletest with CMake"/>
+<meta name="twitter:description" content="Background Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C&#43;&#43; unit testing. Unlike other languages, unit testing in C&#43;&#43; has never been as straightforward. However, googletest (also known as &ldquo;gtest&rdquo;) has been one of the more well-received testing framework in various organizations, so that&rsquo;s what I will focus on.
+What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie."/>
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-01-05 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner">
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://example.com/articles/googletest-with-cmake/">Googletest with CMake</a></h2>
+
+            
+
+            
+
+            <div class="post-content">
+                <h2 id="background">Background</h2>
+<p>Welcome to 2021. This is my first article for this year and I want to start with a useful tip for C++ unit testing. Unlike other languages, unit testing in C++ has never been as straightforward. However, <a href="https://github.com/google/googletest">googletest</a> (also known as &ldquo;gtest&rdquo;) has been one of the more well-received testing framework in various organizations, so that&rsquo;s what I will focus on.</p>
+<p>What makes this article slightly different is that unlike the traditional way of defining an entry point for your testing program (ie. a <code>main()</code> function), I will walk through how NOT to do that - how to use <code>googletest</code> with <a href="https://cmake.org/">CMake</a> without defining any entry point.</p>
+<h2 id="test-case">Test case</h2>
+<p>Let&rsquo;s suppose that I want to test some function. The standard way to define a test case using <code>gtest</code> is the following:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// Component under test
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;myproject/maths.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// gtest include
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="o">::</span><span class="n">testing</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">TEST</span><span class="p">(</span><span class="n">my_function_test</span><span class="p">,</span> <span class="n">basic</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Assume that I want to test if myproject::abs()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// returns the correct absolute value of an integer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ASSERT_EQ</span><span class="p">(</span><span class="n">myproject</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As you see, I have defined a test case called <code>my_function_test.basic</code> and it tests if <code>abs</code> returns the correct absolute value - nothing exciting.</p>
+<p>However, this is just a function - to run our test case, naturally we want to have some entry point just like any program. There&rsquo;s one way to do it: define a <code>main</code> function somewhere like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">InitGoogleTest</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">RUN_ALL_TESTS</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>While this works, there&rsquo;s a neat way to get rid of this main function completely while still being able to run our tests.</p>
+<h2 id="gtest_main">gtest_main</h2>
+<p>A main function seems out of place being placed in a directory specifically for test cases. Fortunately, Google agrees with this idea and they&rsquo;ve provided the <code>gtest_main</code> library that gives a basic implementation of <code>main()</code>. It means that we don&rsquo;t need an explicit entry point in our program.</p>
+<h2 id="cmake">CMake</h2>
+<p>It&rsquo;s simple to use <code>gtest_main</code> with <code>CMake</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">file</span><span class="p">(</span><span class="s">GLOB_RECURSE</span> <span class="s">SRCS</span> <span class="s">CONFIGURE_DEPENDS</span> <span class="o">${</span><span class="nv">CMAKE_CURRENT_SOURCE_DIR</span><span class="o">}</span><span class="s">/*.cpp</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">target,</span> <span class="s">my_project.t</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span> <span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">find_package</span><span class="p">(</span><span class="s">GTest</span> <span class="s">REQUIRED</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">include</span><span class="p">(</span><span class="s">GoogleTest</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span> <span class="s">PRIVATE</span>
+</span></span><span class="line"><span class="cl">    <span class="s">my_project</span>
+</span></span><span class="line"><span class="cl">    <span class="s">gmock</span>
+</span></span><span class="line"><span class="cl">    <span class="s">GTest::GTest</span>
+</span></span><span class="line"><span class="cl">    <span class="s">GTest::Main</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">gtest_discover_tests</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Or it coule be simpler:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">file</span><span class="p">(</span><span class="s">GLOB_RECURSE</span> <span class="s">SRCS</span> <span class="s">CONFIGURE_DEPENDS</span> <span class="o">${</span><span class="nv">CMAKE_CURRENT_SOURCE_DIR</span><span class="o">}</span><span class="s">/*.cpp</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">target,</span> <span class="s">my_project.t</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span> <span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span> <span class="s">PRIVATE</span>
+</span></span><span class="line"><span class="cl">    <span class="s">my_project</span>
+</span></span><span class="line"><span class="cl">    <span class="s">gmock</span>
+</span></span><span class="line"><span class="cl">    <span class="s">gtest</span>
+</span></span><span class="line"><span class="cl">    <span class="s">gtest_main</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">gtest_discover_tests</span><span class="p">(</span><span class="o">${</span><span class="nv">target</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>After building our project, simply run <code>ctest</code> in the build directory and all test cases will run :smiley:.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://example.com/tags/gtest/">gtest</a></span>
+        <span class="tag"><a href="https://example.com/tags/cpp/">cpp</a></span>
+        <span class="tag"><a href="https://example.com/tags/cmake/">cmake</a></span>
+        <span class="tag"><a href="https://example.com/tags/technical/">technical</a></span>
+        
+    </p>
+
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            
+            
+            
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.e2a9675ced043d06ad6d3f13fafb0203d96c89eb2484878d5eb89d6da19559cbed55fb05ca9eae7be1e975cab83e3b2a1193afc357019620a509327c5a6a9c0f.js" integrity="sha512-4qlnXO0EPQatbT8T&#43;vsCA9lsieskhIeNXridbaGVWcvtVfsFyp6ue&#43;Hpdcq4PjsqEZOvw1cBliClCTJ8WmqcDw=="></script>
+
+
+
+    </body>
+</html>

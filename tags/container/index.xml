@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>container on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/container/</link>
+    <link>https://example.com/tags/container/</link>
     <description>Recent content in container on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/container/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
-      <link>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</link>
+      <link>https://example.com/articles/vscode-remote-containers-cpp/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/vscode-remote-containers-cpp/</guid>
+      <guid>https://example.com/articles/vscode-remote-containers-cpp/</guid>
       <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
  1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
     </item>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>typescript on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/typescript/</link>
+    <link>https://example.com/tags/typescript/</link>
     <description>Recent content in typescript on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using AWS JavaScript SDK v3 in Browsers</title>
-      <link>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</link>
+      <link>https://example.com/articles/aws-js-sdk-v3-in-browser/</link>
       <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/aws-js-sdk-v3-in-browser/</guid>
+      <guid>https://example.com/articles/aws-js-sdk-v3-in-browser/</guid>
       <description>In this article, I will walkthrough the process of incorporating the &amp;ldquo;new&amp;rdquo; AWS JavaScript SDK in a web application, particularly how to use it directly in browsers.
 I wrote this because I found relevant documentation a bit lacking. Also, the idea can be applied to using TypeScript in browsers in general.
 Introduction to AWS SDK for JavaScript v3 AWS have recently released Version 3 of the SDK for JavaScript, targeting the following issues of its previous version (V2):</description>

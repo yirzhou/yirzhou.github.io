@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>homebrew on Yiren Zhou</title>
-    <link>https://yirzhou.github.io/tags/homebrew/</link>
+    <link>https://example.com/tags/homebrew/</link>
     <description>Recent content in homebrew on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yirzhou.github.io/tags/homebrew/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/homebrew/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quarantine Post: Make Homebrew Work in China</title>
-      <link>https://yirzhou.github.io/posts/homebrew-change-source/</link>
+      <link>https://example.com/articles/homebrew-change-source/</link>
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://yirzhou.github.io/posts/homebrew-change-source/</guid>
+      <guid>https://example.com/articles/homebrew-change-source/</guid>
       <description>While you are reading this post, I have probably been in quarantine for several days. Yes! I&amp;rsquo;m home, but in a hotel for now.
 I have a lot of ideas that I want to work on. I&amp;rsquo;m not disclosing any of them, but the gist is that by realizing those ideas, I get to experience the same workflow as before but in a different country with some internet censorships. I will have to naturally get through them if I want to work in the same way as before.</description>
     </item>

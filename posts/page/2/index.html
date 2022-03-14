@@ -1,209 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Yiren Zhou ">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="https://yirzhou.github.io/posts/" />
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+    <title>Posts | Yiren Zhou</title>
+
+    
+    
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="Posts | Yiren Zhou"/>
+    <meta itemprop="name" content="Posts | Yiren Zhou" />
+    <meta name="twitter:title" content="Posts | Yiren Zhou" />
+    <meta name="application-name" content="Posts | Yiren Zhou" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="" />
+    <meta name="twitter:description" content=""/>
+    <meta itemprop="description" content=""/>
+    <meta property="og:description" content="" />
+
+    
 
 
-    <title>
-        
-            Posts :: Yiren Zhou 
-        
-    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://yirzhou.github.io/favicon.ico" />
+    
+    <link rel="stylesheet" href="https://yirzhou.github.io/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="https://yirzhou.github.io/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
-
-
-
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="https://yirzhou.github.io/favicons/apple-touch-icon.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="https://yirzhou.github.io/favicons/favicon-32x32.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="https://yirzhou.github.io/favicons/favicon-16x16.png"
-/>
-<link rel="manifest" href="https://yirzhou.github.io/favicons/site.webmanifest" />
-<meta name="msapplication-TileColor" content="#da532c" />
-<meta name="theme-color" content="#ffffff" />
-
-
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
-
-
-
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://yirzhou.github.io/posts/" />
-<meta property="og:updated_time" content="2021-12-03T00:00:00+00:00" />
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/rss+xml" href="https://yirzhou.github.io/posts/index.xml" title="Yiren Zhou" />
-
-
-
-
-
-    </head>
-
-    <body class="dark-theme">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="https://yirzhou.github.io/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">$ cd /home/yirzhou</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://yirzhou.github.io/about">About</a></li><li><a href="https://yirzhou.github.io/posts/">Posts</a></li>
-    </ul>
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="https://yirzhou.github.io/">
+                    
+                    
+                    Yiren Zhou
+                    </a>
+            </div>
+            <div class="flex">
+                
+                
+                    <button id="dark-mode-button">
+                    <svg class="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776z"/><path d="M30.705 15.915a1.163 1.163 0 1 0 1.643 1.641a1.163 1.163 0 0 0-1.643-1.641zm-16.022 14.38a1.74 1.74 0 0 0 0 2.465a1.742 1.742 0 1 0 0-2.465zm13.968-2.147a2.904 2.904 0 0 1-4.108 0a2.902 2.902 0 0 1 0-4.107a2.902 2.902 0 0 1 4.108 0a2.902 2.902 0 0 1 0 4.107z" fill="#FFCC4D"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    <svg class="dark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M16 2s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2V2zm18 14s2 0 2 2s-2 2-2 2h-2s-2 0-2-2s2-2 2-2h2zM4 16s2 0 2 2s-2 2-2 2H2s-2 0-2-2s2-2 2-2h2zm5.121-8.707s1.414 1.414 0 2.828s-2.828 0-2.828 0L4.878 8.708s-1.414-1.414 0-2.829c1.415-1.414 2.829 0 2.829 0l1.414 1.414zm21 21s1.414 1.414 0 2.828s-2.828 0-2.828 0l-1.414-1.414s-1.414-1.414 0-2.828s2.828 0 2.828 0l1.414 1.414zm-.413-18.172s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zm-21 21s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zM16 32s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2v-2z"/><circle fill="#FFD983" cx="18" cy="18" r="10"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </button>
+                
+            </div>
+            </div>
+    </div>
 </nav>
 
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
+        <main>
             
 
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
-</svg>
-</span>
-        </span>
-    </span>
+
+
+
+<header>
+  <div class="container">
+    <h1>Posts</h1>
+    <p class="subtitle">
+      <span class="count">11</span> posts found.
+    </p>
+  </div>
 </header>
 
-
-            <div class="content">
-                
-    
-    
-    <main class="posts">
-        <h1>Posts</h1>
-
-        
-
-        
-            <div class="posts-group">
-                <div class="post-year">2020</div>
-
-                <ul class="posts-list">
-                    
-                        <li class="post-item">
-                            <a href="https://yirzhou.github.io/posts/a-new-beginning/">
-                                <span class="post-title">A New Beginning</span>
-                                <span class="post-day">
-                                    
-                                        Dec 1
-                                    
-                                </span>
-                            </a>
-                        </li>
-                    
-                </ul>
-            </div>
-        
-    <div class="pagination">
-    <div class="pagination__buttons">
-        
-            <span class="button previous">
-                <a href="https://yirzhou.github.io/posts/">
-                    <span class="button__icon">←</span>
-                    <span class="button__text">Newer posts</span>
-                </a>
-            </span>
-        
-        
-    </div>
-</div>
-
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-                <span><a href="https://yirzhou.github.io">Yiren Zhou</a></span>
-            
-            
-            
-        </div>
-    </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            
+<section>
+  <div class="container">
+    <section>
+      <section>
+        <div class="posts">
+          
+          <div class="post">
+            <a href="https://yirzhou.github.io/posts/a-new-beginning/">
+              <div class="post-row">
+                <time>Dec 01</time>
+                <h3>A New Beginning</h3>
+              </div>
+              
+            </a>
           </div>
-    </div>
-</footer>
-
-            
+          
         </div>
+      </section>
+    </section>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <nav class="pagination">
+      <div class="prev-page">
+        <a href="https://yirzhou.github.io/posts/">Previous Page</a>
+      </div>
+      
+    </nav>
+  </div>
+</section>
+
+
+
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+        </nav>
 
         
-
-
-
-
-<script type="text/javascript" src="https://yirzhou.github.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
-
-
+    </section>
+    <script defer src="https://yirzhou.github.io/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
+</footer>
 
     </body>
 </html>

@@ -1,179 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Yiren Zhou ">
-<meta name="description" content="This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system." />
-<meta name="keywords" content=", cpp, cmake, container, vscode, technical" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="https://yirzhou.github.io/posts/vscode-remote-containers-cpp/" />
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+    <title>Perfect Sandbox Environment for C&#43;&#43; Development | Yiren Zhou</title>
+
+    
+    
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="Perfect Sandbox Environment for C&#43;&#43; Development | Yiren Zhou"/>
+    <meta itemprop="name" content="Perfect Sandbox Environment for C&#43;&#43; Development | Yiren Zhou" />
+    <meta name="twitter:title" content="Perfect Sandbox Environment for C&#43;&#43; Development | Yiren Zhou" />
+    <meta name="application-name" content="Perfect Sandbox Environment for C&#43;&#43; Development | Yiren Zhou" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="" />
+    <meta name="twitter:description" content=""/>
+    <meta itemprop="description" content=""/>
+    <meta property="og:description" content="" />
+
+    
 
 
-    <title>
-        
-            Perfect Sandbox Environment for C&#43;&#43; Development :: Yiren Zhou 
-        
-    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://yirzhou.github.io/favicon.ico" />
+    
+    <link rel="stylesheet" href="https://yirzhou.github.io/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="https://yirzhou.github.io/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
-
-
-
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="https://yirzhou.github.io/favicons/apple-touch-icon.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="https://yirzhou.github.io/favicons/favicon-32x32.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="https://yirzhou.github.io/favicons/favicon-16x16.png"
-/>
-<link rel="manifest" href="https://yirzhou.github.io/favicons/site.webmanifest" />
-<meta name="msapplication-TileColor" content="#da532c" />
-<meta name="theme-color" content="#ffffff" />
-
-
-<meta itemprop="name" content="Perfect Sandbox Environment for C&#43;&#43; Development">
-<meta itemprop="description" content="This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.">
-<meta itemprop="datePublished" content="2020-12-15T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-12-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1248">
-
-
-
-<meta itemprop="keywords" content="cpp,cmake,container,vscode,technical," />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Perfect Sandbox Environment for C&#43;&#43; Development"/>
-<meta name="twitter:description" content="This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system."/>
-
-
-
-    <meta property="og:title" content="Perfect Sandbox Environment for C&#43;&#43; Development" />
-<meta property="og:description" content="This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
- 1. Motivation As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://yirzhou.github.io/posts/vscode-remote-containers-cpp/" />
-<meta property="article:published_time" content="2020-12-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-12-15T00:00:00+00:00" />
-
-
-
-
-
-
-    <meta property="article:published_time" content="2020-12-15 00:00:00 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-    </head>
-
-    <body class="dark-theme">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="https://yirzhou.github.io/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">$ cd /home/yirzhou</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
             
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://yirzhou.github.io/about">About</a></li><li><a href="https://yirzhou.github.io/posts/">Posts</a></li>
-    </ul>
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="https://yirzhou.github.io/">
+                    
+                    
+                    Yiren Zhou
+                    </a>
+            </div>
+            <div class="flex">
+                
+                
+                    <button id="dark-mode-button">
+                    <svg class="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776z"/><path d="M30.705 15.915a1.163 1.163 0 1 0 1.643 1.641a1.163 1.163 0 0 0-1.643-1.641zm-16.022 14.38a1.74 1.74 0 0 0 0 2.465a1.742 1.742 0 1 0 0-2.465zm13.968-2.147a2.904 2.904 0 0 1-4.108 0a2.902 2.902 0 0 1 0-4.107a2.902 2.902 0 0 1 4.108 0a2.902 2.902 0 0 1 0 4.107z" fill="#FFCC4D"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    <svg class="dark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M16 2s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2V2zm18 14s2 0 2 2s-2 2-2 2h-2s-2 0-2-2s2-2 2-2h2zM4 16s2 0 2 2s-2 2-2 2H2s-2 0-2-2s2-2 2-2h2zm5.121-8.707s1.414 1.414 0 2.828s-2.828 0-2.828 0L4.878 8.708s-1.414-1.414 0-2.829c1.415-1.414 2.829 0 2.829 0l1.414 1.414zm21 21s1.414 1.414 0 2.828s-2.828 0-2.828 0l-1.414-1.414s-1.414-1.414 0-2.828s2.828 0 2.828 0l1.414 1.414zm-.413-18.172s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zm-21 21s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zM16 32s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2v-2z"/><circle fill="#FFD983" cx="18" cy="18" r="10"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </button>
+                
+            </div>
+            </div>
+    </div>
 </nav>
 
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
+        <main>
             
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
-</svg>
-</span>
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-  <main class="post">
-
-    <div class="post-info">
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        6 minutes
-
-        
-      </p>
-    </div>
-
+<div class="container">
     <article>
-      <h1 class="post-title">
-        <a href="https://yirzhou.github.io/posts/vscode-remote-containers-cpp/">Perfect Sandbox Environment for C++ Development</a>
-      </h1>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>Perfect Sandbox Environment for C&#43;&#43; Development</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                              
+                            
+                            By  | <time>December 15, 2020</time>
+                            | 6 minutes
+                        </div>
+                        <div class="tags">
+                            
+                            <a href="https://yirzhou.github.io/tags/cpp/">cpp</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/cmake/">cmake</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/container/">container</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/vscode/">vscode</a>
+                            
+                            <a href="https://yirzhou.github.io/tags/technical/">technical</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
 
-      
-
-      <div class="post-content">
-        <blockquote>
+    <div class="article-post">
+    <blockquote>
 <p>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.</p>
 </blockquote>
-<h2 id="1-motivation">1. Motivation</h2>
+<h2 id="1-motivation">
+    <a href="#1-motivation" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    1. Motivation
+</h2>
 <p>As a software engineer working with various languages and their ecosystems, it&rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</p>
 <p>Ideally, we want to keep it separate such that it will leave the rest of our system intact.</p>
-<h2 id="2-my-story">2. My story</h2>
+<h2 id="2-my-story">
+    <a href="#2-my-story" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    2. My story
+</h2>
 <p>My current work is entirely C++-based: I write code in C++ and I build my project using <a href="https://www.cmake.org">CMake</a> and <a href="https://ninja-build.org/">Ninja</a>. I develop on a MacBook Pro but my project targets Linux. C++ on MacOS is different from Linux in terms of their compilers and standard libraries: Apple develops their own toolchains using LLVM and uses Clang as its compiler, while most Linux distributions use GCC. There are subtle differences between their standard libraries as well in terms of supporting the newer C++ standards.</p>
 <p>Most people should never worry about those nuances, but they happened to cause an obstacle for me: my project could only build on Linux because some C++17 features were missing in the Clang standard library (<code>libstdc++</code>).</p>
 <p>For a while, I was working on a remote development machine using SFTP and the command line. It was fairly unproductive: SFTP heavily depends on how fast my network is, and building and tracing bugs down in the command line require very sharp eyes which I don&rsquo;t have 😅. Also, I don&rsquo;t have all the features in VSCode properly set up when developing remotely. In short, it was a real struggle for me.</p>
-<h2 id="3-how-about-containerization">3. How about containerization?</h2>
+<h2 id="3-how-about-containerization">
+    <a href="#3-how-about-containerization" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    3. How about containerization?
+</h2>
 <p>You might have been laughing at my naïveté for a while now: why not working in a <a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/">Docker container</a>? We can run any operating system and install any dependencies in an isolated environment.</p>
 <p>In fact, I did try developing inside a container locally, which got rid of SFTP entirely. However, I was still using the clunky CLI and missing the &ldquo;Intellisense&rdquo; and all the other goodies of <a href="https://code.visualstudio.com/">VSCode</a>.</p>
 <p>It all changed when I was introduced to <a href="https://code.visualstudio.com/docs/remote/containers">Remote-Containers</a>.</p>
@@ -184,123 +164,205 @@
 <li>Clang-format for code formatting on save</li>
 </ul>
 <p>You could <a href="https://code.visualstudio.com/docs/remote/containers">read more about it</a> if you are interested, and I highly encourage you to get on board. It essentially allows us to open a container in VSCode as a regular file system, and install our favourite extensions and configure settings in a isolated environment.</p>
-<h2 id="4-setup">4. Setup</h2>
+<h2 id="4-setup">
+    <a href="#4-setup" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    4. Setup
+</h2>
 <p>In the following sections, I will walk through my routine setup for C++ development using VSCode Remote-Containers; however, this skill can be transferred to any other languages or technology stack. I assume that the reader is familiar with container</p>
-<h3 id="41-pre-requisites">4.1 Pre-requisites</h3>
+<h3 id="41-pre-requisites">
+    <a href="#41-pre-requisites" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    4.1 Pre-requisites
+</h3>
 <ul>
 <li>Docker Engine</li>
 <li>Visual Studio Code</li>
 </ul>
-<h3 id="42-devcontainerjson">4.2 <code>.devcontainer.json</code></h3>
+<h3 id="42-devcontainerjson">
+    <a href="#42-devcontainerjson" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    4.2 <code>.devcontainer.json</code>
+</h3>
 <p>First, we need to define how VSCode can build and open up a container in a special file: <code>.devcontainer.json</code>. This file can be standalone in your root project directory, or in a separate <code>.devcontainer</code> directory (<code>.devcontainer/devcontainer.json</code>, without the first dot if in the directory).</p>
 <p>We can set values of plenty of <a href="https://code.visualstudio.com/docs/remote/devcontainerjson-reference">properties</a> that define the locations of <code>docker-compose.yml</code>, <code>Dockerfile</code>, on-init and post-init commands, extensions we wish to install, and many more. For me, I have the following setup:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;dockerComposeFile&#34;</span>: [<span style="color:#e6db74">&#34;../docker-compose.yml&#34;</span>, <span style="color:#e6db74">&#34;docker-compose.override.yml&#34;</span>],
-  <span style="color:#f92672">&#34;initializeCommand&#34;</span>: <span style="color:#e6db74">&#34;mkdir -p debian &amp;&amp; cat */debian/control &gt; debian/control&#34;</span>,
-  <span style="color:#f92672">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;dev-env&#34;</span>,
-  <span style="color:#f92672">&#34;workspaceFolder&#34;</span>: <span style="color:#e6db74">&#34;/workspace&#34;</span>,
-  <span style="color:#f92672">&#34;extensions&#34;</span>: [
-    <span style="color:#e6db74">&#34;ms-vscode.cpptools&#34;</span>,
-    <span style="color:#e6db74">&#34;ms-vscode.cmake-tools&#34;</span>,
-    <span style="color:#e6db74">&#34;twxs.cmake&#34;</span>,
-    <span style="color:#e6db74">&#34;ryanluker.vscode-coverage-gutters&#34;</span>,
-    <span style="color:#e6db74">&#34;pucelle.run-on-save&#34;</span>,
-    <span style="color:#e6db74">&#34;xaver.clang-format&#34;</span>
-  ],
-  <span style="color:#f92672">&#34;settings&#34;</span>: {
-    <span style="color:#f92672">&#34;http.proxyStrictSSL&#34;</span>: <span style="color:#66d9ef">false</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.includePath&#34;</span>: [<span style="color:#e6db74">&#34;/usr/include&#34;</span>, <span style="color:#e6db74">&#34;/workspace/**&#34;</span>],
-    <span style="color:#f92672">&#34;C_Cpp.default.cStandard&#34;</span>: <span style="color:#e6db74">&#34;c11&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.cppStandard&#34;</span>: <span style="color:#e6db74">&#34;c++17&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.default.intelliSenseMode&#34;</span>: <span style="color:#e6db74">&#34;gcc-x64&#34;</span>,
-    <span style="color:#f92672">&#34;C_Cpp.updateChannel&#34;</span>: <span style="color:#e6db74">&#34;Default&#34;</span>,
-    <span style="color:#f92672">&#34;clang-format.style&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
-    <span style="color:#f92672">&#34;clang-format.fallbackStyle&#34;</span>: <span style="color:#e6db74">&#34;LLVM&#34;</span>
-  }
-}
-</code></pre></div><p>I put my <code>.devcontainer.json</code> in the <code>.devcontainer</code> directory, and I have two <code>docker-compose</code> files. Some notable areas are:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dockerComposeFile&#34;</span>: [<span style="color:#e6db74">&#34;../docker-compose.yml&#34;</span>, <span style="color:#e6db74">&#34;docker-compose.override.yml&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;initializeCommand&#34;</span>: <span style="color:#e6db74">&#34;mkdir -p debian &amp;&amp; cat */debian/control &gt; debian/control&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;dev-env&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;workspaceFolder&#34;</span>: <span style="color:#e6db74">&#34;/workspace&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;extensions&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ms-vscode.cpptools&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ms-vscode.cmake-tools&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;twxs.cmake&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ryanluker.vscode-coverage-gutters&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pucelle.run-on-save&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;xaver.clang-format&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;settings&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;http.proxyStrictSSL&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C_Cpp.default.includePath&#34;</span>: [<span style="color:#e6db74">&#34;/usr/include&#34;</span>, <span style="color:#e6db74">&#34;/workspace/**&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C_Cpp.default.cStandard&#34;</span>: <span style="color:#e6db74">&#34;c11&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C_Cpp.default.cppStandard&#34;</span>: <span style="color:#e6db74">&#34;c++17&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C_Cpp.default.intelliSenseMode&#34;</span>: <span style="color:#e6db74">&#34;gcc-x64&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;C_Cpp.updateChannel&#34;</span>: <span style="color:#e6db74">&#34;Default&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;clang-format.style&#34;</span>: <span style="color:#e6db74">&#34;Google&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;clang-format.fallbackStyle&#34;</span>: <span style="color:#e6db74">&#34;LLVM&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I put my <code>.devcontainer.json</code> in the <code>.devcontainer</code> directory, and I have two <code>docker-compose</code> files. Some notable areas are:</p>
 <ul>
 <li><code>&quot;workspaceFolder&quot;: &quot;/workspace&quot;</code> specifies the workspace directory inside the container. I will be running Ubuntu, and it will locate me in <code>/workspace</code>. I will also mount my project to this directory later.</li>
 <li><code>extensions</code> specifies a list of VSCode extensions (C++-specific) to install. Note that those extensions will be separate from our editor extensions on our machine and are exclusive to this container.</li>
 <li><code>settings</code> specifies container-specific VSCode settings.</li>
 </ul>
-<h3 id="43-docker-composeyml">4.3 <code>docker-compose.yml</code></h3>
+<h3 id="43-docker-composeyml">
+    <a href="#43-docker-composeyml" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    4.3 <code>docker-compose.yml</code>
+</h3>
 <p><a href="https://docs.docker.com/compose/">Docker Compose</a> enables defining and running <strong>multi-container</strong> Docker applications. I personally think that its main feature is to spin up containers in an order if there are dependencies between them. For the purpose of this setup, I will only spin up one container.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.7&#34;</span>
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">dev-env</span>:
-    <span style="color:#f92672">build</span>:
-      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
-      <span style="color:#f92672">dockerfile</span>: <span style="color:#ae81ff">dev.Dockerfile</span>
-    <span style="color:#f92672">volumes</span>:
-      - <span style="color:#ae81ff">.:/workspace:z</span>
-    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/workspace</span>
-    <span style="color:#f92672">environment</span>:
-      - <span style="color:#ae81ff">CTEST_OUTPUT_ON_FAILURE=1</span>
-      - <span style="color:#ae81ff">GTEST_COLOR=1</span>
-      - <span style="color:#ae81ff">CMAKE_GENERATOR=Ninja</span>
-    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">sleep infinity</span>
-</code></pre></div><p>This file has minimal configurations: the most important part is <code>volumes</code> that mounts my project directory to <code>/workspace</code> in the container. I also set some C++-specific environment variables for CMake.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3.7&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dev-env</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dockerfile</span>: <span style="color:#ae81ff">dev.Dockerfile</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.:/workspace:z</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/workspace</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">CTEST_OUTPUT_ON_FAILURE=1</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">GTEST_COLOR=1</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">CMAKE_GENERATOR=Ninja</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">sleep infinity</span>
+</span></span></code></pre></div><p>This file has minimal configurations: the most important part is <code>volumes</code> that mounts my project directory to <code>/workspace</code> in the container. I also set some C++-specific environment variables for CMake.</p>
 <p><code>sleep infinity</code> allows the container to be running instead of exiting immediately which will cause an error.</p>
-<h3 id="44-dockerfile">4.4 <code>Dockerfile</code></h3>
+<h3 id="44-dockerfile">
+    <a href="#44-dockerfile" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    4.4 <code>Dockerfile</code>
+</h3>
 <p>The last missing piece is the <code>Dockerfile</code> (in my case, <code>dev.Dockerfile</code>) which defines the build steps of my container:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Development environment workspace&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Etc
-<span style="color:#66d9ef">RUN</span> ln -snf /usr/share/zoneinfo/$TZ /etc/localtime <span style="color:#f92672">&amp;&amp;</span> echo $TZ &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;root:docker&#34;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y --force-yes <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    clang-format <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    devscripts <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    equivs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    g++ <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    gdb <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    libssl-dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    ninja-build <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    rsync <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy just the control file.</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./debian/control /tmp/debian/control<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install project build dependencies</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mk-build-deps -i -t <span style="color:#e6db74">&#34;apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y&#34;</span> /tmp/debian/control <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install quantum</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /opt/</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://github.com/bloomberg/quantum/archive/v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    tar -zxvf v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cd quantum-2.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cmake -Bbuild DQUANTUM_ENABLE_TESTS<span style="color:#f92672">=</span>ON . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    cd build <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    make install<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>There&rsquo;s not much to say about this file - you can run different runtimes or operating systems of your choice.</p>
-<h2 id="5-how-it-feels-like">5. How it feels like</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:latest</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Development environment workspace&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TZ<span style="color:#f92672">=</span>Etc
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> ln -snf /usr/share/zoneinfo/$TZ /etc/localtime <span style="color:#f92672">&amp;&amp;</span> echo $TZ &gt; /etc/timezone<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;root:docker&#34;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get install -y --force-yes <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    clang-format <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    devscripts <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    equivs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    g++ <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    gdb <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libssl-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ninja-build <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    rsync <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy just the control file.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./debian/control /tmp/debian/control<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install project build dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mk-build-deps -i -t <span style="color:#e6db74">&#34;apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y&#34;</span> /tmp/debian/control <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install quantum</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /opt/</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://github.com/bloomberg/quantum/archive/v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    tar -zxvf v2.1.tar.gz <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    cd quantum-2.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    cmake -Bbuild DQUANTUM_ENABLE_TESTS<span style="color:#f92672">=</span>ON . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    cd build <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    make install<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>There&rsquo;s not much to say about this file - you can run different runtimes or operating systems of your choice.</p>
+<h2 id="5-how-it-feels-like">
+    <a href="#5-how-it-feels-like" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    5. How it feels like
+</h2>
 <p>In short, it&rsquo;s <strong>awesome</strong>.</p>
 <p>I can open my project in a container:</p>
-<p><img src="https://yirzhou.github.io/gif/open_in_container.gif" alt="Open project in container"></p>
+<p><img loading="lazy" 
+    src="//gif/open_in_container.gif" 
+    alt="Open project in container" 
+     
+    width=500 
+    height="313"  /></p>
 <p>My C++ extensions are working as expected - I get Intellisense, CMake, and Clang-format:</p>
-<p><img src="https://yirzhou.github.io/gif/cpp_intellisense.gif" alt="C++ Intellisense in container"></p>
+<p><img loading="lazy" 
+    src="//gif/cpp_intellisense.gif" 
+    alt="C&#43;&#43; Intellisense in container" 
+     
+    width=500 
+    height="313"  /></p>
 <p>I can build using CMake (non CLI):</p>
-<p><img src="https://yirzhou.github.io/gif/cmake.gif" alt="CMake extension in container"></p>
+<p><img loading="lazy" 
+    src="//gif/cmake.gif" 
+    alt="CMake extension in container" 
+     
+    width=640 
+    height="400"  /></p>
 <p>What helps me the most, is navigating through errors - I never need to go into the CLI any more:</p>
-<p><img src="https://yirzhou.github.io/gif/error_navigation.gif" alt="Navigate code base in VSCode"></p>
+<p><img loading="lazy" 
+    src="//gif/error_navigation.gif" 
+    alt="Navigate code base in VSCode" 
+     
+    width=640 
+    height="400"  /></p>
 <p>I don&rsquo;t use a lot of tools for my C++ development setup, but I have already realized how amazing it is for my productivity. If your tech stack requires more tools (I&rsquo;m aware that Java and JavaScript have much richer ecosystems), you are going to appreciate it more.</p>
-<h2 id="6-final-thoughts">6. Final thoughts</h2>
+<h2 id="6-final-thoughts">
+    <a href="#6-final-thoughts" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    6. Final thoughts
+</h2>
 <p>When I started my internship, I failed to realize its significance in my productivity until much later. This is such an elegant approach to solve dependency issues while retaining all the goodies of VSCode, and it demonstrates perfectly the principle of <em>using the right tools to solve the right problems</em>.</p>
 <p>There are some imperfections about this setup, but most of them are not related to VSCode but to containerization:</p>
 <ol>
@@ -309,125 +371,49 @@
 </ol>
 <p>I wish I would know it earlier, but I&rsquo;m still glad that I do now!</p>
 
-      </div>
-    </article>
-
-    <hr />
-
-    <div class="post-info">
-      
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
-
-        <span class="tag"><a href="https://yirzhou.github.io/tags/cpp/">cpp</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/cmake/">cmake</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/container/">container</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/vscode/">vscode</a></span>
-        <span class="tag"><a href="https://yirzhou.github.io/tags/technical/">technical</a></span>
-        
-    </p>
-
-      
-
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-          <polyline points="10 9 9 9 8 9"></polyline>
-        </svg>
-        1248 Words
-      </p>
-
-      <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        
-          2020-12-14
-        
-
-         
-          
-        
-      </p>
     </div>
-      <hr />
-      <div class="sharing-buttons">
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
         
-      </div>
-
+        <a rel="prev" href="https://yirzhou.github.io/posts/a-new-beginning/" title="Previous post (older)">
+            <span>Previous</span>
+            A New Beginning
+            </a>
+        
+        
+        
+        <a rel="next" href="https://yirzhou.github.io/posts/last-christmas/" title="Next post (newer)">
+            <span>Next</span>
+            A Different Christmas Vibe
+            </a> 
+        
+    </nav>
     
-      <div class="pagination">
-        <div class="pagination__title">
-          <span class="pagination__title-h"></span>
-          <hr />
-        </div>
-
-        <div class="pagination__buttons">
-          
-            <span class="button previous">
-              <a href="https://yirzhou.github.io/posts/last-christmas/">
-                <span class="button__icon">←</span>
-                <span class="button__text">A Different Christmas Vibe</span>
-              </a>
-            </span>
-          
-
-          
-            <span class="button next">
-              <a href="https://yirzhou.github.io/posts/a-new-beginning/">
-                <span class="button__text">A New Beginning</span>
-                <span class="button__icon">→</span>
-              </a>
-            </span>
-          
-        </div>
-      </div>
+</div>
+ 
+<div class="container">
     
+</div>
+
+</main>
 
 
-    
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+        </nav>
 
-  </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-                <span><a href="https://yirzhou.github.io">Yiren Zhou</a></span>
-            
-            
-            
-        </div>
-    </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            
-          </div>
-    </div>
+        
+    </section>
+    <script defer src="https://yirzhou.github.io/ts/features.a534d05c446023fa2ae2a638f87cc2443ad8e49f6aaeb4d9f24ed61d53766712.js" 
+    data-enable-footnotes="true"
+    ></script>
 </footer>
-
-            
-        </div>
-
-        
-
-
-
-
-<script type="text/javascript" src="https://yirzhou.github.io/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
-
-
 
     </body>
 </html>
