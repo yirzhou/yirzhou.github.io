@@ -170,15 +170,6 @@
     </item>
     
     <item>
-      <title>random</title>
-      <link>https://example.com/tags/random/</link>
-      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/random/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>container</title>
       <link>https://example.com/tags/container/</link>
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
