@@ -14,7 +14,7 @@
       
       <guid>https://example.com/articles/vscode-remote-containers-cpp/</guid>
       <description>This is one of the most valuable skills that I learned in my current internship. We all love VSCode but this just blew me away.
-    1. Motivation  As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
+1. Motivation As a software engineer working with various languages and their ecosystems, it&amp;rsquo;s easy to mess up your development machine when installing dependencies directly on it. Even when we just want to try out a new language, we still need to have that language runtime installed somewhere on our system.</description>
     </item>
     
   </channel>

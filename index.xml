@@ -518,7 +518,7 @@
     &lt;/a&gt;
     Configure TypeScript compiler
 &lt;/h3&gt;
-&lt;p&gt;First, we need to configure our TypeScript compiler for our project in a file named &lt;code&gt;tsconfig.js&lt;/code&gt;. More information about this file can be found &lt;a href=&#34;https://www.typescriptlang.org/docs/handbook/tsconfig-json.html&#34;&gt;here&lt;/a&gt;. Mine looks like the following:&lt;/p&gt;
+&lt;p&gt;First, we need to configure our TypeScript compiler for our project in a file named &lt;code&gt;tsconfig.json&lt;/code&gt;. More information about this file can be found &lt;a href=&#34;https://www.typescriptlang.org/docs/handbook/tsconfig-json.html&#34;&gt;here&lt;/a&gt;. Mine looks like the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
