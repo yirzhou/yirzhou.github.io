@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="dark">
+    <title>A Tale of Dynamic Programming: Recursion, Tree, and DAG | Yiren Zhou</title>
+
+    
+    
+    
+    <meta property="og:site_name" content="Hugo Tania is Amazing" />
+    <meta property="og:title" content="A Tale of Dynamic Programming: Recursion, Tree, and DAG | Yiren Zhou"/>
+    <meta itemprop="name" content="A Tale of Dynamic Programming: Recursion, Tree, and DAG | Yiren Zhou" />
+    <meta name="twitter:title" content="A Tale of Dynamic Programming: Recursion, Tree, and DAG | Yiren Zhou" />
+    <meta name="application-name" content="A Tale of Dynamic Programming: Recursion, Tree, and DAG | Yiren Zhou" /><meta name="twitter:card" content="summary"/>
+
+    <meta name="description" content="Hugo is Absurdly Fast!" />
+    <meta name="twitter:description" content="Hugo is Absurdly Fast!"/>
+    <meta itemprop="description" content="Hugo is Absurdly Fast!"/>
+    <meta property="og:description" content="Hugo is Absurdly Fast!" />
+
+    
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <link rel="stylesheet" href="/sass/main.min.ab99ff095f832511e24ffb2fba2b51ad473b2f7e9301d674eba2c6c3a6e8bd81.css">
+    
+</head>
+    
+    <script>
+        (function() {
+            const colorSchemeKey = 'ThemeColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'ThemeColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.userColorScheme = 'dark';
+        } else {
+            document.documentElement.dataset.userColorScheme = 'light';
+        }
+    })();
+</script>
+
+
+    <body class="dark">
+        <nav class="navbar">
+    <div class="container">
+        <div class="flex">
+            <div>
+                <a class="brand" href="/">
+                    
+                    <span class="emoji">
+                        🐯
+                    </span>
+                    
+                    
+                    Yiren Zhou
+                    </a>
+            </div>
+            <div class="flex">
+                
+                <a href="/articles/">Articles</a>
+                
+                
+                    <button id="dark-mode-button">
+                    <svg class="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776z"/><path d="M30.705 15.915a1.163 1.163 0 1 0 1.643 1.641a1.163 1.163 0 0 0-1.643-1.641zm-16.022 14.38a1.74 1.74 0 0 0 0 2.465a1.742 1.742 0 1 0 0-2.465zm13.968-2.147a2.904 2.904 0 0 1-4.108 0a2.902 2.902 0 0 1 0-4.107a2.902 2.902 0 0 1 4.108 0a2.902 2.902 0 0 1 0 4.107z" fill="#FFCC4D"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    <svg class="dark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36"><path fill="#FFD983" d="M16 2s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2V2zm18 14s2 0 2 2s-2 2-2 2h-2s-2 0-2-2s2-2 2-2h2zM4 16s2 0 2 2s-2 2-2 2H2s-2 0-2-2s2-2 2-2h2zm5.121-8.707s1.414 1.414 0 2.828s-2.828 0-2.828 0L4.878 8.708s-1.414-1.414 0-2.829c1.415-1.414 2.829 0 2.829 0l1.414 1.414zm21 21s1.414 1.414 0 2.828s-2.828 0-2.828 0l-1.414-1.414s-1.414-1.414 0-2.828s2.828 0 2.828 0l1.414 1.414zm-.413-18.172s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zm-21 21s-1.414 1.414-2.828 0s0-2.828 0-2.828l1.414-1.414s1.414-1.414 2.828 0s0 2.828 0 2.828l-1.414 1.414zM16 32s0-2 2-2s2 2 2 2v2s0 2-2 2s-2-2-2-2v-2z"/><circle fill="#FFD983" cx="18" cy="18" r="10"/><rect x="0" y="0" width="36" height="36" fill="rgba(0, 0, 0, 0)" /></svg>
+                    </button>
+                
+            </div>
+            </div>
+    </div>
+</nav>
+
+        <main>
+            
+<div class="container">
+    <article>
+        <header class="article-header">
+            <div class="thumb">
+                <div>
+                    <h1>A Tale of Dynamic Programming: Recursion, Tree, and DAG</h1>
+                    <div class="post-meta">
+                        <div>
+                            
+                            
+                              
+                            
+                            By Yiren Zhou | <time>May 27, 2023</time>
+                            | 9 minutes
+                        </div>
+                        <div class="tags">
+                            
+                            <a href="/tags/algorithm/">algorithm</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </article>
+
+    <div class="article-post">
+    <h1 id="recursion-where-it-all-began">
+    <a href="#recursion-where-it-all-began" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Recursion: where it all began
+</h1>
+<p>The tale of dynamic programming all started from <strong>recursion</strong>, a cousin of <strong>iteration</strong>. To illustrate the how they can achieve the same thing, let&rsquo;s imagine that we have a 0-indexed list with $n$ elements:</p>
+<p><img loading="lazy" 
+    src="/./img/list.png" 
+    alt="A list" 
+     title="a list" 
+    width=754 
+    height="114"  /></p>
+<p>Let&rsquo;s start with something simple: let&rsquo;s get the $k_{th}$ element of the list given the head iterator of the list. Normally, one would start with a <code>while</code> or <code>for</code> loop:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">iter</span> <span class="o">=</span> <span class="n">head</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Kth element&#34;</span><span class="p">,</span> <span class="nb">iter</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>While we are satisfied with the above solution, one can also do it recursively.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_kth_elem</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Kth element&#34;</span><span class="p">,</span> <span class="nb">iter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">get_kth_elem</span><span class="p">(</span><span class="nb">iter</span><span class="o">.</span><span class="n">next</span><span class="p">(),</span> <span class="n">num</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get_kth_elem</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The above two procedures accomplish the same thing, but the recursive one is clearly demonstrating it&rsquo;s true definition:</p>
+<blockquote>
+<p>(Resursion is a method of solving a computational problem where &hellip;) the solution to a problem depends on a smaller instance of the same problem.</p>
+</blockquote>
+<p>In the above example, printing the $k_{th}$ element of the whole list is the same as printing the $k-1_{th}$ element of the same list if we start from the second element as the head, an is the same as printing the $k-2_{th}$ element of the same list if we start from the third element as the head, and so on. This thinking process might sound unnecessarily redundant, its beauty will shine once one realizes that it exists in many places in our world.</p>
+<p>For now, let&rsquo;s say that a procedure is <strong>recursive</strong> if the procedure depends on a smaller instance of the same procedure.</p>
+<h1 id="trees-a-recursive-data-structure">
+    <a href="#trees-a-recursive-data-structure" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    Trees: a recursive data structure
+</h1>
+<p>When a construct, or a data structure exhibits the trait similar to a recursive procedure, in which a part of this construct consists of one or more smaller instances of the same construct, we say that the construct is also recursive. A prime example that one in the field of computing often comes up with is a <strong>tree</strong>. We usually draw a tree from the top to the bottom instead of the other way around.</p>
+<p><img loading="lazy" 
+    src="/./img/tree.png" 
+    alt="A tree" 
+     title="a tree" 
+    width=384 
+    height="331"  /></p>
+<p>Why is it recursive? If we view every node and its decendants as a tree, then the root node represents the whole tree. In the above example, its root node has two child nodes $C_{1,1}$ and $C_{1,2}$ with some decendants each, so they are also trees that represent a portion of the whole tree. We call them subtress. Similarly, their children are also subtrees (or sub-subtrees if you are rigorous) of the whole tree, until we reach to a leaf node (i.e., the node without any children) which is the simplest form of a tree.</p>
+<p>To construct a tree, we can use a <strong>recursive</strong> procedure. We start from the top, root node. But, to construct the root node which is the entire tree, we need to construct its children. Then, we go to each of its children, from which we need to go further down to construct their children. In other words, the procedure of constructing the tree consists of some procedures of constructing smaller trees. This procedure is thus recursive. A rather <em>non-rigorous</em> piece of code can be used to perform this procedure:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">construct_tree</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Suppose we want to stop here as we&#39;ve reached our desired depth.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="n">target_depth</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">node</span>
+</span></span><span class="line"><span class="cl">    <span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">children_count</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">construct_tree</span><span class="p">(</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">node</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Interestingly, the visitation procedure to go through every node in a tree is following the same pattern as the construction procedure:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># We are visiting the current node.</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># For now, let&#39;s just print it.</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Then, visit all children</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">visit</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Again, to visit the entire tree, we visit every node, from which we visit every child of it - recursively.</p>
+<p>A careful reader will notice that for every node, we grow its sub-tree only once. This is due to the nature of a &ldquo;tree&rdquo;: for every node, it only has one parent. This means that if we are visiting a node, the only path via which we get led here is through its sole parent. We can extend this logic via induction to prove that using the above recursive procedure visits every node only once.</p>
+<p>One would also notice that the very first example of a list, is also a recursive data structure: every element has one predecessor (except the first) and one supercessor (except the last). In fact, we can visit our list in this procedure given an iterator:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">visit_list</span><span class="p">(</span><span class="nb">iter</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">iter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="n">visit_list</span><span class="p">(</span><span class="nb">iter</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now comes the true nature of dynamic programming.</p>
+<h1 id="dag-the-true-nature-of-dynamic-programming">
+    <a href="#dag-the-true-nature-of-dynamic-programming" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    DAG, the true nature of dynamic programming
+</h1>
+<p>Now, a curious reader would want to know: what if we modify our tree in a way that each node may have more than one parent. Well, it can&rsquo;t be called as a tree, can it? Such a &ldquo;tree&rdquo; doesn&rsquo;t exist in nature anyways. In fact, in the discipline of Graph Theory, we have another name that generalizes such constructs: <strong>Directed Acyclic Graphs</strong> (DAGs).</p>
+<p><img loading="lazy" 
+    src="/./img/dag.png" 
+    alt="A DAG" 
+     title="a DAG" 
+    width=741 
+    height="471"  /></p>
+<p>Let&rsquo;s look at every word in this term and check if a tree exhibits the concept of that term:</p>
+<ol>
+<li><strong>Directed</strong>: a tree is inherently directed - we mentioned that we grow a tree downward (of course, one can grow it upward just like a real tree). There&rsquo;s no tree that grows backward to its root in nature.</li>
+<li><strong>Acyclic</strong>: it means that there&rsquo;s no cycle in this graph. A tree by definition cannot have cycles.</li>
+<li><strong>Graph</strong>: a tree is a type of graph/network, a more specific type of graph where 1) we specify the direction to go from one node to another, and 2) that every node has just one (or no) parent, and 3) that the graph has only starting point (the root) from which we can visit all nodes. A DAG is just like a tree, except the fact that a node may have more than one parent, and that the graph may not have a single point from which we can visit all nodes.</li>
+</ol>
+<p>Now, if one wishes to perform the visitation of a DAG using the previous procedure, where should she/he start if there&rsquo;s no single starting point? Well, we&rsquo;ve got to try every node (possibly as few as one can to save some effort) from which one can visit the entire graph. In the above picture, one would chose $A$ and $B$ as the starting points.</p>
+<p>But, if one is cognizant of the cost of using the same recursive pattern as that for a tree, one will see that some nodes will be visited multiple times:</p>
+<p>From $A$, we visit $C$, from which we visit $F$, from which we visit $G$, from which we visit $I$, from which we visit $J$; then, from $F$ we visit $H$ then, from which we visit $K$, from which we visit $I$, from which we visit $J$; then, from $C$ we visit $E$, from which we visit $F$, from which we visit $G$, &hellip;</p>
+<p>This is getting absurdly long, but one can clearly see that several nodes are visited repeatedly. This is particularly problematic if the DAG is huge (large number of nodes / edges). What if we come up with an <em>optimization</em> technique such that one will remember the nodes (or subgraphs) that have been visited when we come to them for the second, third, fourth, &hellip; time?</p>
+<p><strong>Well, that is what dynamic programming is all about.</strong> It&rsquo;s an <em>optimization</em> technique used to save states that have already been computed to avoid repeated computation. One can come up with the following optimized visitation procedure for a DAG:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">visited</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Avoid repeated visitation on the same subgraph.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">visited</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># print the node for now as the &#34;visit&#34; action.</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">visit</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Remember that it has been visited.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">visited</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Repeated computation is a main source of inefficiency, in both the field of computing and our real life. This is the beauty of dynamic programming - to save repeated efforts in computing.</p>
+<p>Now, one may ask: what if the graph is cyclic (i.e., has cycles)? Will the above procedure, or dynamic programming work? The answer is: No, unfortunately. To see why it would fail, let&rsquo;s just add a backward edge from $H$ to $F$ on the DAG, which makes it a non-DAG now:</p>
+<p><img loading="lazy" 
+    src="/./img/cycle_dag.png" 
+    alt="A graph with a cycle involving F and H" 
+     title="a graph with a cycle involving F and H" 
+    width=741 
+    height="471"  /></p>
+<p>This graph has a cycle that includes $F$ and $H$. When one visits $F$, she/he would visit $H$ as the next step; however, to complete the visitation on the subgraph represented by $H$, one would need to visit $F$. This recursion will never end. It will dig a infinitely deep hole in your brain; for a poor computer that is running this procedure, its stack space would overflow with recursive calls&hellip;</p>
+<p>At this point, I will create my own &ldquo;definition&rdquo; for dynamic programming as the following:</p>
+<blockquote>
+<p>Dynamic programming is an optimization technique used to remember the visitation of nodes in a DAG such that they won&rsquo;t be repeatedly visited.</p>
+</blockquote>
+<p>I don&rsquo;t particularly find the terms frequently appearing in the definition of dynamic programming, such as &ldquo;optimal substructures&rdquo; and &ldquo;subproblems&rdquo; intuitive. Instead, a DAG can be visualized and reasoned about more easily. Imagine that you are reading &ldquo;Introduction to Algorithms&rdquo;, and you look at the steps to develop a dynamic programming algorithm <a href="#1">[1]</a>:</p>
+<blockquote>
+<ol>
+<li>Characterize the structure of an optimal solution.</li>
+<li>Recursively define the value of an optimal solution.</li>
+<li>Compute the value of an optimal solution, typically in a bottom-up fashion.</li>
+<li>Construct an optimal solution from computed information.</li>
+</ol>
+</blockquote>
+<p>A DAG is an optimal structure because there&rsquo;s no cycle, implying that repeated visitation is impossible if one saves the computation previously. Every node in a DAG is a optimal solution because the subgraph starting from it is a DAG. While the steps above are absolutely correct and rigorous, if one can effectively translate a problem scenario into a DAG, the above steps can be forgotten completely when developing a dynamic programming procedure.</p>
+<p>Now, I&rsquo;ve come up my own steps for developing a dynamic programming procedure:</p>
+<blockquote>
+<ol>
+<li>Understand the problem scenario.</li>
+<li>Translate the problem scenario into a DAG where each node represents some state, and each edge between two nodes represents the difference in their computed results.</li>
+<li>Visit the DAG recursively with the extension where states are remembered to avoid repeated computation.</li>
+</ol>
+</blockquote>
+<p><strong>That, is the tale of dynamic programming, where it started from the beautiful concept of recursion, and ends at the abstract but optimal nature of DAGs.</strong></p>
+<h2 id="references">
+    <a href="#references" class="anchor">
+        <svg class="icon" aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd"
+                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+            </path>
+        </svg>
+    </a>
+    References
+</h2>
+<p><a id="1">[1]</a>
+T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein, Introduction to Algorithms. Cambridge, Massachusett: The MIT Press, 2022.</p>
+
+    </div>
+</div>
+
+<div class="container">
+    
+    <nav class="flex container suggested">
+        
+        <a rel="prev" href="/articles/lessons-learned-fse/" title="Previous post (older)">
+            <span>Previous</span>
+            Lessons Learned from a Project-based Course on Software Engineering
+            </a>
+        
+        
+        
+    </nav>
+    
+</div>
+ 
+<div class="container">
+    
+    <script src="https://giscus.app/client.js" 
+        data-repo="WingLim/hugo-tania"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzMTYyNjQzMDc="
+        
+        data-category="Comments"
+        data-category-id="DIC_kwDOEtnPc84B_WKP"
+        
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<script>
+    function setGiscusTeheme(theme) {
+        let giscus = document.querySelector('.giscus iframe');
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme
+                        }
+                    }
+                },
+                'https://giscus.app'
+            )
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://giscus.app') return;
+        setGiscusTeheme(document.documentElement.dataset.userColorScheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setGiscusTeheme(e.detail)
+    })
+</script>
+
+</div>
+
+</main>
+
+
+        </main>
+        <footer class="footer flex">
+    <section class="container">
+        <nav class="footer-links">
+            
+            <a href="/index.xml">RSS</a>
+            
+        </nav>
+
+        
+    </section>
+    <script defer src="/ts/features.f658accd96ff946aea04e7fca44a794f9632d32718aaf69be3f0f434b3ac6118.js" 
+    data-enable-footnotes="true"
+    ></script>
+</footer>
+
+    </body>
+</html>

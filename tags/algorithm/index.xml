@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on Yiren Zhou</title>
+    <link>https://example.com/tags/algorithm/</link>
+    <description>Recent content in algorithm on Yiren Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Tale of Dynamic Programming: Recursion, Tree, and DAG</title>
+      <link>https://example.com/articles/recursion-dag-dp/</link>
+      <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/articles/recursion-dag-dp/</guid>
+      <description>Recursion: where it all began The tale of dynamic programming all started from recursion, a cousin of iteration. To illustrate the how they can achieve the same thing, let&amp;rsquo;s imagine that we have a 0-indexed list with $n$ elements:
+Let&amp;rsquo;s start with something simple: let&amp;rsquo;s get the $k_{th}$ element of the list given the head iterator of the list. Normally, one would start with a while or for loop:</description>
+    </item>
+    
+  </channel>
+</rss>

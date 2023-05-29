@@ -5,7 +5,265 @@
     <description>Recent content in About on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+    <title>A Tale of Dynamic Programming: Recursion, Tree, and DAG</title>
+    <link>https://example.com/articles/recursion-dag-dp/</link>
+    <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
+    
+    <guid>https://example.com/articles/recursion-dag-dp/</guid>
+    <description>
+        &lt;h1 id=&#34;recursion-where-it-all-began&#34;&gt;
+    &lt;a href=&#34;#recursion-where-it-all-began&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Recursion: where it all began
+&lt;/h1&gt;
+&lt;p&gt;The tale of dynamic programming all started from &lt;strong&gt;recursion&lt;/strong&gt;, a cousin of &lt;strong&gt;iteration&lt;/strong&gt;. To illustrate the how they can achieve the same thing, let&amp;rsquo;s imagine that we have a 0-indexed list with $n$ elements:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
+    src=&#34;https://example.com/./img/list.png&#34; 
+    alt=&#34;A list&#34; 
+     title=&#34;a list&#34; 
+    width=754 
+    height=&#34;114&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s start with something simple: let&amp;rsquo;s get the $k_{th}$ element of the list given the head iterator of the list. Normally, one would start with a &lt;code&gt;while&lt;/code&gt; or &lt;code&gt;for&lt;/code&gt; loop:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Kth element&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;While we are satisfied with the above solution, one can also do it recursively.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_kth_elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Kth element&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;get_kth_elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;get_kth_elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The above two procedures accomplish the same thing, but the recursive one is clearly demonstrating it&amp;rsquo;s true definition:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(Resursion is a method of solving a computational problem where &amp;hellip;) the solution to a problem depends on a smaller instance of the same problem.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the above example, printing the $k_{th}$ element of the whole list is the same as printing the $k-1_{th}$ element of the same list if we start from the second element as the head, an is the same as printing the $k-2_{th}$ element of the same list if we start from the third element as the head, and so on. This thinking process might sound unnecessarily redundant, its beauty will shine once one realizes that it exists in many places in our world.&lt;/p&gt;
+&lt;p&gt;For now, let&amp;rsquo;s say that a procedure is &lt;strong&gt;recursive&lt;/strong&gt; if the procedure depends on a smaller instance of the same procedure.&lt;/p&gt;
+&lt;h1 id=&#34;trees-a-recursive-data-structure&#34;&gt;
+    &lt;a href=&#34;#trees-a-recursive-data-structure&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    Trees: a recursive data structure
+&lt;/h1&gt;
+&lt;p&gt;When a construct, or a data structure exhibits the trait similar to a recursive procedure, in which a part of this construct consists of one or more smaller instances of the same construct, we say that the construct is also recursive. A prime example that one in the field of computing often comes up with is a &lt;strong&gt;tree&lt;/strong&gt;. We usually draw a tree from the top to the bottom instead of the other way around.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
+    src=&#34;https://example.com/./img/tree.png&#34; 
+    alt=&#34;A tree&#34; 
+     title=&#34;a tree&#34; 
+    width=384 
+    height=&#34;331&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;Why is it recursive? If we view every node and its decendants as a tree, then the root node represents the whole tree. In the above example, its root node has two child nodes $C_{1,1}$ and $C_{1,2}$ with some decendants each, so they are also trees that represent a portion of the whole tree. We call them subtress. Similarly, their children are also subtrees (or sub-subtrees if you are rigorous) of the whole tree, until we reach to a leaf node (i.e., the node without any children) which is the simplest form of a tree.&lt;/p&gt;
+&lt;p&gt;To construct a tree, we can use a &lt;strong&gt;recursive&lt;/strong&gt; procedure. We start from the top, root node. But, to construct the root node which is the entire tree, we need to construct its children. Then, we go to each of its children, from which we need to go further down to construct their children. In other words, the procedure of constructing the tree consists of some procedures of constructing smaller trees. This procedure is thus recursive. A rather &lt;em&gt;non-rigorous&lt;/em&gt; piece of code can be used to perform this procedure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;construct_tree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Suppose we want to stop here as we&amp;#39;ve reached our desired depth.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;depth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target_depth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;children&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;children_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;children&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct_tree&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;depth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;children&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;children&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Interestingly, the visitation procedure to go through every node in a tree is following the same pattern as the construction procedure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;visit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# We are visiting the current node.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# For now, let&amp;#39;s just print it.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Then, visit all children&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;child&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;children&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;visit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;child&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Again, to visit the entire tree, we visit every node, from which we visit every child of it - recursively.&lt;/p&gt;
+&lt;p&gt;A careful reader will notice that for every node, we grow its sub-tree only once. This is due to the nature of a &amp;ldquo;tree&amp;rdquo;: for every node, it only has one parent. This means that if we are visiting a node, the only path via which we get led here is through its sole parent. We can extend this logic via induction to prove that using the above recursive procedure visits every node only once.&lt;/p&gt;
+&lt;p&gt;One would also notice that the very first example of a list, is also a recursive data structure: every element has one predecessor (except the first) and one supercessor (except the last). In fact, we can visit our list in this procedure given an iterator:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;visit_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;visit_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;iter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Now comes the true nature of dynamic programming.&lt;/p&gt;
+&lt;h1 id=&#34;dag-the-true-nature-of-dynamic-programming&#34;&gt;
+    &lt;a href=&#34;#dag-the-true-nature-of-dynamic-programming&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    DAG, the true nature of dynamic programming
+&lt;/h1&gt;
+&lt;p&gt;Now, a curious reader would want to know: what if we modify our tree in a way that each node may have more than one parent. Well, it can&amp;rsquo;t be called as a tree, can it? Such a &amp;ldquo;tree&amp;rdquo; doesn&amp;rsquo;t exist in nature anyways. In fact, in the discipline of Graph Theory, we have another name that generalizes such constructs: &lt;strong&gt;Directed Acyclic Graphs&lt;/strong&gt; (DAGs).&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
+    src=&#34;https://example.com/./img/dag.png&#34; 
+    alt=&#34;A DAG&#34; 
+     title=&#34;a DAG&#34; 
+    width=741 
+    height=&#34;471&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at every word in this term and check if a tree exhibits the concept of that term:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Directed&lt;/strong&gt;: a tree is inherently directed - we mentioned that we grow a tree downward (of course, one can grow it upward just like a real tree). There&amp;rsquo;s no tree that grows backward to its root in nature.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Acyclic&lt;/strong&gt;: it means that there&amp;rsquo;s no cycle in this graph. A tree by definition cannot have cycles.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Graph&lt;/strong&gt;: a tree is a type of graph/network, a more specific type of graph where 1) we specify the direction to go from one node to another, and 2) that every node has just one (or no) parent, and 3) that the graph has only starting point (the root) from which we can visit all nodes. A DAG is just like a tree, except the fact that a node may have more than one parent, and that the graph may not have a single point from which we can visit all nodes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, if one wishes to perform the visitation of a DAG using the previous procedure, where should she/he start if there&amp;rsquo;s no single starting point? Well, we&amp;rsquo;ve got to try every node (possibly as few as one can to save some effort) from which one can visit the entire graph. In the above picture, one would chose $A$ and $B$ as the starting points.&lt;/p&gt;
+&lt;p&gt;But, if one is cognizant of the cost of using the same recursive pattern as that for a tree, one will see that some nodes will be visited multiple times:&lt;/p&gt;
+&lt;p&gt;From $A$, we visit $C$, from which we visit $F$, from which we visit $G$, from which we visit $I$, from which we visit $J$; then, from $F$ we visit $H$ then, from which we visit $K$, from which we visit $I$, from which we visit $J$; then, from $C$ we visit $E$, from which we visit $F$, from which we visit $G$, &amp;hellip;&lt;/p&gt;
+&lt;p&gt;This is getting absurdly long, but one can clearly see that several nodes are visited repeatedly. This is particularly problematic if the DAG is huge (large number of nodes / edges). What if we come up with an &lt;em&gt;optimization&lt;/em&gt; technique such that one will remember the nodes (or subgraphs) that have been visited when we come to them for the second, third, fourth, &amp;hellip; time?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Well, that is what dynamic programming is all about.&lt;/strong&gt; It&amp;rsquo;s an &lt;em&gt;optimization&lt;/em&gt; technique used to save states that have already been computed to avoid repeated computation. One can come up with the following optimized visitation procedure for a DAG:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nodes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;visit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Avoid repeated visitation on the same subgraph.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# print the node for now as the &amp;#34;visit&amp;#34; action.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;neighbor&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neighbors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;visit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;neighbor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Remember that it has been visited.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;visited&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Repeated computation is a main source of inefficiency, in both the field of computing and our real life. This is the beauty of dynamic programming - to save repeated efforts in computing.&lt;/p&gt;
+&lt;p&gt;Now, one may ask: what if the graph is cyclic (i.e., has cycles)? Will the above procedure, or dynamic programming work? The answer is: No, unfortunately. To see why it would fail, let&amp;rsquo;s just add a backward edge from $H$ to $F$ on the DAG, which makes it a non-DAG now:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
+    src=&#34;https://example.com/./img/cycle_dag.png&#34; 
+    alt=&#34;A graph with a cycle involving F and H&#34; 
+     title=&#34;a graph with a cycle involving F and H&#34; 
+    width=741 
+    height=&#34;471&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;This graph has a cycle that includes $F$ and $H$. When one visits $F$, she/he would visit $H$ as the next step; however, to complete the visitation on the subgraph represented by $H$, one would need to visit $F$. This recursion will never end. It will dig a infinitely deep hole in your brain; for a poor computer that is running this procedure, its stack space would overflow with recursive calls&amp;hellip;&lt;/p&gt;
+&lt;p&gt;At this point, I will create my own &amp;ldquo;definition&amp;rdquo; for dynamic programming as the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dynamic programming is an optimization technique used to remember the visitation of nodes in a DAG such that they won&amp;rsquo;t be repeatedly visited.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I don&amp;rsquo;t particularly find the terms frequently appearing in the definition of dynamic programming, such as &amp;ldquo;optimal substructures&amp;rdquo; and &amp;ldquo;subproblems&amp;rdquo; intuitive. Instead, a DAG can be visualized and reasoned about more easily. Imagine that you are reading &amp;ldquo;Introduction to Algorithms&amp;rdquo;, and you look at the steps to develop a dynamic programming algorithm &lt;a href=&#34;#1&#34;&gt;[1]&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Characterize the structure of an optimal solution.&lt;/li&gt;
+&lt;li&gt;Recursively define the value of an optimal solution.&lt;/li&gt;
+&lt;li&gt;Compute the value of an optimal solution, typically in a bottom-up fashion.&lt;/li&gt;
+&lt;li&gt;Construct an optimal solution from computed information.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A DAG is an optimal structure because there&amp;rsquo;s no cycle, implying that repeated visitation is impossible if one saves the computation previously. Every node in a DAG is a optimal solution because the subgraph starting from it is a DAG. While the steps above are absolutely correct and rigorous, if one can effectively translate a problem scenario into a DAG, the above steps can be forgotten completely when developing a dynamic programming procedure.&lt;/p&gt;
+&lt;p&gt;Now, I&amp;rsquo;ve come up my own steps for developing a dynamic programming procedure:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Understand the problem scenario.&lt;/li&gt;
+&lt;li&gt;Translate the problem scenario into a DAG where each node represents some state, and each edge between two nodes represents the difference in their computed results.&lt;/li&gt;
+&lt;li&gt;Visit the DAG recursively with the extension where states are remembered to avoid repeated computation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;That, is the tale of dynamic programming, where it started from the beautiful concept of recursion, and ends at the abstract but optimal nature of DAGs.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;
+    &lt;a href=&#34;#references&#34; class=&#34;anchor&#34;&gt;
+        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
+            &lt;path fill-rule=&#34;evenodd&#34;
+                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
+            &lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/a&gt;
+    References
+&lt;/h2&gt;
+&lt;p&gt;&lt;a id=&#34;1&#34;&gt;[1]&lt;/a&gt;
+T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein, Introduction to Algorithms. Cambridge, Massachusett: The MIT Press, 2022.&lt;/p&gt;
+
+    </description>
+    </item>
+    
     <item>
     <title>Lessons Learned from a Project-based Course on Software Engineering</title>
     <link>https://example.com/articles/lessons-learned-fse/</link>
@@ -251,69 +509,6 @@
     Closing thoughts
 &lt;/h2&gt;
 &lt;p&gt;That&amp;rsquo;s it for Homebrew - I will likely encounter more issues in the coming days as I spend more time working, so stay alerted for more :smiley:!.&lt;/p&gt;
-
-    </description>
-    </item>
-    
-    <item>
-    <title>Time to Change</title>
-    <link>https://example.com/articles/time-to-change/</link>
-    <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-    
-    <guid>https://example.com/articles/time-to-change/</guid>
-    <description>
-        &lt;p&gt;&lt;strong&gt;This is just a quick statement that starting from this moment (i.e. &lt;code&gt;2021-04-06 11:30:00 PM&lt;/code&gt;), I will stop complaining, whining, and expressing any negative energy.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I have been facing tremendous challenges. Some problems are those others might refer to as &amp;ldquo;first-world&amp;rdquo; problems, but they are definitely not fun to deal with. They have sucked up a significant amount of my time and energy - I&amp;rsquo;m basically burned out at this point. However, I am cognizant of myself bringing my negative energy to others when it was not their fault at all. Perhaps I&amp;rsquo;ve been under too much stress for a while and I did not do a good job coping with it. Regardless, negative energy, in general, should be avoided.&lt;/p&gt;
-&lt;p&gt;Hence, I decided to post this quickie so that it&amp;rsquo;s public. I apologize for my misbehaviours if they happened to hurt you.&lt;/p&gt;
-
-    </description>
-    </item>
-    
-    <item>
-    <title>March Update</title>
-    <link>https://example.com/articles/march-update/</link>
-    <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
-    
-    <guid>https://example.com/articles/march-update/</guid>
-    <description>
-        &lt;p&gt;The final term at school has been tough to say the least because:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;I am taking &lt;em&gt;seven courses&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;I am missing home too much.&lt;/li&gt;
-&lt;li&gt;I have been rejected by three grad schools that I applied to.&lt;/li&gt;
-&lt;li&gt;Physically, I am not in a good shape.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The first two reasons can be coped fairly easily by: studying harder and sleeping less, and distracting myself by reading and watching interesting stuff.&lt;/p&gt;
-&lt;p&gt;The third reason, however, makes me feel like there could be something inherently wrong with myself. I am fully aware that schools are taking many more applications since the pandemic started; another reason could be that as an engineering student, competing with other computer science students is just too difficult. Or, perhaps I said something in my personal statements that those schools did not like. Regardless, this is a problem that I will probably never get an answer to. I see it as the same as applying for jobs where I would just get straightout rejected or ghosted, which I have already gotten used to.&lt;/p&gt;
-&lt;p&gt;The last one, well, could just be due to the stress I have been having which made my body more susceptible. I have had two fevers due to potential food poisoning or allergy. I have been recovering and am feeling much better, but the damage has already been done and slowed me down significantly. I have a lot to catch up.&lt;/p&gt;
-&lt;p&gt;As you can tell, this post is not that positive :sweat_smile:. It&amp;rsquo;s because I&amp;rsquo;m simply stating the facts, and it could get even worse in a few weeks as we need to crank out our capstone project, stay up late for assignments and projects, and prepare for exams. I still have a couple of schools that haven&amp;rsquo;t released their decisions. Even if I get more offers, I still have a &amp;ldquo;first-world&amp;rdquo; problem to solve - decide where I want to go.&lt;/p&gt;
-&lt;p&gt;The funny thing is that this is the first time in my life where I feel &amp;ldquo;lost&amp;rdquo;: the decision that I need to make will completely change my life, and yet I am not sure where I want to be which makes the decision process even harder.&lt;/p&gt;
-&lt;p&gt;Am I being too cautious? I don&amp;rsquo;t consider myself a perfectionist because if I were, I would live miserably and burn out, and have no friend or interests because nothing is perfect. Or, is it because now I need to make these decisions on my own and swallow my own pills completely? Am I chickening out?&lt;/p&gt;
-&lt;p&gt;Over the next few weeks, I believe that I will sort everything out.&lt;/p&gt;
-
-    </description>
-    </item>
-    
-    <item>
-    <title>Getting Stuff Done Feels Good Again</title>
-    <link>https://example.com/articles/getting-stuff-done/</link>
-    <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
-    
-    <guid>https://example.com/articles/getting-stuff-done/</guid>
-    <description>
-        &lt;p&gt;It&amp;rsquo;s been three weeks since my last post. Taking &lt;strong&gt;seven courses&lt;/strong&gt; in a term isn&amp;rsquo;t the easiest thing to do&amp;hellip; I struggled a bit at the beginning of the term because all the tasks and deadlines were just overwhelming.&lt;/p&gt;
-&lt;p&gt;However, recently, I&amp;rsquo;ve started doing something that I used to do and that&amp;rsquo;s made me feel so good about myself. That is: using a &lt;strong&gt;TODO&lt;/strong&gt; app.&lt;/p&gt;
-&lt;p&gt;I know it sounds incredibly boring to pretty much everyone. But, I see it as a tool of gamification for myself. Whenever I check off a task, it just &lt;em&gt;feels so good&lt;/em&gt;. The app I used to use a lot was &amp;ldquo;Wunderlist&amp;rdquo;. I decided to use an app to remind myself because assignments plus interviews were just too much for my brain to handle. That app helped get through tons of tasks. This term, that intense feeling seems to come back again and I decided to pick up a TODO app to manage my task.&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;Wunderlist&amp;rdquo; doesn&amp;rsquo;t exist any more. It has been re-branded to &lt;a href=&#34;https://todo.microsoft.com/tasks/&#34;&gt;Microsoft To Do&lt;/a&gt;. It still gives me the same kind of vibe, look-and-feel, etc., but using it on a Mac just makes its integration with my Apple Calendar and iPhone that much better. I receive notifications of tasks automatically after creating them in the app.&lt;/p&gt;
-&lt;p&gt;My favorite part about this app is its &amp;ldquo;My Day&amp;rdquo; section, in which I create tasks that I wish to complete for the day.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; 
-    src=&#34;//img/my-day.png&#34; 
-    alt=&#34;My Day&#34; 
-     
-    width=1774 
-    height=&#34;1078&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;I used to be at a point where I didn&amp;rsquo;t know what I should do on a particular day simply due to the sheer volume of tasks; now, I would spend some time every night on planning what I want to do the next day.&lt;/p&gt;
-&lt;p&gt;As I check off them one by one, it just feels good!&lt;/p&gt;
 
     </description>
     </item>
@@ -990,85 +1185,6 @@
     </item>
     
     <item>
-    <title>My Thoughts on 2020</title>
-    <link>https://example.com/articles/thoughts-on-2020/</link>
-    <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-    
-    <guid>https://example.com/articles/thoughts-on-2020/</guid>
-    <description>
-        &lt;p&gt;It&amp;rsquo;s been hell of a year&amp;hellip; damn!&lt;/p&gt;
-&lt;p&gt;I have envisioned a very different year for 2020 back in 2019 - 2020 was supposed to be normal and balanced (again, like all things should be), and yet we had this: a year that might&amp;rsquo;ve already led us into a completely different future. I have come across this thought multiple times: when everything goes back to normal, the perfect term that describes that feeling would be: &lt;strong&gt;post-apocalyptic&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;d like to share my thoughts on this year, some thoughts that I want to remember and can always learn from in the future.&lt;/p&gt;
-&lt;h2 id=&#34;miss&#34;&gt;
-    &lt;a href=&#34;#miss&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Miss
-&lt;/h2&gt;
-&lt;p&gt;A major theme of 2020 for me has been &amp;ldquo;miss&amp;rdquo;, and others seem to agree with me. We all miss the old days where we were together, physically. Although I have terrible social skills and have found a solution to almost every problem, being unable to sbe with others physically has killed me, and I miss that.&lt;/p&gt;
-&lt;p&gt;More sadly, &amp;ldquo;miss&amp;rdquo; is caused by too MANY &lt;strong&gt;farewells&lt;/strong&gt; in 2020. Too many people have lost their family members and friends because of what has happened or just pure bad luck. I vividly remember the feeling of devastation when reading the news of Kobe passing away.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;There&amp;rsquo;s plenty to miss.&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;wfh-alone&#34;&gt;
-    &lt;a href=&#34;#wfh-alone&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    WFH alone
-&lt;/h2&gt;
-&lt;p&gt;I am one of the many people who have been working from home this year, and it&amp;rsquo;s actually incredible to think about it.&lt;/p&gt;
-&lt;p&gt;When things got out of control in March, nobody was well prepared: people were panic-shopping EVERYWHERE; the ongoing school term was ended abruptly; and Spring 2020 sucked.&lt;/p&gt;
-&lt;p&gt;I was struggling in the beginning of Spring 2020: as an individual who loves &amp;ldquo;order&amp;rdquo;, I was doing a terrible job at managing and scheduling my own tasks, which surprised me. I always felt that my decent self-discipline would come into play seemlessly at a dire time like that, and yet I felt overwhelmed by the high entropy of stuff that kept coming endlessly.&lt;/p&gt;
-&lt;p&gt;When no one is watching me, or telling me when to do what, I need to think about how to keep myself going. I believe that the best way to achieve that is to make everything &lt;strong&gt;feel like normal&lt;/strong&gt;: except for keeping myself at home, I can do exactly the same things that make myself comfortable, and luckily, it worked. In a nutshell, I tried the following:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Organize my courses into a calendar just to feel like I had a real schedule;&lt;/li&gt;
-&lt;li&gt;Write all deadlines on a whiteboard placed in a noticeable area;&lt;/li&gt;
-&lt;li&gt;Get a pair of adjustable dumb-bells to not let my body deteriorate;&lt;/li&gt;
-&lt;li&gt;Study with friends via online conferences, most of the times;&lt;/li&gt;
-&lt;li&gt;Wake up early to feel good about myself :blush:.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;One important idea that I realized was that: &lt;em&gt;this is just like the theory of evolution.&lt;/em&gt; Those who adapt survive. It sounds nerdy to most people but that&amp;rsquo;s how I feel.&lt;/p&gt;
-&lt;h2 id=&#34;surprises&#34;&gt;
-    &lt;a href=&#34;#surprises&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Surprises
-&lt;/h2&gt;
-&lt;p&gt;What happened and is still happening must be a surprise to everyone, undoubtedly. However, we should be pleasantly surprised by what we accomplished under these circumstances. In a way, this new style of living and working has inspired us to generate new ideas, try new things (baking, cooking, running), and cultivate new habits.&lt;/p&gt;
-&lt;p&gt;I would say that in terms of my personal achievements, 2020 could be the most prolific year, and I might&amp;rsquo;ve never come to this place if it didn&amp;rsquo;t happen.&lt;/p&gt;
-&lt;p&gt;When everything started going down, I considered it perfect for thinking about what to do in the future because I would probably go on a trip after the finals which I couldn&amp;rsquo;t do any more. The time saving was massive for learning something new. I spent two weeks learning a &lt;a href=&#34;https://reactjs.org/&#34;&gt;new web framework&lt;/a&gt; and used it to build a &lt;a href=&#34;https://zhouyiren.rocks/&#34;&gt;simple web portfolio&lt;/a&gt; to put on my resumé.&lt;/p&gt;
-&lt;p&gt;More importantly, I didn&amp;rsquo;t want to give up in the job market, which was significantly impacted by the situation. I needed to be &amp;ldquo;outstanding&amp;rdquo; if I wanted to be selected since there was no other way, so I made a systematic plan for studying interviews. I started participating in the &lt;a href=&#34;https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/&#34;&gt;LeetCode Monthly Challenge&lt;/a&gt; where I get the chance of winning some perk if I complete all 30 questions. I got addicted into it and kept doing it even after I got an internship, which perfectly wrapped up my undergraduate co-op experience. The offer was a surprised, but also somewhat expected: I put much more effort in the preparation than any previous term, and I was lucky to interview with a lot more high-profile companies. I also felt great about every interview, even though some didn&amp;rsquo;t land me offers. Regardless, the one I ended up with was my dream.&lt;/p&gt;
-&lt;p&gt;I previously mentioned that Spring 2020 &lt;strong&gt;sucked&lt;/strong&gt;, and it really did. Nobody was well prepared for it, so the entire term was extremely disorganized. However, I appreciate what they were trying to do and deliver to us, and it has gone a lot better based on what I&amp;rsquo;ve heard recently. The most impressive experience was me staying up all night working on a course project that was due the next day. The course was Distributed Computing - a subject that is inherently obstruse, and the project was just too hard. As the time passed 12AM, I decided to take a break by browsing YouTube&amp;hellip; and voilà: &lt;a href=&#34;https://open.spotify.com/album/2fenSS68JI1h4Fo296JfGr&#34;&gt;folklore&lt;/a&gt;, the (first-in-2020) surprise album from Taylor Swift went live. So you probably know what happened next.&lt;/p&gt;
-&lt;p&gt;That&amp;rsquo;s why I think it&amp;rsquo;s among the best things in 2020. Putting the unconventional styles exhibited in this album aside, it was a huge surprise to me that came at the right time. The songs helped me get through the toughest times of the year.&lt;/p&gt;
-&lt;p&gt;I said this before: this new style of living has been a source of inspiration for many that lead to those pleasant surprises. If I solely focused on them, 2020 was my favorite year.&lt;/p&gt;
-&lt;h2 id=&#34;post-apocalyptic&#34;&gt;
-    &lt;a href=&#34;#post-apocalyptic&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Post-apocalyptic
-&lt;/h2&gt;
-&lt;p&gt;I have no idea when our life would go back to normal, and what the world would look like. I sometimes naively wonder if it would look like those &amp;ldquo;post-apocalyptic&amp;rdquo; movies or video games.&lt;/p&gt;
-&lt;p&gt;I don&amp;rsquo;t put out new year&amp;rsquo;s resolution because I really can&amp;rsquo;t think of anything specific at present :sweat_smile:. Regardless, my general objective for 2021 is to live better and achieve more. More importantly, I want to learn from 2020 so that I am better prepared for anything like it.&lt;/p&gt;
-&lt;p&gt;Peace out, 2020. I&amp;rsquo;ve had a great time with you.&lt;/p&gt;
-
-    </description>
-    </item>
-    
-    <item>
     <title>Perfect Sandbox Environment for C&#43;&#43; Development</title>
     <link>https://example.com/articles/vscode-remote-containers-cpp/</link>
     <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
@@ -1428,79 +1544,6 @@
 &lt;li&gt;If the project is huge, you may need to allocate more memory to the container. In my experience, GCC failed during compilation because of the insufficient RAM.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;I wish I would know it earlier, but I&amp;rsquo;m still glad that I do now!&lt;/p&gt;
-
-    </description>
-    </item>
-    
-    <item>
-    <title>A New Beginning</title>
-    <link>https://example.com/articles/a-new-beginning/</link>
-    <pubDate>Tue, 01 Dec 2020 17:46:19 -0500</pubDate>
-    
-    <guid>https://example.com/articles/a-new-beginning/</guid>
-    <description>
-        &lt;p&gt;This is my first ever article on this site, which means that I&amp;rsquo;m just as new to it as you are :slightly_smiling_face:.&lt;/p&gt;
-&lt;h2 id=&#34;some-history&#34;&gt;
-    &lt;a href=&#34;#some-history&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Some history
-&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;ve had this idea of writing random stuff down for quite a while, and I&amp;rsquo;ve had two failed attempts in the past.&lt;/p&gt;
-&lt;p&gt;My first attempt was a &lt;a href=&#34;https://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; site with a paid hosting service. It was my very first entry into content management. However, I found WordPress too much overkill for my use as there are a lot of features that I never used. Additionally, I wasn&amp;rsquo;t familiar with PHP, which made customization a bit difficult. After two years, I decided to get rid of it.&lt;/p&gt;
-&lt;p&gt;That leads to my second attempt, which was a &lt;a href=&#34;https://zhouyiren.rocks&#34;&gt;site&lt;/a&gt; built in &lt;a href=&#34;https://reactjs.org/&#34;&gt;ReactJS&lt;/a&gt; and hosted on &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt;. It took me just over two weeks to self-teach React and build it during self-quarantine. Firebase provides free hosting which was perfect for getting rid of my old site. I ended up liking React as a frontend framework, and it gave me a taste of frontend development. However, I&amp;rsquo;m never into frontend/UI development, and I felt that it strayed me away from content creation. I did enjoy the learning experience though.&lt;/p&gt;
-&lt;p&gt;I think I&amp;rsquo;ve finally found the &lt;a href=&#34;http://gohugo.io/&#34;&gt;right tool&lt;/a&gt; that allows me to focus on content creation while retaining the high customizability.&lt;/p&gt;
-&lt;h2 id=&#34;why-this-site-exists&#34;&gt;
-    &lt;a href=&#34;#why-this-site-exists&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Why this site exists
-&lt;/h2&gt;
-&lt;p&gt;I believe in the power of taking notes regardless the significance of the matters. Although I consider myself a decent note-taker, I can still get sloppy at times where I will forget the lessons I&amp;rsquo;ve learned. Writting stuff down helps me recall the happy and sad moments or lessons more effectively.&lt;/p&gt;
-&lt;p&gt;Since this tool allows me to focus on the content aspect, I am determined to start a new page, keep it alive and update it regularly. It mainly serves as a personal space for myself, but if you happen to be close to me in real life, I hope it can convey to you what&amp;rsquo;s going on with my life (I don&amp;rsquo;t browse social media often). If you find the stuff here useful, it will make me even happier :smiley:.&lt;/p&gt;
-&lt;h2 id=&#34;what-to-expect&#34;&gt;
-    &lt;a href=&#34;#what-to-expect&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    What to expect
-&lt;/h2&gt;
-&lt;p&gt;I will write about topics that I&amp;rsquo;m familiar with. Most of the stuff comes from my experience, whether personally, academically or professionally. Therefore, they are heavily opinion-based and could be against yours. In general, they can be categorized into &lt;strong&gt;technical&lt;/strong&gt; and &lt;strong&gt;non-technial&lt;/strong&gt; content.&lt;/p&gt;
-&lt;h3 id=&#34;technical&#34;&gt;
-    &lt;a href=&#34;#technical&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Technical
-&lt;/h3&gt;
-&lt;p&gt;You can expect stuff about tools, frameworks of, and tips on software development and productivity. I will try to not make those articles look like technical documentation :sweat_smile:.&lt;/p&gt;
-&lt;h3 id=&#34;non-technical&#34;&gt;
-    &lt;a href=&#34;#non-technical&#34; class=&#34;anchor&#34;&gt;
-        &lt;svg class=&#34;icon&#34; aria-hidden=&#34;true&#34; focusable=&#34;false&#34; height=&#34;16&#34; version=&#34;1.1&#34; viewBox=&#34;0 0 16 16&#34; width=&#34;16&#34;&gt;
-            &lt;path fill-rule=&#34;evenodd&#34;
-                d=&#34;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&#34;&gt;
-            &lt;/path&gt;
-        &lt;/svg&gt;
-    &lt;/a&gt;
-    Non-technical
-&lt;/h3&gt;
-&lt;p&gt;You can expect some personal thoughts, perhaps on the issues of the day, life update, and so on.&lt;/p&gt;
-&lt;p&gt;Regardless the level of technicality, I will attach relevant tags to all articles.&lt;/p&gt;
-&lt;p&gt;There we go - I just wrote the first article. I have a lot in mind that I want to share with my future self and you, and thanks for visiting my home.&lt;/p&gt;
 
     </description>
     </item>

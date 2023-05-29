@@ -6,22 +6,22 @@
     <description>Recent content in Tags on Yiren Zhou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>algorithm</title>
+      <link>https://example.com/tags/algorithm/</link>
+      <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>cmu</title>
       <link>https://example.com/tags/cmu/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/tags/cmu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>grad-school</title>
-      <link>https://example.com/tags/grad-school/</link>
-      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/grad-school/</guid>
       <description></description>
     </item>
     
@@ -49,60 +49,6 @@
       <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/tags/macos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>quarantine</title>
-      <link>https://example.com/tags/quarantine/</link>
-      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/quarantine/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>technical</title>
-      <link>https://example.com/tags/technical/</link>
-      <pubDate>Sun, 16 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/technical/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>personal</title>
-      <link>https://example.com/tags/personal/</link>
-      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/personal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>late_release</title>
-      <link>https://example.com/tags/late_release/</link>
-      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/late_release/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tip</title>
-      <link>https://example.com/tags/tip/</link>
-      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/tip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tool</title>
-      <link>https://example.com/tags/tool/</link>
-      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://example.com/tags/tool/</guid>
       <description></description>
     </item>
     
@@ -175,6 +121,15 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/tags/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technical</title>
+      <link>https://example.com/tags/technical/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/tags/technical/</guid>
       <description></description>
     </item>
     

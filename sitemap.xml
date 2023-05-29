@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://example.com/articles/recursion-dag-dp/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://example.com/</loc>
-    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/algorithm/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/articles/</loc>
-    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2023-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/cmu/</loc>
-    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/grad-school/</loc>
     <lastmod>2021-12-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/articles/lessons-learned-fse/</loc>
@@ -20,44 +26,14 @@
     <loc>https://example.com/tags/software-engineering/</loc>
     <lastmod>2021-12-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/</loc>
-    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/tags/homebrew/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/macos/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/quarantine/</loc>
-    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/articles/homebrew-change-source/</loc>
     <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/technical/</loc>
-    <lastmod>2021-05-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/personal/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/articles/time-to-change/</loc>
-    <lastmod>2021-04-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/late_release/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/articles/march-update/</loc>
-    <lastmod>2021-03-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/articles/getting-stuff-done/</loc>
-    <lastmod>2021-01-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/tip/</loc>
-    <lastmod>2021-01-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/tool/</loc>
-    <lastmod>2021-01-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/aws/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
@@ -86,20 +62,17 @@
     <loc>https://example.com/tags/gtest/</loc>
     <lastmod>2021-01-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/articles/thoughts-on-2020/</loc>
-    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://example.com/tags/container/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/articles/vscode-remote-containers-cpp/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/vscode/</loc>
+    <loc>https://example.com/tags/technical/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/articles/a-new-beginning/</loc>
-    <lastmod>2020-12-01T17:46:19-05:00</lastmod>
+    <loc>https://example.com/tags/vscode/</loc>
+    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/about/</loc>
     <lastmod>2020-12-01T00:00:00+00:00</lastmod>
